@@ -53,4 +53,11 @@ cd ..
 rake deploy
 ```
 
+- Don't forget git it
+```
+$ git add .
+$ git commit -m 'xxxxx'
+$ git push origin source
+```
+
 - Done and Ready to blog
