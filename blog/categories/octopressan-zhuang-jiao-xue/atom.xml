@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress安裝教學 | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/octopressan-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-16T01:22:14+08:00</updated>
+  <updated>2014-12-16T01:26:22+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -69,6 +69,12 @@ cd octopress/_deploy
 git pull origin master
 cd ..
 rake deploy
+</code></p></li>
+<li><p>Don&rsquo;t forget git it
+<code>
+$ git add .
+$ git commit -m 'xxxxx'
+$ git push origin source
 </code></p></li>
 <li><p>Done and Ready to blog</p></li>
 </ul>

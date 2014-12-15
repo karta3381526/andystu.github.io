@@ -4,7 +4,7 @@
   <title><![CDATA[Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-16T01:22:14+08:00</updated>
+  <updated>2014-12-16T01:26:22+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -91,6 +91,19 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
 </span><span class='line'>git pull origin master
 </span><span class='line'>cd ..
 </span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Don&rsquo;t forget git it</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m 'xxxxx'
+</span><span class='line'>$ git push origin source</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
