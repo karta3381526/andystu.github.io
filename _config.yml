@@ -5,7 +5,7 @@
 url: http://andystu.github.io
 title: Andy's (ycchang) 張又介的技術筆記
 subtitle: Ruby on Rails notes.
-author: Andy Chang (ycchang)
+author: Yu-Chieh Chang
 simple_search: https://www.google.com/search
 description:
 
@@ -74,7 +74,7 @@ twitter_user:
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -98,4 +98,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
