@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Andy&#8217;s (ycchang) Blog</title>
+  <title>How to Install Octopress on Github - Andy&#8217;s (ycchang) Blog</title>
   <meta name="author" content="Yu-Chieh Chang">
 
   
@@ -23,7 +23,7 @@ $ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andystu.github.io">
+  <link rel="canonical" href="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Andy's (ycchang) Blog" type="application/atom+xml">
@@ -68,15 +68,12 @@ $ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/">How to Install Octopress on Github</a></h1>
+      <h1 class="entry-title">How to Install Octopress on Github</h1>
     
     
       <p class="meta">
@@ -92,7 +89,7 @@ $ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to &hellip;">
   </header>
 
 
-  <div class="entry-content"><h2>在Github上使用octopress建構blog</h2>
+<div class="entry-content"><h2>在Github上使用octopress建構blog</h2>
 
 <h3>1. on mac</h3>
 
@@ -110,23 +107,116 @@ $ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to &hellip;">
 github 建立 xxxx.github.io 的repository<br/>
 github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/">Read on &rarr;</a>
-    </footer>
-  
+<!--more-->
 
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+<h3>3. back to mac</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -T git@github.com #for testing your sshkey</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4. Local端 安裝octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ bundle install
+</span><span class='line'>$ rake install
+</span><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>trouble shooting</h3>
+
+<ul>
+<li>problem during &ldquo;rake deploy&rdquo;
+在 rake deploy 會出現 error, 解決方法如下</li>
+<li>編輯 Rakefile (Edit the Rakefile and look for this line:)</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>system "git push origin #{deploy_branch}"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改成</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>system "git push origin +#{deploy_branch}"</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>其他解法</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd octopress/_deploy
+</span><span class='line'>git pull origin master
+</span><span class='line'>cd ..
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Done and Ready to blog</li>
+</ul>
+
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Yu-Chieh Chang</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-12-16T00:17:53+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopressan-zhuang-jiao-xue/'>octopress安裝教學</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/" data-via="" data-counturl="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -146,6 +236,7 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
 
   
 </aside>
+
 
     </div>
   </div>

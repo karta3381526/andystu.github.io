@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress安裝教學 | Andy's (ycchang) Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/octopressan-zhuang-jiao-xue/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2014-12-16T01:22:14+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install Octopress on Github]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/"/>
+    <updated>2014-12-16T00:17:53+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue</id>
+    <content type="html"><![CDATA[<h2>在Github上使用octopress建構blog</h2>
+
+<h3>1. on mac</h3>
+
+<pre><code>$ cd ~/.ssh
+$ ssh-keygen -t rsa -C "xxx@xxx.xxx.xx"
+$ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to clipboard
+</code></pre>
+
+<h3>2. on Github</h3>
+
+<p>github 申請帳號 (e.g. xxxx)<br/>
+github 建立 xxxx.github.io 的repository<br/>
+github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
+
+<!--more-->
+
+
+<h3>3. back to mac</h3>
+
+<pre><code>$ ssh -T git@github.com #for testing your sshkey
+</code></pre>
+
+<h3>4. Local端 安裝octopress</h3>
+
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+$ bundle install
+$ rake install
+$ rake setup_github_pages
+</code></pre>
+
+<h3>trouble shooting</h3>
+
+<ul>
+<li>problem during &ldquo;rake deploy&rdquo;
+在 rake deploy 會出現 error, 解決方法如下</li>
+<li><p>編輯 Rakefile (Edit the Rakefile and look for this line:)
+<code>
+system "git push origin #{deploy_branch}"
+</code>
+修改成
+<code>
+system "git push origin +#{deploy_branch}"
+</code></p></li>
+<li><p>其他解法
+<code>
+cd octopress/_deploy
+git pull origin master
+cd ..
+rake deploy
+</code></p></li>
+<li><p>Done and Ready to blog</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

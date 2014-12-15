@@ -1,16 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-15T23:47:48+08:00</updated>
+  <updated>2014-12-16T01:22:14+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Yu-Chieh Chang]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install Octopress on Github]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/"/>
+    <updated>2014-12-16T00:17:53+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue</id>
+    <content type="html"><![CDATA[<h2>在Github上使用octopress建構blog</h2>
+
+<h3>1. on mac</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/.ssh
+</span><span class='line'>$ ssh-keygen -t rsa -C "xxx@xxx.xxx.xx"
+</span><span class='line'>$ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to clipboard</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. on Github</h3>
+
+<p>github 申請帳號 (e.g. xxxx)<br/>
+github 建立 xxxx.github.io 的repository<br/>
+github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
+
+<!--more-->
+
+
+<h3>3. back to mac</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -T git@github.com #for testing your sshkey</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4. Local端 安裝octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ bundle install
+</span><span class='line'>$ rake install
+</span><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>trouble shooting</h3>
+
+<ul>
+<li>problem during &ldquo;rake deploy&rdquo;
+在 rake deploy 會出現 error, 解決方法如下</li>
+<li>編輯 Rakefile (Edit the Rakefile and look for this line:)</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>system "git push origin #{deploy_branch}"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改成</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>system "git push origin +#{deploy_branch}"</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>其他解法</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd octopress/_deploy
+</span><span class='line'>git pull origin master
+</span><span class='line'>cd ..
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Done and Ready to blog</li>
+</ul>
+
+]]></content>
+  </entry>
   
 </feed>
