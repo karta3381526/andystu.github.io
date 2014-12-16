@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress安裝教學 | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/octopressan-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-16T01:35:46+08:00</updated>
+  <updated>2014-12-17T00:26:55+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Install Octopress on Github]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/"/>
+    <link href="http://andystu.github.io/blog/2014/12/16/how-to-install-octopress-on-github/"/>
     <updated>2014-12-16T00:17:53+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue</id>
+    <id>http://andystu.github.io/blog/2014/12/16/how-to-install-octopress-on-github</id>
     <content type="html"><![CDATA[<h2>在Github上使用octopress建構blog</h2>
 
 <h3>1. on mac</h3>

@@ -4,7 +4,7 @@
   <title><![CDATA[Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-16T01:35:46+08:00</updated>
+  <updated>2014-12-17T00:26:55+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -14,10 +14,69 @@
 
   
   <entry>
+    <title type="html"><![CDATA[How to Install Ruby and Rails on Mac]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/"/>
+    <updated>2014-12-16T17:41:41+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac</id>
+    <content type="html"><![CDATA[<h2>在Mac上安裝ruby on rails開發環境</h2>
+
+<h3>1. install rvm</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#comment
+</span><span class='line'>$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
+</span><span class='line'>#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
+</span><span class='line'>  
+</span><span class='line'>#modify .zshrc .bash_profile and relaunch terminal
+</span><span class='line'>$ echo progress-bar &gt;&gt; ~/.curlrc  
+</span><span class='line'>$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
+</span><span class='line'>$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
+</span><span class='line'>  
+</span><span class='line'>#test rvm ready or not  
+</span><span class='line'>$ type rvm | head -n 1  
+</span><span class='line'>$ rvm list known  
+</span><span class='line'>$ rvm install x.x  
+</span><span class='line'>$ rvm use 2.1 (rvm use 2.1 --default)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. install bundler and rails</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem update --system #更新gem library
+</span><span class='line'>$ gem install bundler #安裝bundler
+</span><span class='line'>$ gem install rails --no-ri --no-rdoc #安裝rails</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Done!!</li>
+</ul>
+
+
+<!--more-->
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[How to Install Octopress on Github]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue/"/>
+    <link href="http://andystu.github.io/blog/2014/12/16/how-to-install-octopress-on-github/"/>
     <updated>2014-12-16T00:17:53+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/16/octooctopressjian-yi-an-zhuang-jiao-xue</id>
+    <id>http://andystu.github.io/blog/2014/12/16/how-to-install-octopress-on-github</id>
     <content type="html"><![CDATA[<h2>在Github上使用octopress建構blog</h2>
 
 <h3>1. on mac</h3>

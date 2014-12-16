@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: On | Andy's (ycchang) Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/on/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2014-12-17T00:26:55+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install Ruby and Rails on Mac]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/"/>
+    <updated>2014-12-16T17:41:41+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac</id>
+    <content type="html"><![CDATA[<h2>在Mac上安裝ruby on rails開發環境</h2>
+
+<h3>1. install rvm</h3>
+
+<pre><code>#comment
+$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
+#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
+
+#modify .zshrc .bash_profile and relaunch terminal
+$ echo progress-bar &gt;&gt; ~/.curlrc  
+$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
+$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
+
+#test rvm ready or not  
+$ type rvm | head -n 1  
+$ rvm list known  
+$ rvm install x.x  
+$ rvm use 2.1 (rvm use 2.1 --default)
+</code></pre>
+
+<h3>2. install bundler and rails</h3>
+
+<pre><code>$ gem update --system #更新gem library
+$ gem install bundler #安裝bundler
+$ gem install rails --no-ri --no-rdoc #安裝rails
+</code></pre>
+
+<ul>
+<li>Done!!</li>
+</ul>
+
+
+<!--more-->
+
+]]></content>
+  </entry>
+  
+</feed>
