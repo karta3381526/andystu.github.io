@@ -21,12 +21,12 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
 (記得勾選 Add Ruby...PATH / Associate .rb ....)
 3. Unzip DevKit under C:\
 ```
-  cd C:/DevKit
-  ruby dk.rb init
-  ruby dk.rb install
-  gem install json --platform=ruby 
-  gem install bundler
-  gem install rails --no-rdoc --no-ri
+C:\> cd C:/DevKit
+C:\> ruby dk.rb init
+C:\> ruby dk.rb install
+C:\> gem install json --platform=ruby 
+C:\> gem install bundler
+C:\> gem install rails --no-rdoc --no-ri
 ```
 - Done!!
 <!--more-->
