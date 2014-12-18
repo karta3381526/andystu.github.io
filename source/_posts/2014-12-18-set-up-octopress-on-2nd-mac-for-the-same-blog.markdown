@@ -14,6 +14,7 @@ $ git clone https://github.com/xxx/xxx.github.io.git
 
 ```
 3. setup your 2nd mac device
+```
 $ cd xxx
 $ bundle install #install required gems
 $ ssh -T git@github.com # for testing connection to github
