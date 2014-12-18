@@ -60,4 +60,8 @@ $ git commit -m 'xxxxx'
 $ git push origin source
 ```
 
+If you use zsh, you would better add the following line in .zshrc for preventing you from error of *"rake new_post["xxxx"]"*.
+```
+alias rake="noglob rake"
+```
 - Done and Ready to blog
