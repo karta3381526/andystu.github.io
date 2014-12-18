@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "set up octopress on other mac for the same blog"
+title: "set up octopress on 2nd mac for the same blog"
 date: 2014-12-18 10:22:17 +0800
 comments: true
 categories: octopress安裝教學
