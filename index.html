@@ -9,22 +9,8 @@
   <meta name="author" content="Yu-Chieh Chang">
 
   
-  <meta name="description" content="在Mac上安裝ruby on rails開發環境 1. install rvm 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-#comment
-$ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
+  <meta name="description" content="在Windows上安裝ruby on rails開發環境 Easy and the quickest way. install RailsInstaller Download it (version 3.0.0 and above are recommend)
+from http:// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +66,83 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-18T09:07:30+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:07 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在Windows上安裝ruby on rails開發環境</h2>
+
+<h2>Easy and the quickest way.</h2>
+
+<h3>install RailsInstaller</h3>
+
+<ol>
+<li>Download it (version 3.0.0 and above are recommend)
+from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
+<li>install it (just click next and next steps, then done.).</li>
+</ol>
+
+
+<h2>Harder way.</h2>
+
+<h3>install RubyInstaller</h3>
+
+<ol>
+<li>Download the package the version you want from <a href="http://rubyinstaller.org">http://rubyinstaller.org</a><br/>
+generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit platform).</li>
+<li>click to install rubyinstaller first and then DevKit.<br/>
+(記得勾選 Add Ruby&hellip;PATH / Associate .rb &hellip;.)</li>
+<li>Unzip DevKit under C:\</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  cd C:/DevKit
+</span><span class='line'>  ruby dk.rb init
+</span><span class='line'>  ruby dk.rb install
+</span><span class='line'>  gem install json --platform=ruby 
+</span><span class='line'>  gem install bundler
+</span><span class='line'>  gem install rails --no-rdoc --no-ri</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Done!!</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -223,6 +286,10 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">How to Install Ruby and Rails on Mac</a>

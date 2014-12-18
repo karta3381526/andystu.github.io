@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 安裝教學 | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/an-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-17T00:26:55+08:00</updated>
+  <updated>2014-12-18T09:29:51+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install Ruby and Rails on Windows]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/"/>
+    <updated>2014-12-18T09:07:30+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows</id>
+    <content type="html"><![CDATA[<h2>在Windows上安裝ruby on rails開發環境</h2>
+
+<h2>Easy and the quickest way.</h2>
+
+<h3>install RailsInstaller</h3>
+
+<ol>
+<li>Download it (version 3.0.0 and above are recommend)
+from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
+<li>install it (just click next and next steps, then done.).</li>
+</ol>
+
+
+<h2>Harder way.</h2>
+
+<h3>install RubyInstaller</h3>
+
+<ol>
+<li>Download the package the version you want from <a href="http://rubyinstaller.org">http://rubyinstaller.org</a><br/>
+generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit platform).</li>
+<li>click to install rubyinstaller first and then DevKit.<br/>
+(記得勾選 Add Ruby&hellip;PATH / Associate .rb &hellip;.)</li>
+<li>Unzip DevKit under C:\
+<code>
+cd C:/DevKit
+ruby dk.rb init
+ruby dk.rb install
+gem install json --platform=ruby
+gem install bundler
+gem install rails --no-rdoc --no-ri
+</code></li>
+<li>Done!!</li>
+</ol>
+
+
+<!--more-->
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Install Ruby and Rails on Mac]]></title>
