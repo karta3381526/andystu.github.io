@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | Andy's (ycchang) Blog]]></title>
+  <title><![CDATA[Category: Ruby | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-23T16:25:24+08:00</updated>
+  <updated>2014-12-24T02:51:04+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
-    <name><![CDATA[Yu-Chieh Chang]]></name>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
