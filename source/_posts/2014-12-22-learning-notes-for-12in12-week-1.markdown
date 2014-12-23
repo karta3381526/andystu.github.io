@@ -24,7 +24,7 @@ $ git commit -m "Generate Links Scafffold"
 $ git checkout master
 $ git merge link_scaffold
 ```
-
+<!--more-->
 ```
 $ git checkout -b add_users
 $ bundle install # after add devise into Gemfile
