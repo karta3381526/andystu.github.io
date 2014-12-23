@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 12in12學習筆記 | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/12in12xue-xi-bi-ji/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-23T15:50:46+08:00</updated>
+  <updated>2014-12-23T16:25:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -37,6 +37,9 @@ $ git commit -m "Generate Links Scafffold"
 $ git checkout master
 $ git merge link_scaffold
 </code></pre>
+
+<!--more-->
+
 
 <pre><code>$ git checkout -b add_users
 $ bundle install # after add devise into Gemfile

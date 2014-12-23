@@ -4,7 +4,7 @@
   <title><![CDATA[Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-23T15:50:46+08:00</updated>
+  <updated>2014-12-23T16:25:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git Usage Notes]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/23/git-usage-notes/"/>
+    <updated>2014-12-23T16:11:10+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/23/git-usage-notes</id>
+    <content type="html"><![CDATA[<h2>Git work processes</h2>
+
+<ul>
+<li>sign up a github account</li>
+<li>create a repos (repository) with a &ldquo;name&rdquo;</li>
+<li>then git it</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># rails project</span>
+</span><span class='line'><span class="nv">$ </span>rails new app
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>app
+</span><span class='line'><span class="nv">$ </span>git init
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -m <span class="s1">&#39;first commit&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git checkout -b branch_name
+</span><span class='line'>
+</span><span class='line'><span class="c"># do some changes under this branch ...  </span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;some thing in this brach&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># go back to master and merge it</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git checkout master
+</span><span class='line'><span class="nv">$ </span>git merge branch_name
+</span><span class='line'>
+</span><span class='line'><span class="c"># push to github </span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git remote add origin repos_git_ssh_url
+</span><span class='line'><span class="nv">$ </span>git push --all <span class="c"># both master and branches</span>
+</span><span class='line'><span class="nv">$ </span>git push origin master <span class="c"># you also can push master to remote only</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Learning Notes for 12in12 Week 1]]></title>
@@ -50,6 +117,7 @@
 </span><span class='line'>$ git merge link_scaffold</span></code></pre></td></tr></table></div></figure>
 
 
+<!--more-->
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
