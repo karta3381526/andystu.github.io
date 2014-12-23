@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 12in12學習筆記 | Andy's (ycchang) Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/12in12xue-xi-bi-ji/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2014-12-23T15:50:46+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learning Notes for 12in12 Week 1]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/22/learning-notes-for-12in12-week-1/"/>
+    <updated>2014-12-22T17:17:40+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/22/learning-notes-for-12in12-week-1</id>
+    <content type="html"><![CDATA[<h3>CREATE OUR NEW RAILS APPLICATION</h3>
+
+<pre><code>$ rails new reddit
+$ cd reddit
+$ git init
+$ git add .
+$ git commit -m "reddit init"
+</code></pre>
+
+<h3>LINK SUBMISSIONS</h3>
+
+<pre><code>$ git checkout -b link_scaffold
+$ rails g scaffold link title:string url:string
+$ rake db:migrate
+$ git add .
+$ git commit -m "Generate Links Scafffold"
+$ git checkout master
+$ git merge link_scaffold
+</code></pre>
+
+<pre><code>$ git checkout -b add_users
+$ bundle install # after add devise into Gemfile
+$ rails g devise:install 
+</code></pre>
+
+<ul>
+<li>then modify config/env&hellip;/deve&hellip; for mail</li>
+<li>add flash in app/views/layouts/application.html.erb</li>
+</ul>
+
+
+<pre><code class="ruby app/views/layouts/application.html.erb">&lt;% flash.each do |name, msg| %&gt;
+  &lt;%= content_tag :div, msg, class: "alert alert-#{name}" %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<h3>USERS</h3>
+
+<pre><code class="bash add devise gem">$ rails g devise:views
+$ rails g devise User
+$ rake db:migrate
+</code></pre>
+
+<pre><code>$ git status
+$ git add .
+$ git commit -am "Add devise and create User model"
+</code></pre>
+
+<pre><code class="ruby app/views/links/index.html.erb">&lt;% if user_signed_in? %&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;%= link_to 'Submit link', new_link_path %&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;%= link_to 'Account', edit_user_registration_path %&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;%= link_to 'Sign out', destroy_user_session_path, :method =&gt; :delete %&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;% else %&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;%= link_to 'Sign up', new_user_registration_path %&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;%= link_to 'Sign in', new_user_session_path %&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<pre><code class="ruby app/models"># app/models/user.rb
+has_many :links
+
+# app/models/link.rb
+belongs_to :user
+</code></pre>
+
+<pre><code>$ rails g migration add_user_id_to_links user_id:integer:index
+$ rake db:migrate
+</code></pre>
+
+<pre><code>$ git status
+$ git add .
+$ git commit -am "Add association between Link and User"
+</code></pre>
+
+<pre><code class="ruby app/controllers/links_controller.rb">before_filter :authenticate_user!, :except =&gt; [:index, :show]
+...
+def new
+@link = current_user.links.build
+end
+
+def create
+@link = current_user.build(link_params)
+...
+end
+</code></pre>
+
+<pre><code class="ruby app/views/links/index.html.erb">&lt;% if link.user == current_user %&gt;
+  &lt;td&gt;&lt;%= link_to 'Edit', edit_link_path(link) %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %&gt;&lt;/td&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<pre><code class="ruby app/controllers/links_controller.rb">...
+before_action :authorized_user, only: [:edit, :update, :destroy]
+...
+private
+...
+
+def authorized_user
+  @link = current_user.links.find_by(id: params[:id])
+  redirect_to links_path, notice: "Not authorized to edit this link" if @link.nil?
+end
+</code></pre>
+
+<pre><code>$ git status
+$ git commit -am "Authorization on links"
+$ git checkout master
+$ git merge add_users
+</code></pre>
+
+<h3>STRUCTURE AND SOME STYLING</h3>
+]]></content>
+  </entry>
+  
+</feed>

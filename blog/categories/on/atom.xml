@@ -4,7 +4,7 @@
   <title><![CDATA[Category: On | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/on/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-18T09:29:51+08:00</updated>
+  <updated>2014-12-23T15:50:46+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -42,12 +42,12 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
 (記得勾選 Add Ruby&hellip;PATH / Associate .rb &hellip;.)</li>
 <li>Unzip DevKit under C:\
 <code>
-cd C:/DevKit
-ruby dk.rb init
-ruby dk.rb install
-gem install json --platform=ruby
-gem install bundler
-gem install rails --no-rdoc --no-ri
+C:\&gt; cd C:/DevKit
+C:\&gt; ruby dk.rb init
+C:\&gt; ruby dk.rb install
+C:\&gt; gem install json --platform=ruby
+C:\&gt; gem install bundler
+C:\&gt; gem install rails --no-rdoc --no-ri
 </code></li>
 <li>Done!!</li>
 </ol>

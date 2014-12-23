@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress安裝教學 | Andy's (ycchang) Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/octopressan-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-18T09:29:51+08:00</updated>
+  <updated>2014-12-23T15:50:46+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Set Up Octopress on 2nd Mac for the Same Blog]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/"/>
+    <updated>2014-12-18T10:22:17+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog</id>
+    <content type="html"><![CDATA[<h2>在另外一台Mac上安裝octopress編輯環境, 可對應編輯同一個github的blog</h2>
+
+<ol>
+<li>copy prikey from your master mac to your 2nd mac device and put it under ~/.ssh folder</li>
+<li>clone your repository to second device
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone &lt;a href="https://github.com/xxx/xxx.github.io.git"&gt;https://github.com/xxx/xxx.github.io.git&lt;/a&gt;&lt;/li&gt;
+</span><span class='line'>&lt;/ol&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;3. setup your 2nd mac device
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;$ cd xxx
+</span><span class='line'>$ bundle install #install required gems
+</span><span class='line'>$ ssh -T &lt;a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#109;"&gt;&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;&lt;/a&gt; # for testing connection to github
+</span><span class='line'>$ rake setup_github_pages # this is important for create _deploy folder in 2nd mac device
+</span><span class='line'>$ rake new_post[&ldquo;xxxx&rdquo;]
+</span><span class='line'>$ rake generate
+</span><span class='line'>$ rake deploy # it&rsquo;s done while no error message here.</span></code></pre></td></tr></table></div></figure></p>
+
+<ol>
+<li>git between two mac device<br/>
+<code>
+$ git pull origin source  # git pull before push every time!
+$ git add .
+$ git commit -m 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam'
+$ git push origin source
+</code></li>
+</ol>
+
+
+<h3>Done.</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Install Octopress on Github]]></title>
@@ -76,9 +130,14 @@ $ git add .
 $ git commit -m 'xxxxx'
 $ git push origin source
 </code></p></li>
-<li><p>Done and Ready to blog</p></li>
 </ul>
 
+
+<p>If you use zsh, you would better add the following line in .zshrc for preventing you from error of <em>&ldquo;rake new_post[&#8220;xxxx&rdquo;]&ldquo;</em>.
+<code>
+alias rake="noglob rake"
+</code>
+- Done and Ready to blog</p>
 ]]></content>
   </entry>
   

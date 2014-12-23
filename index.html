@@ -9,8 +9,18 @@
   <meta name="author" content="Yu-Chieh Chang">
 
   
-  <meta name="description" content="在Windows上安裝ruby on rails開發環境 Easy and the quickest way. install RailsInstaller Download it (version 3.0.0 and above are recommend)
-from http:// &hellip;">
+  <meta name="description" content="CREATE OUR NEW RAILS APPLICATION 1
+2
+3
+4
+5
+$ rails new reddit
+$ cd reddit
+$ git init
+$ git add .
+$ git commit -m "reddit init" LINK SUBMISSIONS 1
+2
+3 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +82,320 @@ from http:// &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/12/22/learning-notes-for-12in12-week-1/">Learning Notes for 12in12 Week 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-22T17:17:40+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>CREATE OUR NEW RAILS APPLICATION</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails new reddit
+</span><span class='line'>$ cd reddit
+</span><span class='line'>$ git init
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m "reddit init"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>LINK SUBMISSIONS</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git checkout -b link_scaffold
+</span><span class='line'>$ rails g scaffold link title:string url:string
+</span><span class='line'>$ rake db:migrate
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m "Generate Links Scafffold"
+</span><span class='line'>$ git checkout master
+</span><span class='line'>$ git merge link_scaffold</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git checkout -b add_users
+</span><span class='line'>$ bundle install # after add devise into Gemfile
+</span><span class='line'>$ rails g devise:install </span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then modify config/env&hellip;/deve&hellip; for mail</li>
+<li>add flash in app/views/layouts/application.html.erb</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>app/views/layouts/application.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">% flash.each </span><span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;%= content_tag :div, msg, class: &quot;alert alert-</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="sx">&quot; %&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>USERS</h3>
+
+<figure class='code'><figcaption><span>add devise gem</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g devise:views
+</span><span class='line'><span class="nv">$ </span>rails g devise User
+</span><span class='line'><span class="nv">$ </span>rake db:migrate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>add devise gem</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git status
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s2">&quot;Add devise and create User model&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>app/views/links/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">user_signed_in?</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;ul&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to &#39;Submit link&#39;, new_link_path %&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="sx">    &lt;li&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;Account&#39;</span><span class="p">,</span> <span class="n">edit_user_registration_path</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to &#39;Sign out&#39;, destroy_user_session_path, :method =</span><span class="o">&gt;</span> <span class="ss">:delete</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</span><span class='line'><span class="sr">&lt;% else %&gt;</span>
+</span><span class='line'><span class="sr">  &lt;ul&gt;</span>
+</span><span class='line'><span class="sr">    &lt;li&gt;&lt;%= link_to &#39;Sign up&#39;, new_user_registration_path %&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;Sign in&#39;</span><span class="p">,</span> <span class="n">new_user_session_path</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</span><span class='line'><span class="sr">&lt;% end %&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>app/models</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/user.rb</span>
+</span><span class='line'><span class="n">has_many</span> <span class="ss">:links</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># app/models/link.rb</span>
+</span><span class='line'><span class="n">belongs_to</span> <span class="ss">:user</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>app/models</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="n">add_user_id_to_links</span> <span class="ss">user_id</span><span class="p">:</span><span class="ss">integer</span><span class="p">:</span><span class="n">index</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>app/models</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;Add association between Link and User&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>app/controllers/links_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">before_filter</span> <span class="ss">:authenticate_user!</span><span class="p">,</span> <span class="ss">:except</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">new</span>
+</span><span class='line'><span class="vi">@link</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">build</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'><span class="vi">@link</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">link_params</span><span class="p">)</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>app/views/links/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">link</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="n">current_user</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;td&gt;</span><span class="o">&lt;</span><span class="sx">%= link_to &#39;Edit&#39;, edit_link_path(link) %&gt;&lt;/td&gt;</span>
+</span><span class='line'><span class="sx">  &lt;td&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;Destroy&#39;</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="p">{</span> <span class="ss">confirm</span><span class="p">:</span> <span class="s1">&#39;Are you sure?&#39;</span> <span class="p">}</span> <span class="sx">%&gt;&lt;/td&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>app/controllers/links_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="n">before_action</span> <span class="ss">:authorized_user</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:edit</span><span class="p">,</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="kp">private</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">authorized_user</span>
+</span><span class='line'>  <span class="vi">@link</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">redirect_to</span> <span class="n">links_path</span><span class="p">,</span> <span class="ss">notice</span><span class="p">:</span> <span class="s2">&quot;Not authorized to edit this link&quot;</span> <span class="k">if</span> <span class="vi">@link</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>app/controllers/links_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;Authorization on links&quot;</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">add_users</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>STRUCTURE AND SOME STYLING</h3>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/">Set Up Octopress on 2nd Mac for the Same Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-18T10:22:17+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:22 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在另外一台Mac上安裝octopress編輯環境, 可對應編輯同一個github的blog</h2>
+
+<ol>
+<li>copy prikey from your master mac to your 2nd mac device and put it under ~/.ssh folder</li>
+<li>clone your repository to second device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/xxx/xxx.github.io.git
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>setup your 2nd mac device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd xxx
+</span><span class='line'>$ bundle install #install required gems
+</span><span class='line'>$ ssh -T git@github.com # for testing connection to github
+</span><span class='line'>$ rake setup_github_pages # this is important for create _deploy folder in 2nd mac device
+</span><span class='line'>$ rake new_post["xxxx"] 
+</span><span class='line'>$ rake generate
+</span><span class='line'>$ rake deploy # it's done while no error message here.</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>git between two mac device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git pull origin source  # git pull before push every time!
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam'
+</span><span class='line'>$ git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Done.</h3>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a></h1>
     
     
@@ -120,12 +444,12 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>  cd C:/DevKit
-</span><span class='line'>  ruby dk.rb init
-</span><span class='line'>  ruby dk.rb install
-</span><span class='line'>  gem install json --platform=ruby 
-</span><span class='line'>  gem install bundler
-</span><span class='line'>  gem install rails --no-rdoc --no-ri</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\&gt; cd C:/DevKit
+</span><span class='line'>C:\&gt; ruby dk.rb init
+</span><span class='line'>C:\&gt; ruby dk.rb install
+</span><span class='line'>C:\&gt; gem install json --platform=ruby 
+</span><span class='line'>C:\&gt; gem install bundler
+</span><span class='line'>C:\&gt; gem install rails --no-rdoc --no-ri</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -286,6 +610,14 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/22/learning-notes-for-12in12-week-1/">Learning Notes for 12in12 Week 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/">Set Up Octopress on 2nd Mac for the Same Blog</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a>
