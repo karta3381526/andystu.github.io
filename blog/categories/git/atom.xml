@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-27T11:27:18+08:00</updated>
+  <updated>2014-12-27T11:47:57+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -91,6 +91,11 @@ $ git rebase &ndash;continue</p>
 <h1>done.</h1>
 
 <p>&#8220;`</p>
+
+<h3>great reference</h3>
+
+<p><a href="http://blog.yorkxin.org/posts/2011/07/29/git-rebase">http://blog.yorkxin.org/posts/2011/07/29/git-rebase</a> <br/>
+<a href="http://blog.gogojimmy.net/2012/02/29/git-scenario/">http://blog.gogojimmy.net/2012/02/29/git-scenario/</a></p>
 ]]></content>
   </entry>
   
