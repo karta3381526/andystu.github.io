@@ -194,8 +194,20 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
 <aside class="sidebar">
   
     <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/26/before-action-vs-before-filter/">Before_action v.s. Before_filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/24/git-flow-usage/">Git Flow Usage</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/23/git-usage-notes/">Git Usage Notes</a>
@@ -209,15 +221,36 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
         <a href="/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/">Set Up Octopress on 2nd Mac for the Same Blog</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">How to Install Ruby and Rails on Mac</a>
-      </li>
-    
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andystu">@andystu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andystu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 

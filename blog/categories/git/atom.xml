@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-24T02:51:04+08:00</updated>
+  <updated>2014-12-27T10:40:18+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -18,67 +18,73 @@
     <link href="http://andystu.github.io/blog/2014/12/23/git-usage-notes/"/>
     <updated>2014-12-23T16:11:10+08:00</updated>
     <id>http://andystu.github.io/blog/2014/12/23/git-usage-notes</id>
-    <content type="html"><![CDATA[<h2>Git work processes</h2>
+    <content type="html"><![CDATA[<h2>Install git via homebrew</h2>
+
+<p>$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</p>
+
+<h2>Git work processes</h2>
 
 <ul>
 <li>sign up a github account</li>
 <li>create a repos (repository) with a &ldquo;name&rdquo;</li>
 <li>then git it
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;h1&gt;rails project&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>rails new app
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>app
-</span><span class='line'><span class="nv">$ </span>git init
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -m <span class="p">&amp;</span>lsquo<span class="p">;</span>first commit<span class="p">&amp;</span>rsquo<span class="p">;</span>&lt;/p&gt;&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>git checkout -b branch_name&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;do some changes under this branch <span class="p">&amp;</span>hellip<span class="p">;</span>&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="p">&amp;</span>lsquo<span class="p">;</span>some thing in this brach<span class="p">&amp;</span>rsquo<span class="p">;</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;go back to master and merge it&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>git checkout master
-</span><span class='line'><span class="nv">$ </span>git merge branch_name&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;push to github&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>git remote add origin repos_git_ssh_url
-</span><span class='line'><span class="nv">$ </span>git push <span class="p">&amp;</span>ndash<span class="p">;</span>all <span class="c"># both master and branches</span>
-</span><span class='line'><span class="nv">$ </span>git push origin master <span class="c"># you also can push master to remote only</span>
-</span></code></pre></td></tr></table></div></figure></p>
+&#8220;` bash
+
+<h1>rails project</h1>
+
+<p>$ rails new app
+$ cd app
+$ git init
+$ git add .
+$ git commit -m &lsquo;first commit&rsquo;</p></li>
+</ul>
+
+
+<p>$ git checkout -b branch_name</p>
+
+<h1>do some changes under this branch &hellip;</h1>
+
+<p>$ git add .
+$ git commit -am &lsquo;some thing in this brach&rsquo;</p>
+
+<h1>go back to master and merge it</h1>
+
+<p>$ git checkout master
+$ git merge branch_name</p>
+
+<h1>push to github</h1>
+
+<p>$ git remote add origin repos_git_ssh_url
+$ git push &ndash;all # both master and branches
+$ git push origin master # you also can push master to remote only</p>
+
+<h1>reset or revert to HEAD version (HEAD refers to latest commit stage)</h1>
+
+<p>$ git reset HEAD &ndash;hard # &ndash;hard is dangerous (delete unstaged files)
+$ git reset HEAD &ndash;soft # &ndash;soft will go back and keep files staged
+$ git reset HEAD # will go back without tracking unstaged files
+$ git revert HEAD # make HEAD stage as new stage</p>
+
+<h1>reset one file</h1>
+
+<p>$ git checkout &ndash; <file></p>
+
+<h1>conflick of rebase (merge is the same)</h1>
+
+<p>$ git rebase master # under second branch</p>
+
+<h1>conflick &hellip;</h1>
+
+<h1>modify conflick <file></h1>
+
+<h1>then</h1>
+
+<p>$ git add <file>
+$ git rebase &ndash;continue</p>
+
+<h1>done.</h1>
+
+<p>&#8220;`</p>
 ]]></content>
   </entry>
   

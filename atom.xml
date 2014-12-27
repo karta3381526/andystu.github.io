@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-24T02:51:04+08:00</updated>
+  <updated>2014-12-27T10:40:18+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,11 +14,93 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Before_action v.s. Before_filter]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter/"/>
+    <updated>2014-12-26T00:11:03+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter</id>
+    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.
+1. An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p>
+
+<ol>
+<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
+These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
+<li><p>Rails 4 &ndash;> <em>_action<br/>
+Rails 3 &ndash;> </em>_filter</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git Flow Usage]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/24/git-flow-usage/"/>
+    <updated>2014-12-24T23:34:12+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/24/git-flow-usage</id>
+    <content type="html"><![CDATA[<h3>git-flow usage notes</h3>
+
+<ul>
+<li>install git-flow on Mac</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow
+</span><span class='line'><span class="c"># Done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>usage how-to (for feature)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow init <span class="c"># under project folder, git-flow would ask few questions, using the default value is recommended. </span>
+</span><span class='line'><span class="nv">$ </span>git flow feature start MY_FEATURE <span class="c"># XXX is branch name</span>
+</span><span class='line'><span class="c"># add some files or do something ...</span>
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commmit -am <span class="s1">&#39;do something ...&#39;</span>
+</span><span class='line'><span class="nv">$ </span>git flow feature publish MY_FEATURE <span class="c"># push to remote repo</span>
+</span><span class='line'><span class="nv">$ </span>git flow feature finish MY_FEATURE
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>usage how-to 2 (for release)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span> <span class="c"># e.g. git flow release start Version_1.0</span>
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;do something ...&#39;</span>
+</span><span class='line'><span class="nv">$ </span>git flow release finish RELEASE
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Git Usage Notes]]></title>
     <link href="http://andystu.github.io/blog/2014/12/23/git-usage-notes/"/>
     <updated>2014-12-23T16:11:10+08:00</updated>
     <id>http://andystu.github.io/blog/2014/12/23/git-usage-notes</id>
-    <content type="html"><![CDATA[<h2>Git work processes</h2>
+    <content type="html"><![CDATA[<h2>Install git via homebrew</h2>
+
+<p>$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</p>
+
+<h2>Git work processes</h2>
 
 <ul>
 <li>sign up a github account</li>
@@ -51,6 +133,27 @@
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># rails project</span>
 </span><span class='line'><span class="nv">$ </span>rails new app
 </span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>app
@@ -75,7 +178,30 @@
 </span><span class='line'><span class="nv">$ </span>git remote add origin repos_git_ssh_url
 </span><span class='line'><span class="nv">$ </span>git push --all <span class="c"># both master and branches</span>
 </span><span class='line'><span class="nv">$ </span>git push origin master <span class="c"># you also can push master to remote only</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># reset or revert to HEAD version (HEAD refers to latest commit stage)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git reset HEAD --hard <span class="c"># --hard is dangerous (delete unstaged files)</span>
+</span><span class='line'><span class="nv">$ </span>git reset HEAD --soft <span class="c"># --soft will go back and keep files staged </span>
+</span><span class='line'><span class="nv">$ </span>git reset HEAD <span class="c"># will go back without tracking unstaged files</span>
+</span><span class='line'><span class="nv">$ </span>git revert HEAD <span class="c"># make HEAD stage as new stage</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># reset one file</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git checkout -- &lt;file&gt;
+</span><span class='line'>
+</span><span class='line'><span class="c"># conflick of rebase (merge is the same)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git rebase master <span class="c"># under second branch</span>
+</span><span class='line'><span class="c"># conflick ...</span>
+</span><span class='line'><span class="c"># modify conflick &lt;file&gt;</span>
+</span><span class='line'><span class="c"># then </span>
+</span><span class='line'><span class="nv">$ </span>git add &lt;file&gt;
+</span><span class='line'><span class="nv">$ </span>git rebase --continue
+</span><span class='line'><span class="c"># done.</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
