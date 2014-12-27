@@ -28,7 +28,7 @@ $ git branch # list branches in the project
 $ git add .
 $ git commit -am 'some thing in this brach'
 
-# more about `git commit`
+# more about `git commit -`
 $ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
 $ git commit --amend # reword commit message
 
