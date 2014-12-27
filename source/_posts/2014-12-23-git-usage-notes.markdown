@@ -20,8 +20,6 @@ $ git init
 $ git add .
 $ git commit -m 'first commit'  
 
-$ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
-
 $ git checkout -b branch_name
 $ git branch # list branches in the project
 
@@ -30,7 +28,7 @@ $ git branch # list branches in the project
 $ git add .
 $ git commit -am 'some thing in this brach'
 
-# more about `git commit -`
+# more about `git commit` 
 $ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
 $ git commit --amend # reword commit message
 
