@@ -65,3 +65,6 @@ $ git rebase --continue
 # done.
 ```
 
+### great reference
+http://blog.yorkxin.org/posts/2011/07/29/git-rebase   
+http://blog.gogojimmy.net/2012/02/29/git-scenario/
