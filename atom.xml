@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-27T11:20:26+08:00</updated>
+  <updated>2014-12-27T11:27:18+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -174,7 +174,7 @@ Rails 3 &ndash;> </em>_filter</p></li>
 </span><span class='line'><span class="nv">$ </span>git add .
 </span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;some thing in this brach&#39;</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># more about `git commit`</span>
+</span><span class='line'><span class="c"># more about `git commit` </span>
 </span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;xxxx&#39;</span> <span class="c"># == git add . + git commit -m &#39;xxxx&#39;</span>
 </span><span class='line'><span class="nv">$ </span>git commit --amend <span class="c"># reword commit message</span>
 </span><span class='line'>
