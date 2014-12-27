@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2014-12-27T10:40:18+08:00</updated>
+  <updated>2014-12-27T10:43:43+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -18,11 +18,11 @@
     <link href="http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter/"/>
     <updated>2014-12-26T00:11:03+08:00</updated>
     <id>http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter</id>
-    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.
-1. An action is a method of a controller to which you can route to.<br/>
-For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p>
+    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
 
 <ol>
+<li><p>An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
 <li><p>Filters run in respect to controller actions - before, after or around them.<br/>
 These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
 <li><p>Rails 4 &ndash;> <em>_action<br/>

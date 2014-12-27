@@ -9,8 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="To figureout what differece between before_action and before_filter, we should understand what difference between action and filter.
-1. An action is &hellip;">
+  <meta name="description" content="To figureout what differece between before_action and before_filter, we should understand what difference between action and filter. An action is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,11 +87,11 @@
   </header>
 
 
-  <div class="entry-content"><p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.
-1. An action is a method of a controller to which you can route to.<br/>
-For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p>
+  <div class="entry-content"><p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
 
 <ol>
+<li><p>An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
 <li><p>Filters run in respect to controller actions - before, after or around them.<br/>
 These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
 <li><p>Rails 4 &ndash;> <em>_action<br/>
