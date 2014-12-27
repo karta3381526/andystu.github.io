@@ -20,6 +20,8 @@ $ git init
 $ git add .
 $ git commit -m 'first commit'  
 
+$ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
+
 $ git checkout -b branch_name
 $ git branch # list branches in the project
 
