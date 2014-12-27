@@ -20,14 +20,17 @@ $ git init
 $ git add .
 $ git commit -m 'first commit'  
 
-$ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
-
 $ git checkout -b branch_name
+$ git branch # list branches in the project
 
 # do some changes under this branch ...  
 
 $ git add .
 $ git commit -am 'some thing in this brach'
+
+# more about `git commit`
+$ git commit -am 'xxxx' # == git add . + git commit -m 'xxxx'
+$ git commit --amend # reword commit message
 
 # go back to master and merge it
 
