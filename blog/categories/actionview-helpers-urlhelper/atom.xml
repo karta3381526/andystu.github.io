@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails, | AndyZ Blog]]></title>
-  <link href="http://andystu.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Actionview::helpers::urlhelper | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/actionview-helpers-urlhelper/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
   <updated>2015-01-01T11:04:09+08:00</updated>
   <id>http://andystu.github.io/</id>
@@ -12,30 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[List Models (Tables) in Rails Console (How-to)]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
-    <updated>2015-01-01T10:26:13+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">$ rails c
- ActiveRecord::Base.connection.tables.each do |table_name|
-  puts "\n" + table_name
-  ActiveRecord::Base.connection.columns(table_name).each {|c| puts "- " + c.name + ": " + c.type.to_s + " " + c.limit.to_s}
- end
-
-# or
- Model.column_names
-
-# or
- Model
-</code></pre>
-
-<pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
-&gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>

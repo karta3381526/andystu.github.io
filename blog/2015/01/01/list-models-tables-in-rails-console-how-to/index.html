@@ -5,12 +5,22 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Set Up Octopress on 2nd Mac for the Same Blog - AndyZ Blog</title>
+  <title>List Models (Tables) in Rails Console (How-to) - AndyZ Blog</title>
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="在另外一台Mac上安裝octopress編輯環境, 可對應編輯同一個github的blog copy prikey from your master mac to your 2nd mac device and put it under ~/.ssh folder
-clone your &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+$ rails c ActiveRecord::Base.connection.tables.each do |table_name| puts &quot;\n&quot; + table_name ActiveRecord::Base. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +29,7 @@ clone your &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog">
+  <link rel="canonical" href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AndyZ Blog" type="application/atom+xml">
@@ -69,7 +79,7 @@ clone your &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Set Up Octopress on 2nd Mac for the Same Blog</h1>
+      <h1 class="entry-title">List Models (Tables) in Rails Console (How-to)</h1>
     
     
       <p class="meta">
@@ -78,63 +88,48 @@ clone your &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-12-18T10:22:17+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:22 am</span></time>
+<time class='entry-date' datetime='2015-01-01T10:26:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>在另外一台Mac上安裝octopress編輯環境, 可對應編輯同一個github的blog</h2>
-
-<ol>
-<li>copy prikey from your master mac to your 2nd mac device and put it under ~/.ssh folder</li>
-<li>clone your repository to second device</li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/xxx/xxx.github.io.git
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>setup your 2nd mac device</li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd xxx
-</span><span class='line'>$ bundle install #install required gems
-</span><span class='line'>$ ssh -T git@github.com # for testing connection to github
-</span><span class='line'>$ rake setup_github_pages # this is important for create _deploy folder in 2nd mac device
-</span><span class='line'>$ rake new_post["xxxx"] 
-</span><span class='line'>$ rake generate
-</span><span class='line'>$ rake deploy # it's done while no error message here.</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
+</span><span class='line'> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table_name</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">table_name</span>
+</span><span class='line'>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">to_s</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">limit</span><span class="o">.</span><span class="n">to_s</span><span class="p">}</span>
+</span><span class='line'> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span><span class="o">.</span><span class="n">column_names</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
-<li>git between two mac device</li>
-</ol>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git pull origin source  # git pull before push every time!
-</span><span class='line'>$ git add .
-</span><span class='line'>$ git commit -m 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam'
-</span><span class='line'>$ git push origin source</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span> <span class="c1"># list all models retuen as an array</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span> <span class="c1"># list model(table) detail</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Done.</h3>
+<p></p>
 </div>
 
 
@@ -150,12 +145,12 @@ clone your &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-12-18T10:22:17+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:22 am</span></time>
+<time class='entry-date' datetime='2015-01-01T10:26:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopressan-zhuang-jiao-xue/'>octopress安裝教學</a>
+    <a class='category' href='/blog/categories/activerecord/'>activerecord</a>, <a class='category' href='/blog/categories/rails/'>rails,</a>
   
 </span>
 
@@ -164,7 +159,7 @@ clone your &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/" data-via="" data-counturl="http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/" data-via="" data-counturl="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -177,10 +172,8 @@ clone your &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/" title="Previous Post: How to install ruby and rails on Windows">&laquo; How to install ruby and rails on Windows</a>
+        <a class="basic-alignment left" href="/blog/2014/12/31/link-to-usage-tips/" title="Previous Post: some link_to usage tips">&laquo; some link_to usage tips</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/22/learning-notes-for-12in12-week-1/" title="Next Post: learning notes for 12in12 week 1">learning notes for 12in12 week 1 &raquo;</a>
       
     </p>
   </footer>
@@ -279,8 +272,8 @@ clone your &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/';
-        var disqus_url = 'http://andystu.github.io/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/';
+        var disqus_identifier = 'http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/';
+        var disqus_url = 'http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/';
         var disqus_script = 'embed.js';
       
     (function () {

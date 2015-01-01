@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails, | AndyZ Blog]]></title>
-  <link href="http://andystu.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Activerecord | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
   <updated>2015-01-01T11:04:09+08:00</updated>
   <id>http://andystu.github.io/</id>
@@ -33,34 +33,6 @@
 
 <pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
 &gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/31/link-to-usage-tips/"/>
-    <updated>2014-12-31T16:57:16+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/31/link-to-usage-tips</id>
-    <content type="html"><![CDATA[<h3>some tips for link_to helper</h3>
-
-<pre><code class="ruby">#in view/xxxx.html.erb
-
-&lt;%= link_to "LINK_NAME", xxx_path %&gt;
-
-&lt;%= link_to "LINK_NAME", "LINK_URL", id: "ID_NAME", class: "CLASS_NAME" %&gt;
-
-
-# use it like a block
-# 1
-link_to "LINK_URL" do 
-  image_tag "IMAGE_FILE"
-end
-
-# 2
-link_to xxx_path do 
-  image_tag "IMAGE_FILE"
-end
 </code></pre>
 ]]></content>
   </entry>

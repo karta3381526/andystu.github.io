@@ -9,7 +9,18 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="To figureout what differece between before_action and before_filter, we should understand what difference between action and filter. An action is a &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+$ rails c ActiveRecord::Base.connection.tables.each do |table_name| puts &quot;\n&quot; + table_name ActiveRecord::Base. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +76,137 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">List Models (Tables) in Rails Console (How-to)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-01T10:26:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
+</span><span class='line'> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table_name</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">table_name</span>
+</span><span class='line'>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">to_s</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">limit</span><span class="o">.</span><span class="n">to_s</span><span class="p">}</span>
+</span><span class='line'> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span><span class="o">.</span><span class="n">column_names</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span> <span class="c1"># list all models retuen as an array</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span> <span class="c1"># list model(table) detail</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/31/link-to-usage-tips/">Some Link_to Usage Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-31T16:57:16+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:57 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>some tips for link_to helper</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#in view/xxxx.html.erb</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;LINK_NAME&quot;, xxx_path %&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;LINK_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;LINK_URL&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;ID_NAME&quot;</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s2">&quot;CLASS_NAME&quot;</span> <span class="o">%&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># use it like a block</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="n">link_to</span> <span class="s2">&quot;LINK_URL&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="n">link_to</span> <span class="n">xxx_path</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -699,6 +841,14 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">List Models (Tables) in Rails Console (How-to)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/31/link-to-usage-tips/">Some Link_to Usage Tips</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/26/before-action-vs-before-filter/">Before_action v.s. Before_filter</a>
       </li>
     
@@ -708,14 +858,6 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     
       <li class="post">
         <a href="/blog/2014/12/23/git-usage-notes/">Git Usage Notes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/22/learning-notes-for-12in12-week-1/">Learning Notes for 12in12 Week 1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/">Set Up Octopress on 2nd Mac for the Same Blog</a>
       </li>
     
   </ul>
@@ -760,7 +902,7 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Yu-Chieh Chang (張又介) -
+  Copyright &copy; 2015 - Yu-Chieh Chang (張又介) -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
