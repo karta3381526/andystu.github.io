@@ -23,6 +23,35 @@ end
 ### usage (recommand using those tools before each commit)
 ```
 $ brakeman  
+# report screenshot
++SUMMARY+
+
++-------------------+-------+
+| Scanned/Reported  | Total |
++-------------------+-------+
+| Controllers       | 2     |
+| Models            | 5     |
+| Templates         | 6     |
+| Errors            | 0     |
+| Security Warnings | 0 (0) |
++-------------------+-------+
 
 $ rails_best_practices  
+# report screenshot
+Source Codes: |======================================================================================================================================|
+rails_app/db/schema.rb:34 - always add db index (recipes => [food_type_id])
+rails_app/db/schema.rb:34 - always add db index (recipes => [food_preference_id])
+rails_app/db/schema.rb:34 - always add db index (recipes => [cuisine_id])
+rails_app/app/views/recipes/index.html.erb:24 - law of demeter
+rails_app/app/views/recipes/index.html.erb:25 - law of demeter
+rails_app/app/views/recipes/index.html.erb:26 - law of demeter
+rails_app/app/helpers/recipes_helper.rb:1 - remove empty helpers
+rails_app/app/models/recipe.rb:8 - remove unused methods (Recipe#food_type_of)
+rails_app/app/models/recipe.rb:9 - remove unused methods (Recipe#food_preference_of)
+rails_app/app/models/recipe.rb:10 - remove unused methods (Recipe#cuisine_of)
+rails_app/app/views/recipes/_form.html.erb:1 - replace instance variable with local variable
+rails_app/app/views/recipes/_form.html.erb:2 - replace instance variable with local variable
+rails_app/app/views/recipes/_form.html.erb:4 - replace instance variable with local variable
+rails_app/app/views/recipes/_form.html.erb:7 - replace instance variable with local variable
+rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 ```
