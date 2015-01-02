@@ -6,8 +6,9 @@ comments: true
 categories: git
 ---
 ## Install git via homebrew
+``` bash
 $ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)
-
+```
 ## Git work processes
 - sign up a github account
 - create a repos (repository) with a "name"

@@ -3,7 +3,7 @@ layout: post
 title: "some link_to usage tips"
 date: 2014-12-31 16:57:16 +0800
 comments: true
-categories: Rails, ActionView::Helpers::UrlHelper
+categories: [rails tips, ActionView]
 ---
 
 ### some tips for link_to helper

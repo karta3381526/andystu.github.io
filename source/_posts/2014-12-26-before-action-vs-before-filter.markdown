@@ -3,7 +3,7 @@ layout: post
 title: "before_action v.s. before_filter"
 date: 2014-12-26 00:11:03 +0800
 comments: true
-categories: rails
+categories: [rails tips]
 ---
 To figureout what differece between before_action and before_filter, we should understand what difference between **action** and **filter**.  
 

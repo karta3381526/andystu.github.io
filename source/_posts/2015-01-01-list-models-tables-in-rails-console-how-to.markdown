@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "list models (tables) in rails console (how-to)"
+title: "rails tips: list models (tables) (how-to)"
 date: 2015-01-01 10:26:13 +0800
 comments: true
-categories: rails, ActiveRecord
+categories: [rails tips, ActiveRecord]
 ---
 
 ``` ruby
