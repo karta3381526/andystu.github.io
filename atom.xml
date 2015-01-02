@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-01T11:04:09+08:00</updated>
+  <updated>2015-01-02T15:31:33+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,7 +14,48 @@
 
   
   <entry>
-    <title type="html"><![CDATA[List Models (Tables) in Rails Console (How-to)]]></title>
+    <title type="html"><![CDATA[RubyGems: Brakeman and Rails_best_practices]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/"/>
+    <updated>2015-01-02T10:04:02+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices</id>
+    <content type="html"><![CDATA[<h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
+
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development do
+</span><span class='line'>  gem "brakeman", require: false  
+</span><span class='line'>  gem "rails_best_practices", require: false
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># require: false =&gt; means that we don't want to run that gem when start rails server</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>usage (recommand using those tools before each commit)</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brakeman  
+</span><span class='line'>
+</span><span class='line'>$ rails_best_practices  </span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tips: List Models (Tables) (How-to)]]></title>
     <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
     <updated>2015-01-01T10:26:13+08:00</updated>
     <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
@@ -136,9 +177,7 @@ Rails 3 &ndash;> </em>_filter</p></li>
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow
-</span><span class='line'><span class="c"># Done</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow <span class="c"># Done</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -173,12 +212,19 @@ Rails 3 &ndash;> </em>_filter</p></li>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span> <span class="c"># e.g. git flow release start Version_1.0</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span>
+</span><span class='line'><span class="c"># e.g. git flow release start Version_1.0</span>
 </span><span class='line'><span class="nv">$ </span>git add .
 </span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;do something ...&#39;</span>
 </span><span class='line'><span class="nv">$ </span>git flow release finish RELEASE
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h4>[recommand reference]</h4>
+
+<p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a> <br/>
+<a href="http://fireqqtw.logdown.com/posts/206951-git-flow-notes">http://fireqqtw.logdown.com/posts/206951-git-flow-notes</a></p>
 ]]></content>
   </entry>
   
@@ -189,7 +235,10 @@ Rails 3 &ndash;> </em>_filter</p></li>
     <id>http://andystu.github.io/blog/2014/12/23/git-usage-notes</id>
     <content type="html"><![CDATA[<h2>Install git via homebrew</h2>
 
-<p>$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git <span class="c"># If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Git work processes</h2>
 

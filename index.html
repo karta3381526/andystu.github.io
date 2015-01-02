@@ -9,18 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-$ rails c ActiveRecord::Base.connection.tables.each do |table_name| puts &quot;\n&quot; + table_name ActiveRecord::Base. &hellip;">
+  <meta name="description" content="brakeman : Ruby on Rails 專案安全性檢測工具 Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +71,68 @@ $ rails c ActiveRecord::Base.connection.tables.each do |table_name| puts &quot;\
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">List Models (Tables) in Rails Console (How-to)</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/01/02/gems-brakeman-and-rails-best-practices/">RubyGems: Brakeman and Rails_best_practices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-02T10:04:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:04 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
+
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development do
+</span><span class='line'>  gem "brakeman", require: false  
+</span><span class='line'>  gem "rails_best_practices", require: false
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># require: false =&gt; means that we don't want to run that gem when start rails server</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>usage (recommand using those tools before each commit)</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brakeman  
+</span><span class='line'>
+</span><span class='line'>$ rails_best_practices  </span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">Rails Tips: List Models (Tables) (How-to)</a></h1>
     
     
       <p class="meta">
@@ -276,9 +326,7 @@ Rails 3 &ndash;> </em>_filter</p></li>
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow
-</span><span class='line'><span class="c"># Done</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow <span class="c"># Done</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -313,12 +361,19 @@ Rails 3 &ndash;> </em>_filter</p></li>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span> <span class="c"># e.g. git flow release start Version_1.0</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span>
+</span><span class='line'><span class="c"># e.g. git flow release start Version_1.0</span>
 </span><span class='line'><span class="nv">$ </span>git add .
 </span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;do something ...&#39;</span>
 </span><span class='line'><span class="nv">$ </span>git flow release finish RELEASE
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h4>[recommand reference]</h4>
+
+<p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a> <br/>
+<a href="http://fireqqtw.logdown.com/posts/206951-git-flow-notes">http://fireqqtw.logdown.com/posts/206951-git-flow-notes</a></p>
 </div>
   
   
@@ -349,7 +404,10 @@ Rails 3 &ndash;> </em>_filter</p></li>
 
   <div class="entry-content"><h2>Install git via homebrew</h2>
 
-<p>$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git <span class="c"># If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Git work processes</h2>
 
@@ -774,57 +832,9 @@ generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/16/how-to-install-octopress-on-github/">How to Install Octopress on Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-16T00:17:53+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>在Github上使用octopress建構blog</h2>
-
-<h3>1. on mac</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/.ssh
-</span><span class='line'>$ ssh-keygen -t rsa -C "xxx@xxx.xxx.xx"
-</span><span class='line'>$ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to clipboard</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. on Github</h3>
-
-<p>github 申請帳號 (e.g. xxxx)<br/>
-github 建立 xxxx.github.io 的repository<br/>
-github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/16/how-to-install-octopress-on-github/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -841,7 +851,11 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">List Models (Tables) in Rails Console (How-to)</a>
+        <a href="/blog/2015/01/02/gems-brakeman-and-rails-best-practices/">RubyGems: Brakeman and Rails_best_practices</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">Rails Tips: List Models (Tables) (How-to)</a>
       </li>
     
       <li class="post">
@@ -854,10 +868,6 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     
       <li class="post">
         <a href="/blog/2014/12/24/git-flow-usage/">Git Flow Usage</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/23/git-usage-notes/">Git Usage Notes</a>
       </li>
     
   </ul>

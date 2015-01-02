@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails, | AndyZ Blog]]></title>
+  <title><![CDATA[Category: Rails | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-01T11:04:09+08:00</updated>
+  <updated>2015-01-02T15:31:33+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,54 +14,89 @@
 
   
   <entry>
-    <title type="html"><![CDATA[List Models (Tables) in Rails Console (How-to)]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
-    <updated>2015-01-01T10:26:13+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">$ rails c
- ActiveRecord::Base.connection.tables.each do |table_name|
-  puts "\n" + table_name
-  ActiveRecord::Base.connection.columns(table_name).each {|c| puts "- " + c.name + ": " + c.type.to_s + " " + c.limit.to_s}
- end
+    <title type="html"><![CDATA[How to Install Ruby and Rails on Windows]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/"/>
+    <updated>2014-12-18T09:07:30+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows</id>
+    <content type="html"><![CDATA[<h2>在Windows上安裝ruby on rails開發環境</h2>
 
-# or
- Model.column_names
+<h2>Easy and the quickest way.</h2>
 
-# or
- Model
-</code></pre>
+<h3>install RailsInstaller</h3>
 
-<pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
-&gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
-</code></pre>
+<ol>
+<li>Download it (version 3.0.0 and above are recommend)
+from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
+<li>install it (just click next and next steps, then done.).</li>
+</ol>
+
+
+<h2>Harder way.</h2>
+
+<h3>install RubyInstaller</h3>
+
+<ol>
+<li>Download the package the version you want from <a href="http://rubyinstaller.org">http://rubyinstaller.org</a><br/>
+generally, we need to download Rubyinstaller and DevKit both (mind 32 or 64-bit platform).</li>
+<li>click to install rubyinstaller first and then DevKit.<br/>
+(記得勾選 Add Ruby&hellip;PATH / Associate .rb &hellip;.)</li>
+<li>Unzip DevKit under C:\
+<code>
+C:\&gt; cd C:/DevKit
+C:\&gt; ruby dk.rb init
+C:\&gt; ruby dk.rb install
+C:\&gt; gem install json --platform=ruby
+C:\&gt; gem install bundler
+C:\&gt; gem install rails --no-rdoc --no-ri
+</code></li>
+<li>Done!!</li>
+</ol>
+
+
+<!--more-->
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/31/link-to-usage-tips/"/>
-    <updated>2014-12-31T16:57:16+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/31/link-to-usage-tips</id>
-    <content type="html"><![CDATA[<h3>some tips for link_to helper</h3>
+    <title type="html"><![CDATA[How to Install Ruby and Rails on Mac]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/"/>
+    <updated>2014-12-16T17:41:41+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac</id>
+    <content type="html"><![CDATA[<h2>在Mac上安裝ruby on rails開發環境</h2>
 
-<pre><code class="ruby">#in view/xxxx.html.erb
+<h3>1. install rvm</h3>
 
-&lt;%= link_to "LINK_NAME", xxx_path %&gt;
+<pre><code>#comment
+$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
+#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
 
-&lt;%= link_to "LINK_NAME", "LINK_URL", id: "ID_NAME", class: "CLASS_NAME" %&gt;
+#modify .zshrc .bash_profile and relaunch terminal
+$ echo progress-bar &gt;&gt; ~/.curlrc  
+$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
+$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
 
-
-# use it like a block
-# 1
-link_to "LINK_URL" do 
-  image_tag "IMAGE_FILE"
-end
-
-# 2
-link_to xxx_path do 
-  image_tag "IMAGE_FILE"
-end
+#test rvm ready or not  
+$ type rvm | head -n 1  
+$ rvm list known  
+$ rvm install x.x  
+$ rvm use 2.1 (rvm use 2.1 --default)
 </code></pre>
+
+<h3>2. install bundler and rails</h3>
+
+<pre><code>$ gem update --system #更新gem library
+$ gem install bundler #安裝bundler
+$ gem install rails --no-ri --no-rdoc #安裝rails
+</code></pre>
+
+<ul>
+<li>Done!!</li>
+</ul>
+
+
+<!--more-->
+
 ]]></content>
   </entry>
   

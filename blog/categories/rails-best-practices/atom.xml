@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails_best_practices | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/rails-best-practices/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-01-02T15:31:33+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyGems: Brakeman and Rails_best_practices]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/"/>
+    <updated>2015-01-02T10:04:02+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices</id>
+    <content type="html"><![CDATA[<h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
+
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation</h3>
+
+<pre><code>group :development do
+  gem "brakeman", require: false  
+  gem "rails_best_practices", require: false
+end
+
+# require: false =&gt; means that we don't want to run that gem when start rails server
+</code></pre>
+
+<h3>usage (recommand using those tools before each commit)</h3>
+
+<pre><code>$ brakeman  
+
+$ rails_best_practices  
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

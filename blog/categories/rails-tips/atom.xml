@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails Tips | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/rails-tips/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-01-02T15:31:33+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyGems: Brakeman and Rails_best_practices]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/"/>
+    <updated>2015-01-02T10:04:02+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices</id>
+    <content type="html"><![CDATA[<h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
+
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation</h3>
+
+<pre><code>group :development do
+  gem "brakeman", require: false  
+  gem "rails_best_practices", require: false
+end
+
+# require: false =&gt; means that we don't want to run that gem when start rails server
+</code></pre>
+
+<h3>usage (recommand using those tools before each commit)</h3>
+
+<pre><code>$ brakeman  
+
+$ rails_best_practices  
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tips: List Models (Tables) (How-to)]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
+    <updated>2015-01-01T10:26:13+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">$ rails c
+ ActiveRecord::Base.connection.tables.each do |table_name|
+  puts "\n" + table_name
+  ActiveRecord::Base.connection.columns(table_name).each {|c| puts "- " + c.name + ": " + c.type.to_s + " " + c.limit.to_s}
+ end
+
+# or
+ Model.column_names
+
+# or
+ Model
+</code></pre>
+
+<pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
+&gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/31/link-to-usage-tips/"/>
+    <updated>2014-12-31T16:57:16+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/31/link-to-usage-tips</id>
+    <content type="html"><![CDATA[<h3>some tips for link_to helper</h3>
+
+<pre><code class="ruby">#in view/xxxx.html.erb
+
+&lt;%= link_to "LINK_NAME", xxx_path %&gt;
+
+&lt;%= link_to "LINK_NAME", "LINK_URL", id: "ID_NAME", class: "CLASS_NAME" %&gt;
+
+
+# use it like a block
+# 1
+link_to "LINK_URL" do 
+  image_tag "IMAGE_FILE"
+end
+
+# 2
+link_to xxx_path do 
+  image_tag "IMAGE_FILE"
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Before_action v.s. Before_filter]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter/"/>
+    <updated>2014-12-26T00:11:03+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter</id>
+    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
+
+<ol>
+<li><p>An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
+<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
+These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
+<li><p>Rails 4 &ndash;> <em>_action<br/>
+Rails 3 &ndash;> </em>_filter</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

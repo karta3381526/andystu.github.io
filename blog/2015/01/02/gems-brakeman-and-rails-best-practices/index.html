@@ -5,26 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Install Ruby and Rails on Mac - AndyZ Blog</title>
+  <title>RubyGems: Brakeman and Rails_best_practices - AndyZ Blog</title>
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="在Mac上安裝ruby on rails開發環境 1. install rvm 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-#comment
-$ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
+  <meta name="description" content="brakeman : Ruby on Rails 專案安全性檢測工具 Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,7 +18,7 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac">
+  <link rel="canonical" href="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AndyZ Blog" type="application/atom+xml">
@@ -83,7 +68,7 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
   
   <header>
     
-      <h1 class="entry-title">How to Install Ruby and Rails on Mac</h1>
+      <h1 class="entry-title">RubyGems: Brakeman and Rails_best_practices</h1>
     
     
       <p class="meta">
@@ -92,16 +77,22 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-12-16T17:41:41+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:41 pm</span></time>
+<time class='entry-date' datetime='2015-01-02T10:04:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:04 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>在Mac上安裝ruby on rails開發環境</h2>
+<div class="entry-content"><h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
 
-<h3>1. install rvm</h3>
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -109,46 +100,22 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#comment
-</span><span class='line'>$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
-</span><span class='line'>#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
-</span><span class='line'>  
-</span><span class='line'>#modify .zshrc .bash_profile and relaunch terminal
-</span><span class='line'>$ echo progress-bar &gt;&gt; ~/.curlrc  
-</span><span class='line'>$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
-</span><span class='line'>$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
-</span><span class='line'>  
-</span><span class='line'>#test rvm ready or not  
-</span><span class='line'>$ type rvm | head -n 1  
-</span><span class='line'>$ rvm list known  
-</span><span class='line'>$ rvm install x.x  
-</span><span class='line'>$ rvm use 2.1 (rvm use 2.1 --default)</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development do
+</span><span class='line'>  gem "brakeman", require: false  
+</span><span class='line'>  gem "rails_best_practices", require: false
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># require: false =&gt; means that we don't want to run that gem when start rails server</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>2. install bundler and rails</h3>
+<h3>usage (recommand using those tools before each commit)</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem update --system #更新gem library
-</span><span class='line'>$ gem install bundler #安裝bundler
-</span><span class='line'>$ gem install rails --no-ri --no-rdoc #安裝rails</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Done!!</li>
-</ul>
-
-
-<!--more-->
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brakeman  
+</span><span class='line'>
+</span><span class='line'>$ rails_best_practices  </span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -165,12 +132,12 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-12-16T17:41:41+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:41 pm</span></time>
+<time class='entry-date' datetime='2015-01-02T10:04:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:04 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/on/'>on</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/an-zhuang-jiao-xue/'>安裝教學</a>
+    <a class='category' href='/blog/categories/brakeman/'>brakeman</a>, <a class='category' href='/blog/categories/rails-tips/'>rails tips</a>, <a class='category' href='/blog/categories/rails-best-practices/'>rails_best_practices</a>, <a class='category' href='/blog/categories/rubygems/'>rubygems</a>
   
 </span>
 
@@ -179,7 +146,7 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/" data-via="" data-counturl="http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/" data-via="" data-counturl="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -192,10 +159,8 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/12/16/how-to-install-octopress-on-github/" title="Previous Post: how to install octopress on github">&laquo; how to install octopress on github</a>
+        <a class="basic-alignment left" href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/" title="Previous Post: rails tips: list models (tables) (how-to)">&laquo; rails tips: list models (tables) (how-to)</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/" title="Next Post: How to install ruby and rails on Windows">How to install ruby and rails on Windows &raquo;</a>
       
     </p>
   </footer>
@@ -294,8 +259,8 @@ $ \curl -sSL https://get.rvm.io | bash -s stable --ruby #(if error &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/';
-        var disqus_url = 'http://andystu.github.io/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/';
+        var disqus_identifier = 'http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/';
+        var disqus_url = 'http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-01T11:04:09+08:00</updated>
+  <updated>2015-01-02T15:31:33+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,13 +14,58 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Git Flow Usage]]></title>
+    <link href="http://andystu.github.io/blog/2014/12/24/git-flow-usage/"/>
+    <updated>2014-12-24T23:34:12+08:00</updated>
+    <id>http://andystu.github.io/blog/2014/12/24/git-flow-usage</id>
+    <content type="html"><![CDATA[<h3>git-flow usage notes</h3>
+
+<ul>
+<li><p>install git-flow on Mac
+<code>bash
+$ brew install git-flow # Done
+</code></p></li>
+<li><p>usage how-to (for feature)</p></li>
+</ul>
+
+
+<pre><code class="bash">$ git flow init # under project folder, git-flow would ask few questions, using the default value is recommended. 
+$ git flow feature start MY_FEATURE # XXX is branch name
+# add some files or do something ...
+$ git add .
+$ git commmit -am 'do something ...'
+$ git flow feature publish MY_FEATURE # push to remote repo
+$ git flow feature finish MY_FEATURE
+</code></pre>
+
+<ul>
+<li>usage how-to 2 (for release)</li>
+</ul>
+
+
+<pre><code class="bash">$ git flow release start RELEASE [BASE] 
+# e.g. git flow release start Version_1.0
+$ git add .
+$ git commit -am 'do something ...'
+$ git flow release finish RELEASE
+</code></pre>
+
+<h4>[recommand reference]</h4>
+
+<p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a> <br/>
+<a href="http://fireqqtw.logdown.com/posts/206951-git-flow-notes">http://fireqqtw.logdown.com/posts/206951-git-flow-notes</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Git Usage Notes]]></title>
     <link href="http://andystu.github.io/blog/2014/12/23/git-usage-notes/"/>
     <updated>2014-12-23T16:11:10+08:00</updated>
     <id>http://andystu.github.io/blog/2014/12/23/git-usage-notes</id>
     <content type="html"><![CDATA[<h2>Install git via homebrew</h2>
 
-<p>$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</p>
+<pre><code class="bash">$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)
+</code></pre>
 
 <h2>Git work processes</h2>
 
