@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-02T15:31:33+08:00</updated>
+  <updated>2015-01-02T15:35:34+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -47,9 +47,67 @@
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ brakeman  
+</span><span class='line'># report screenshot
+</span><span class='line'>+SUMMARY+
 </span><span class='line'>
-</span><span class='line'>$ rails_best_practices  </span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>+-------------------+-------+
+</span><span class='line'>| Scanned/Reported  | Total |
+</span><span class='line'>+-------------------+-------+
+</span><span class='line'>| Controllers       | 2     |
+</span><span class='line'>| Models            | 5     |
+</span><span class='line'>| Templates         | 6     |
+</span><span class='line'>| Errors            | 0     |
+</span><span class='line'>| Security Warnings | 0 (0) |
+</span><span class='line'>+-------------------+-------+
+</span><span class='line'>
+</span><span class='line'>$ rails_best_practices  
+</span><span class='line'># report screenshot
+</span><span class='line'>Source Codes: |======================================================================================================================================|
+</span><span class='line'>rails_app/db/schema.rb:34 - always add db index (recipes =&gt; [food_type_id])
+</span><span class='line'>rails_app/db/schema.rb:34 - always add db index (recipes =&gt; [food_preference_id])
+</span><span class='line'>rails_app/db/schema.rb:34 - always add db index (recipes =&gt; [cuisine_id])
+</span><span class='line'>rails_app/app/views/recipes/index.html.erb:24 - law of demeter
+</span><span class='line'>rails_app/app/views/recipes/index.html.erb:25 - law of demeter
+</span><span class='line'>rails_app/app/views/recipes/index.html.erb:26 - law of demeter
+</span><span class='line'>rails_app/app/helpers/recipes_helper.rb:1 - remove empty helpers
+</span><span class='line'>rails_app/app/models/recipe.rb:8 - remove unused methods (Recipe#food_type_of)
+</span><span class='line'>rails_app/app/models/recipe.rb:9 - remove unused methods (Recipe#food_preference_of)
+</span><span class='line'>rails_app/app/models/recipe.rb:10 - remove unused methods (Recipe#cuisine_of)
+</span><span class='line'>rails_app/app/views/recipes/_form.html.erb:1 - replace instance variable with local variable
+</span><span class='line'>rails_app/app/views/recipes/_form.html.erb:2 - replace instance variable with local variable
+</span><span class='line'>rails_app/app/views/recipes/_form.html.erb:4 - replace instance variable with local variable
+</span><span class='line'>rails_app/app/views/recipes/_form.html.erb:7 - replace instance variable with local variable
+</span><span class='line'>rails_app/app/models/recipe.rb:8 - remove trailing whitespace</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
