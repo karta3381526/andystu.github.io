@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails Tips | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails-tips/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-02T15:35:34+08:00</updated>
+  <updated>2015-01-03T11:11:08+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/"/>
+    <updated>2015-01-03T11:02:27+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field</id>
+    <content type="html"><![CDATA[<p>Rails scaffold generators are very smart! you can use belongs_to to quickly add relations.
+In the following example, I have 2 models products and product_types;
+Product_types belong to product and product has many product types.</p>
+
+<pre><code class="bash">$ rails g scaffold product name:string
+$ rails g scaffold product_type name:string product:belongs_to
+
+# You can also use :references
+$ rails g scaffold product_type name:string product:references
+
+# For more manually work, you can do it like this
+$ rails g scaffold product_type name:string product_id:integer
+# then add "belongs_to" in your ProductType model
+</code></pre>
+
+<p>This will generate the necessary columns, indexes and associations in your models.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tips: Link_to Helper for params.merge]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge/"/>
+    <updated>2015-01-02T16:52:02+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge</id>
+    <content type="html"><![CDATA[<h3></h3>
+
+<ul>
+<li>To preserve the params of url I did this:
+<figure class='code'><figcaption><span>app/views/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+</span><span class='line'><span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= link_to &amp;lsquo;Foot type&amp;rsquo;, url_for(params.merge(foot_type_id: value)) %&gt;</span>
+</span><span class='line'><span class="sx">&amp;hellip;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;p&gt;&amp;hellip;</span>
+</span><span class='line'><span class="sx">  def index</span>
+</span><span class='line'><span class="sx">    @recipes =</span> <span class="no">Recipe</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_type_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_preference_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">cuisine_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>alternative solutions</h3>
+
+<p><a href="http://filterrific.clearcove.ca">http://filterrific.clearcove.ca</a> <br/>
+<a href="http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails">http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails</a> <br/>
+<a href="https://github.com/plataformatec/has_scope">https://github.com/plataformatec/has_scope</a></p>
+
+<h4>[reference]</h4>
+
+<p><a href="http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  ">http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  </a>
+<a href="http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails">http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails</a> <br/>
+<a href="http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/">http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/</a> <br/>
+<a href="http://guides.rubyonrails.org/active_record_querying.html#scopes">http://guides.rubyonrails.org/active_record_querying.html#scopes</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RubyGems: Brakeman and Rails_best_practices]]></title>
@@ -26,9 +110,9 @@
 
 <p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
 
-<h3>installation</h3>
+<h3>installation (add those gems to your Gemfile)</h3>
 
-<pre><code>group :development do
+<pre><code class="ruby ">group :development do
   gem "brakeman", require: false  
   gem "rails_best_practices", require: false
 end
@@ -71,6 +155,12 @@ rails_app/app/views/recipes/_form.html.erb:4 - replace instance variable with lo
 rails_app/app/views/recipes/_form.html.erb:7 - replace instance variable with local variable
 rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 </code></pre>
+
+<h4>[reference]</h4>
+
+<p><a href="http://brakemanscanner.org">http://brakemanscanner.org</a> <br/>
+<a href="http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project">http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project</a>  <br/>
+<a href="https://github.com/railsbp/rails_best_practices">https://github.com/railsbp/rails_best_practices</a></p>
 ]]></content>
   </entry>
   
@@ -123,25 +213,6 @@ link_to xxx_path do
   image_tag "IMAGE_FILE"
 end
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Before_action v.s. Before_filter]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter/"/>
-    <updated>2014-12-26T00:11:03+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter</id>
-    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
-
-<ol>
-<li><p>An action is a method of a controller to which you can route to.<br/>
-For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
-<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
-These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
-<li><p>Rails 4 &ndash;> <em>_action<br/>
-Rails 3 &ndash;> </em>_filter</p></li>
-</ol>
-
 ]]></content>
   </entry>
   

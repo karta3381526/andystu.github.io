@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Scaffold | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/scaffold/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-01-03T11:11:08+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/"/>
+    <updated>2015-01-03T11:02:27+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field</id>
+    <content type="html"><![CDATA[<p>Rails scaffold generators are very smart! you can use belongs_to to quickly add relations.
+In the following example, I have 2 models products and product_types;
+Product_types belong to product and product has many product types.</p>
+
+<pre><code class="bash">$ rails g scaffold product name:string
+$ rails g scaffold product_type name:string product:belongs_to
+
+# You can also use :references
+$ rails g scaffold product_type name:string product:references
+
+# For more manually work, you can do it like this
+$ rails g scaffold product_type name:string product_id:integer
+# then add "belongs_to" in your ProductType model
+</code></pre>
+
+<p>This will generate the necessary columns, indexes and associations in your models.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails_best_practices | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails-best-practices/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-02T15:35:34+08:00</updated>
+  <updated>2015-01-03T11:11:08+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -26,9 +26,9 @@
 
 <p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
 
-<h3>installation</h3>
+<h3>installation (add those gems to your Gemfile)</h3>
 
-<pre><code>group :development do
+<pre><code class="ruby ">group :development do
   gem "brakeman", require: false  
   gem "rails_best_practices", require: false
 end
@@ -71,6 +71,12 @@ rails_app/app/views/recipes/_form.html.erb:4 - replace instance variable with lo
 rails_app/app/views/recipes/_form.html.erb:7 - replace instance variable with local variable
 rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 </code></pre>
+
+<h4>[reference]</h4>
+
+<p><a href="http://brakemanscanner.org">http://brakemanscanner.org</a> <br/>
+<a href="http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project">http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project</a>  <br/>
+<a href="https://github.com/railsbp/rails_best_practices">https://github.com/railsbp/rails_best_practices</a></p>
 ]]></content>
   </entry>
   
