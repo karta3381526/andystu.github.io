@@ -10,8 +10,8 @@ categories: [rails tips, brakeman, rails_best_practices, rubygems]
 
 ### rails_best_practices : Ruby on Rails 專案程式碼品質評測工具
 `rails_best_practices is a code metric tool to check the quality of rails codes.`
-### installation
-```
+### installation (add those gems to your Gemfile)
+``` ruby 
 group :development do
   gem "brakeman", require: false  
   gem "rails_best_practices", require: false
@@ -55,3 +55,9 @@ rails_app/app/views/recipes/_form.html.erb:4 - replace instance variable with lo
 rails_app/app/views/recipes/_form.html.erb:7 - replace instance variable with local variable
 rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 ```
+
+
+#### [reference]
+http://brakemanscanner.org   
+http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project    
+https://github.com/railsbp/rails_best_practices   
