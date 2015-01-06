@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-03T11:15:22+08:00</updated>
+  <updated>2015-01-07T00:43:49+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails App Deploy to Heroku Simple How-to]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/"/>
+    <updated>2015-01-06T23:24:04+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to</id>
+    <content type="html"><![CDATA[<h3>Preparing step</h3>
+
+<ul>
+<li>install Postgres DB via brew</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew doctor
+</span><span class='line'><span class="nv">$ </span>brew update
+</span><span class='line'><span class="nv">$ </span>brew install postgresql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>download and install heroku toolkit<br/>
+<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a></li>
+<li>initialization of heroku under your rails project</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku login
+</span><span class='line'><span class="nv">$ </span>heroku create
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Open the file called Gemfile in your text editor and find the line containing:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;sqlite3&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Remove that line and replace it with:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;sqlite3&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>bundle install</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span> <span class="o">--</span><span class="n">without</span> <span class="n">production</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>git add . and git commit</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -m <span class="s2">&quot;Changed Gemfile for heroku&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, push to heroku</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push heroku master
+</span><span class='line'><span class="nv">$ </span>heroku run rake db:migrate
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>

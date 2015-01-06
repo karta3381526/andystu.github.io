@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails Tips | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails-tips/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-03T11:15:22+08:00</updated>
+  <updated>2015-01-07T00:43:49+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails App Deploy to Heroku Simple How-to]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/"/>
+    <updated>2015-01-06T23:24:04+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to</id>
+    <content type="html"><![CDATA[<h3>Preparing step</h3>
+
+<ul>
+<li>install Postgres DB via brew
+<code>bash
+$ brew doctor
+$ brew update
+$ brew install postgresql
+</code></li>
+<li>download and install heroku toolkit<br/>
+<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a></li>
+<li>initialization of heroku under your rails project
+<code>bash
+$ heroku login
+$ heroku create
+</code></li>
+<li>Open the file called Gemfile in your text editor and find the line containing:
+<code>ruby
+gem 'sqlite3'
+</code></li>
+<li>Remove that line and replace it with:</li>
+</ul>
+
+
+<pre><code class="ruby">group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+</code></pre>
+
+<ul>
+<li>bundle install
+<code>ruby
+$ bundle install --without production
+</code></li>
+<li>git add . and git commit
+<code>bash
+$ git add .
+$ git commit -m "Changed Gemfile for heroku"
+</code></li>
+<li>finally, push to heroku
+<code>bash
+$ git push heroku master
+$ heroku run rake db:migrate
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>
@@ -184,34 +243,6 @@ rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 
 <pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
 &gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/31/link-to-usage-tips/"/>
-    <updated>2014-12-31T16:57:16+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/31/link-to-usage-tips</id>
-    <content type="html"><![CDATA[<h3>some tips for link_to helper</h3>
-
-<pre><code class="ruby">#in view/xxxx.html.erb
-
-&lt;%= link_to "LINK_NAME", xxx_path %&gt;
-
-&lt;%= link_to "LINK_NAME", "LINK_URL", id: "ID_NAME", class: "CLASS_NAME" %&gt;
-
-
-# use it like a block
-# 1
-link_to "LINK_URL" do 
-  image_tag "IMAGE_FILE"
-end
-
-# 2
-link_to xxx_path do 
-  image_tag "IMAGE_FILE"
-end
 </code></pre>
 ]]></content>
   </entry>
