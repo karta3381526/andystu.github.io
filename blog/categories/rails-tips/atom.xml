@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails Tips | AndyZ Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails-tips/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-07T00:43:49+08:00</updated>
+  <updated>2015-01-08T11:54:22+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,98 +14,17 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Rails App Deploy to Heroku Simple How-to]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/"/>
-    <updated>2015-01-06T23:24:04+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to</id>
-    <content type="html"><![CDATA[<h3>Preparing step</h3>
-
-<ul>
-<li>install Postgres DB via brew
-<code>bash
-$ brew doctor
-$ brew update
-$ brew install postgresql
-</code></li>
-<li>download and install heroku toolkit<br/>
-<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a></li>
-<li>initialization of heroku under your rails project
-<code>bash
-$ heroku login
-$ heroku create
-</code></li>
-<li>Open the file called Gemfile in your text editor and find the line containing:
+    <title type="html"><![CDATA[Rails Tips: User Authentication Using Devise]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/08/rails-tips-user-authentication-using-devise/"/>
+    <updated>2015-01-08T11:04:33+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/08/rails-tips-user-authentication-using-devise</id>
+    <content type="html"><![CDATA[<ul>
+<li>create a demo project by rails
 <code>ruby
-gem 'sqlite3'
+$ rails new topic
 </code></li>
-<li>Remove that line and replace it with:</li>
-</ul>
-
-
-<pre><code class="ruby">group :development, :test do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-</code></pre>
-
-<ul>
-<li>bundle install
-<code>ruby
-$ bundle install --without production
-</code></li>
-<li>git add . and git commit
-<code>bash
-$ git add .
-$ git commit -m "Changed Gemfile for heroku"
-</code></li>
-<li>finally, push to heroku
-<code>bash
-$ git push heroku master
-$ heroku run rake db:migrate
-</code></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/"/>
-    <updated>2015-01-03T11:02:27+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field</id>
-    <content type="html"><![CDATA[<p>Rails scaffold generators are very smart! you can use belongs_to to quickly add relations.
-In the following example, I have 2 models products and product_types;
-Product_types belong to product and product has many product types.</p>
-
-<pre><code class="bash">$ rails g scaffold product name:string
-$ rails g scaffold product_type name:string product:belongs_to
-
-# You can also use :references
-$ rails g scaffold product_type name:string product:references
-
-# For more manually work, you can do it like this
-$ rails g scaffold product_type name:string product_id:integer
-# then add "belongs_to" in your ProductType model
-</code></pre>
-
-<p>This will generate the necessary columns, indexes and associations in your models.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: Link_to Helper for params.merge]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge/"/>
-    <updated>2015-01-02T16:52:02+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge</id>
-    <content type="html"><![CDATA[<h3></h3>
-
-<ul>
-<li>To preserve the params of url I did this:
-<figure class='code'><figcaption><span>app/views/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li>add gem &lsquo;devise&rsquo; to Gemfile then bundle it.
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -122,24 +41,330 @@ $ rails g scaffold product_type name:string product_id:integer
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Gemfile</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;gem &amp;lsquo;devise&amp;rsquo;&lt;/</span><span class="nb">p</span><span class="o">&gt;&lt;</span><span class="sr">/li&gt;</span>
 </span><span class='line'><span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= link_to &amp;lsquo;Foot type&amp;rsquo;, url_for(params.merge(foot_type_id: value)) %&gt;</span>
-</span><span class='line'><span class="sx">&amp;hellip;&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="err">$</span> <span class="n">bundle</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">-</span> <span class="n">install</span> <span class="n">into</span> <span class="n">your</span> <span class="n">project</span><span class="p">,</span> <span class="n">generate</span> <span class="n">user</span> <span class="n">model</span> <span class="ow">and</span> <span class="n">views</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt; ruby</span>
+</span><span class='line'><span class="sr">$ rails generate devise:install</span>
+</span><span class='line'><span class="sr">$ rails generate devise User</span>
+</span><span class='line'><span class="sr">$ rails generate devise:views</span>
+</span><span class='line'><span class="sr">&lt;code&gt;</span>
+</span><span class='line'><span class="sr">- configure development.rb for action mailer setting</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="n">ruby</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">localhost</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="ss">port</span><span class="p">:</span> <span class="mi">3000</span> <span class="p">}</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">-</span> <span class="n">configure</span> <span class="n">application</span><span class="o">.</span><span class="n">rb</span> <span class="k">for</span> <span class="n">action</span> <span class="n">mailer</span> <span class="n">setting</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt; ruby</span>
+</span><span class='line'><span class="sr">ActionMailer::Base.smtp_settings = {&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="ss">:address</span>        <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:domain</span>         <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;mail.google.com&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:port</span>           <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">587</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:user_name</span>      <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;your_gmail_account@gmail.com&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_USERNAME&#39;],</span>
+</span><span class='line'>    <span class="ss">:password</span>       <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;weakpass&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_PASSWORD&#39;],</span>
+</span><span class='line'>    <span class="ss">:authentication</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">:enable_starttls_auto</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="sx">&lt;p&gt;&amp;hellip;</span>
-</span><span class='line'><span class="sx">  def index</span>
-</span><span class='line'><span class="sx">    @recipes =</span> <span class="no">Recipe</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_type_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_preference_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">cuisine_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">-</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">scaffold</span> <span class="k">for</span> <span class="n">the</span> <span class="n">topic</span> <span class="n">resource</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">registrations</span> <span class="n">controller</span> <span class="k">for</span> <span class="n">overriding</span> <span class="n">devise</span><span class="s1">&#39;s one</span>
+</span><span class='line'><span class="s1">&lt;/code&gt; ruby</span>
+</span><span class='line'><span class="s1">$ rails g scaffold topic title</span>
+</span><span class='line'><span class="s1">$ rails g controller registrations&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;h1&gt;in registrations_controller.rb&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;class RegistrationsController &amp;lt; Devise::RegistrationsController&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;  private&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;  def sign_up_params</span>
+</span><span class='line'><span class="s1">    params.require(:user).permit(:name, :email, :password, :password_confirmation)</span>
+</span><span class='line'><span class="s1">  end&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;  def account_update_params</span>
+</span><span class='line'><span class="s1">    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)</span>
+</span><span class='line'><span class="s1">  end</span>
+</span><span class='line'><span class="s1">end&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;h1&gt;modify route.rb&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;devise_for :users, controllers: { registrations: &amp;ldquo;registrations&amp;rdquo; }</span>
+</span><span class='line'><span class="s1">root &amp;lsquo;topics#index&amp;rsquo;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;h1&gt;add the following &amp;ldquo;before_action&amp;rdquo; to topics_conftroller.rb for forcing users logging in&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;before_action :authenticate_user!&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;p&gt;```&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;h5&gt;done and enjoy it.&lt;/h5&gt;</span>
+</span><span class='line'><span class="s1">]]&gt;&lt;/content&gt;</span>
+</span><span class='line'><span class="s1">  &lt;/entry&gt;</span>
+</span><span class='line'><span class="s1">  </span>
+</span><span class='line'><span class="s1">  &lt;entry&gt;</span>
+</span><span class='line'><span class="s1">    &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Rails App Deploy to Heroku Simple How-to]]&gt;&lt;/title&gt;</span>
+</span><span class='line'><span class="s1">    &lt;link href=&quot;http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/&quot;/&gt;</span>
+</span><span class='line'><span class="s1">    &lt;updated&gt;2015-01-06T23:24:04+08:00&lt;/updated&gt;</span>
+</span><span class='line'><span class="s1">    &lt;id&gt;http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to&lt;/id&gt;</span>
+</span><span class='line'><span class="s1">    &lt;content type=&quot;html&quot;&gt;&lt;![CDATA[&lt;h3&gt;Preparing step&lt;/h3&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;ul&gt;</span>
+</span><span class='line'><span class="s1">&lt;li&gt;install Postgres DB via brew</span>
+</span><span class='line'><span class="s1">&lt;code&gt;bash</span>
+</span><span class='line'><span class="s1">$ brew doctor</span>
+</span><span class='line'><span class="s1">$ brew update</span>
+</span><span class='line'><span class="s1">$ brew install postgresql</span>
+</span><span class='line'><span class="s1">&lt;/code&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="s1">&lt;li&gt;download and install heroku toolkit&lt;br/&gt;</span>
+</span><span class='line'><span class="s1">&lt;a href=&quot;https://toolbelt.heroku.com/&quot;&gt;https://toolbelt.heroku.com/&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="s1">&lt;li&gt;initialization of heroku under your rails project</span>
+</span><span class='line'><span class="s1">&lt;code&gt;bash</span>
+</span><span class='line'><span class="s1">$ heroku login</span>
+</span><span class='line'><span class="s1">$ heroku create</span>
+</span><span class='line'><span class="s1">&lt;/code&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="s1">&lt;li&gt;Open the file called Gemfile in your text editor and find the line containing:</span>
+</span><span class='line'><span class="s1">&lt;code&gt;ruby</span>
+</span><span class='line'><span class="s1">gem &#39;</span><span class="n">sqlite3</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">&lt;/code&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="s1">&lt;li&gt;Remove that line and replace it with:&lt;/li&gt;</span>
+</span><span class='line'><span class="s1">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;group :development, :test do</span>
+</span><span class='line'><span class="s1">  gem &#39;</span><span class="n">sqlite3</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">group :production do</span>
+</span><span class='line'><span class="s1">  gem &#39;</span><span class="n">pg</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">  gem &#39;</span><span class="n">rails_12factor</span><span class="err">&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">bundle</span> <span class="n">install</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">ruby</span>
+</span><span class='line'><span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span> <span class="o">--</span><span class="n">without</span> <span class="n">production</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span> <span class="ow">and</span> <span class="n">git</span> <span class="n">commit</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">bash</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Changed Gemfile for heroku&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="n">finally</span><span class="p">,</span> <span class="n">push</span> <span class="n">to</span> <span class="n">heroku</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">bash</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
+</span><span class='line'><span class="err">$</span> <span class="n">heroku</span> <span class="n">run</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">]]&gt;&lt;/</span><span class="n">content</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/entry&gt;</span>
+</span><span class='line'><span class="sr">  </span>
+</span><span class='line'><span class="sr">  &lt;entry&gt;</span>
+</span><span class='line'><span class="sr">    &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/&quot;</span><span class="o">/&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span><span class="ss">T11</span><span class="p">:</span><span class="mo">02</span><span class="p">:</span><span class="mi">27</span><span class="o">+</span><span class="mi">08</span><span class="p">:</span><span class="mo">00</span><span class="o">&lt;</span><span class="sr">/updated&gt;</span>
+</span><span class='line'><span class="sr">    &lt;id&gt;http:/</span><span class="o">/</span><span class="n">andystu</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">2015</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mo">03</span><span class="o">/</span><span class="n">rails</span><span class="o">-</span><span class="n">tips</span><span class="o">-</span><span class="n">rails</span><span class="o">-</span><span class="n">g</span><span class="o">-</span><span class="n">scaffold</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">reference</span><span class="o">-</span><span class="n">field</span><span class="o">&lt;</span><span class="sr">/id&gt;</span>
+</span><span class='line'><span class="sr">    &lt;content type=&quot;html&quot;&gt;&lt;![CDATA[&lt;p&gt;Rails scaffold generators are very smart! you can use belongs_to to quickly add relations.</span>
+</span><span class='line'><span class="sr">In the following example, I have 2 models products and product_types;</span>
+</span><span class='line'><span class="sr">Product_types belong to product and product has many product types.&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;bash&quot;</span><span class="o">&gt;</span><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">product</span> <span class="nb">name</span><span class="ss">:string</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">product_type</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">product</span><span class="p">:</span><span class="n">belongs_to</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># You can also use :references</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">product_type</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">product</span><span class="p">:</span><span class="n">references</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># For more manually work, you can do it like this</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">product_type</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">product_id</span><span class="p">:</span><span class="n">integer</span>
+</span><span class='line'><span class="c1"># then add &quot;belongs_to&quot; in your ProductType model</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">This</span> <span class="n">will</span> <span class="n">generate</span> <span class="n">the</span> <span class="n">necessary</span> <span class="n">columns</span><span class="p">,</span> <span class="n">indexes</span> <span class="ow">and</span> <span class="n">associations</span> <span class="k">in</span> <span class="n">your</span> <span class="n">models</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'><span class="sr">]]&gt;&lt;/</span><span class="n">content</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/entry&gt;</span>
+</span><span class='line'><span class="sr">  </span>
+</span><span class='line'><span class="sr">  &lt;entry&gt;</span>
+</span><span class='line'><span class="sr">    &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Rails Tips: Link_to Helper for params.merge]]&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge/&quot;</span><span class="o">/&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span><span class="ss">T16</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mo">02</span><span class="o">+</span><span class="mi">08</span><span class="p">:</span><span class="mo">00</span><span class="o">&lt;</span><span class="sr">/updated&gt;</span>
+</span><span class='line'><span class="sr">    &lt;id&gt;http:/</span><span class="o">/</span><span class="n">andystu</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">2015</span><span class="o">/</span><span class="mo">01</span><span class="o">/</span><span class="mo">02</span><span class="o">/</span><span class="n">rails</span><span class="o">-</span><span class="n">tips</span><span class="o">-</span><span class="n">link</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">helper</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">params</span><span class="o">-</span><span class="n">dot</span><span class="o">-</span><span class="n">merge</span><span class="o">&lt;</span><span class="sr">/id&gt;</span>
+</span><span class='line'><span class="sr">    &lt;content type=&quot;html&quot;&gt;&lt;![CDATA[&lt;h3&gt;&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">To</span> <span class="n">preserve</span> <span class="n">the</span> <span class="n">params</span> <span class="n">of</span> <span class="n">url</span> <span class="n">I</span> <span class="n">did</span> <span class="ss">this</span><span class="p">:</span>
+</span></code></pre></td></tr></table></div></figure> ruby app/views/index.html.erb
+&hellip;</li>
+</ul>
+
+
+<p>&lt;%= link_to &lsquo;Foot type&rsquo;, url_for(params.merge(foot_type_id: value)) %>
+&hellip;</p>
+
+<pre><code></code></pre>
+
+<p>&hellip;
+  def index
+    @recipes = Recipe.where(nil)
+    @recipes = @recipes.food_type_of(params[:food_type_id]) if (params[:food_type_id])
+    @recipes = @recipes.food_preference_of(params[:food_preference_id]) if (params[:food_preference_id])
+    @recipes = @recipes.cuisine_of(params[:cuisine_id]) if (params[:cuisine_id])
+  end
+&hellip;
+&#8220;`</p>
 
 <h3>alternative solutions</h3>
 
@@ -220,30 +445,6 @@ rails_app/app/models/recipe.rb:8 - remove trailing whitespace
 <p><a href="http://brakemanscanner.org">http://brakemanscanner.org</a> <br/>
 <a href="http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project">http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project</a>  <br/>
 <a href="https://github.com/railsbp/rails_best_practices">https://github.com/railsbp/rails_best_practices</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: List Models (Tables) (How-to)]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
-    <updated>2015-01-01T10:26:13+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">$ rails c
- ActiveRecord::Base.connection.tables.each do |table_name|
-  puts "\n" + table_name
-  ActiveRecord::Base.connection.columns(table_name).each {|c| puts "- " + c.name + ": " + c.type.to_s + " " + c.limit.to_s}
- end
-
-# or
- Model.column_names
-
-# or
- Model
-</code></pre>
-
-<pre><code class="ruby">&gt; ActiveRecord::Base.connection.tables # list all models retuen as an array
-&gt; ActiveRecord::Base.connection.columns(table_name) # list model(table) detail
-</code></pre>
 ]]></content>
   </entry>
   
