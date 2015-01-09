@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web Server | AndyZ Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/web-server/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-01-09T12:24:00+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Change Default Web Server and Timezone for Heroku]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/"/>
+    <updated>2015-01-09T12:17:25+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku</id>
+    <content type="html"><![CDATA[<ul>
+<li>add web server gem to your Gemfile
+<code>ruby
+group :production do
+gem 'pg'
+gem 'rails_12factor'
+gem 'thin' # web server : thin
+end
+</code></li>
+<li>bundle it for updating your Gemfile.lock
+<code>bash
+$ bundle install
+$ git add .
+$ git commit -am 'bundle and update Gemfile.lock'
+</code></li>
+<li><p>deploy to heroku
+<code>
+$ git push heroku master
+</code></p>
+
+<h4>done.</h4></li>
+<li><p>time zone config for heroku
+<code>bash
+$ heroku config:add TZ=Asia/Taipei
+</code></p>
+
+<h4>done.</h4></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
