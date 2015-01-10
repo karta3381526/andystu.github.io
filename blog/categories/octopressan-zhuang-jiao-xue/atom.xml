@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Octopress安裝教學 | AndyZ Blog]]></title>
+  <title><![CDATA[Category: Octopress安裝教學 | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/octopressan-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-09T12:24:00+08:00</updated>
+  <updated>2015-01-10T23:05:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -46,7 +46,7 @@
 </span><span class='line'>
 </span><span class='line'>&lt;p&gt;$ cd xxx
 </span><span class='line'>$ bundle install #install required gems
-</span><span class='line'>$ ssh -T &lt;a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#103;&#x69;&#116;&#64;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;"&gt;&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;&lt;/a&gt; # for testing connection to github
+</span><span class='line'>$ ssh -T &lt;a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;"&gt;&#x67;&#x69;&#116;&#64;&#x67;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#109;&lt;/a&gt; # for testing connection to github
 </span><span class='line'>$ rake setup_github_pages # this is important for create _deploy folder in 2nd mac device
 </span><span class='line'>$ rake new_post[&ldquo;xxxx&rdquo;]
 </span><span class='line'>$ rake generate

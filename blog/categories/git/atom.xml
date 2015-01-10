@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Git | AndyZ Blog]]></title>
+  <title><![CDATA[Category: Git | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-09T12:24:00+08:00</updated>
+  <updated>2015-01-10T23:05:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
