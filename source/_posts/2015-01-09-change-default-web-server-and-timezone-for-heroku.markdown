@@ -30,3 +30,9 @@ $ git push heroku master
 $ heroku config:add TZ=Asia/Taipei
 ```
 #### done.
+
+- for reset pg DB
+```
+$ heroku pg:reset DATABASE_URL --confirm heroku_app_name
+```
+
