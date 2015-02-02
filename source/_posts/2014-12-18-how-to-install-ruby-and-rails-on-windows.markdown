@@ -13,6 +13,13 @@ categories: Ruby on Rails 安裝教學
 from [http://railsinstaller.org](http://railsinstaller.org)
 2. install it (just click next and next steps, then done.).
 
+#### about bundle errors (can not fetch gems from rubygems default source): how do we solve it?
+- Open and edit Gemfile after rails new app
+- Change the => source 'https://rubygems.org' to => source 'http://rubygems.org'
+- done.
+
+<!--more-->
+
 ##Harder way.
 ###install RubyInstaller
 1. Download the package the version you want from [http://rubyinstaller.org](http://rubyinstaller.org)  
@@ -29,4 +36,3 @@ C:\> gem install bundler
 C:\> gem install rails --no-rdoc --no-ri
 ```
 - Done!!
-<!--more-->

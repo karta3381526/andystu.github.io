@@ -34,3 +34,18 @@ $ gem install rails --no-ri --no-rdoc #安裝rails
 ```
 - Done!!
 <!--more-->
+
+###3. getting start with Git
+```
+$ git config --global color.ui true
+$ git config --global user.name "YOUR NAME"
+$ git config --global user.email "YOUR@EMAIL.com"
+$ ssh-keygen -t rsa -C "YOUR@EMAIL.com"
+
+$ cat ~/.ssh/id_rsa.pub
+# then paste it (your pub key) to https://github.com/settings/ssh
+# more how-to info => https://help.github.com/articles/generating-ssh-keys/
+
+# check it work or not
+$ ssh -T git@github.com
+```
