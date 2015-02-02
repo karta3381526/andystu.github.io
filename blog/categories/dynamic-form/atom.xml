@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Dynamic Form | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/dynamic-form/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-02-02T18:22:16+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamic Form Implementing Note]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/13/my-dynamic-form-implementing-note/"/>
+    <updated>2015-01-13T14:40:41+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/13/my-dynamic-form-implementing-note</id>
+    <content type="html"><![CDATA[<pre><code>$ rails g scaffold product name price:decimal
+$ rails g scaffold product_type name
+$ rails g scaffold product_field name field_type required:boolean product_type:belongs_to
+$ rails g migration add_type_to_product product_type:belongs_to properties:text
+$ rake db:migrate
+</code></pre>
+
+<pre><code class="ruby "># config/routes.rb
+...
+  resources :product_types
+
+  resources :products
+  root 'products#index'
+...
+</code></pre>
+
+<!--more-->
+
+
+<pre><code class="js"># assets/javascripts/product_types.js.coffee
+
+$(document).on 'click', 'form .remove_fields', (event) -&gt;
+  $(this).prev('input[type=hidden]').val('1')
+  $(this).closest('fieldset').hide()
+  event.preventDefault()
+
+$(document).on 'click', 'form .add_fields', (event) -&gt;
+  time = new Date().getTime()
+  regexp = new RegExp($(this).data('id'), 'g')
+  $(this).before($(this).data('fields').replace(regexp, time))
+  event.preventDefault()
+</code></pre>
+
+<pre><code class="ruby"># models/product.rb
+class Product &lt; ActiveRecord::Base
+  belongs_to :product_type
+  serialize :properties, Hash
+
+  def validate_properties
+    product_type.product_fields.each do |field|
+      if field.required? &amp;&amp; properties[field.name].blank?
+        errors.add field.name, "must not be blank"
+      end
+    end
+  end
+
+end
+
+# models/product_type.rb
+class ProductType &lt; ActiveRecord::Base
+  has_many :fields, class_name: 'ProductField'
+  accepts_nested_attributes_for :fields, allow_destroy: true
+#  has_many :product_fields
+#  accepts_nested_attributes_for :product_fields, allow_destroy: true
+end
+
+# models/product_field.rb
+class ProductField &lt; ActiveRecord::Base
+  belongs_to :product_type
+end
+</code></pre>
+
+<pre><code class="ruby"># product_types_controller.rb 
+# product_types_params should be modified for its nested attributes
+def product_type_params
+  params.require(:product_type).permit(:name, fields_attributes: [:name, :field_type, :required, :product_type_id])
+end
+
+# products_controller.rb 
+# product_params need to be modified for its column properties
+def product_params
+  # all_properties = params.require(:product).fetch(:properties)
+  # params.require(:product).permit(:name, :price, :product_type_id, :properties).merge(:properties =&gt; all_properties)
+  params.require(:product).permit!
+end
+
+# products_controller.rb 
+# for generating dynamic form, action new also need to pass its product_type_id to view.
+  def new
+    @product = Product.new(product_type_id: params[:product_type_id])
+  end
+</code></pre>
+
+<pre><code class="ruby"># application_helper.rb
+
+module ApplicationHelper
+  def link_to_add_fields(name, f, association)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(association, new_object, child_index: id) do |builder|
+      render(association.to_s.singularize + "_fields", f: builder)
+    end
+    link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+  end
+end
+</code></pre>
+
+<p>&#8220;` ruby</p>
+
+<h1>product_types/_form.html.erb</h1>
+
+<p>&lt;%= form_for(@product_type) do |f| %>
+  &hellip;
+  <div class="field">
+    &lt;%= f.label :name %><br>
+    &lt;%= f.text_field :name %>
+  </div></p>
+
+<p>  &lt;%= f.fields_for :fields do |builder| %>
+    &lt;%= render &ldquo;field_fields&rdquo;, f: builder %>
+  &lt;% end %>
+  &lt;%= link_to_add_fields &ldquo;Add Field&rdquo;, f, :fields %></p>
+
+<p>  <div class="actions">
+    &lt;%= f.submit %>
+  </div>
+&lt;% end %></p>
+
+<h1>add product_types/_product_field_fields.html.erb</h1>
+
+<p><fieldset>
+  &lt;%= f.select :field_type, %w[text_field check_box shirt_sizes] %>
+  &lt;%= f.text_field :name, placeholder: &ldquo;field_name&rdquo; %>
+  &lt;%= f.check_box :required %> &lt;%= f.label :required %>
+  &lt;%= f.hidden_field :_destroy %>
+  &lt;%= link_to &ldquo;remove&rdquo;, &lsquo;#&rsquo;, class: &ldquo;remove_fields&rdquo; %>
+</fieldset></p>
+
+<h1>product_types/show.html.erb</h1>
+
+<p><p id="notice">&lt;%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  &lt;%= @product_type.name %>
+</p>
+<p>
+  <strong>Fields:</strong>
+  &lt;%= @product_type.fields.each do |f| %>
+  <br>
+  &lt;%= f.name %>
+  <br>
+  &lt;%= f.field_type %>
+  &lt;% end -%>
+</p>
+&hellip;</p>
+
+<h1>products/_form.html.erb</h1>
+
+<p>&hellip;
+  <div class="field">
+    &lt;%= f.label :price %><br>
+    &lt;%= f.text_field :price %>
+  </div></p>
+
+<p>  &lt;%= f.fields_for :properties, OpenStruct.new(@product.properties) do |builder| %>
+    &lt;% @product.product_type.fields.each do |field| %>
+      &lt;%= render &ldquo;products/fields/#{field.field_type}&rdquo;, field: field, f: builder %>
+    &lt;% end %>
+  &lt;% end %></p>
+
+<p>  <div class="actions">
+    &lt;%= f.submit %>
+  </div>
+&lt;% end %></p>
+
+<h1>products/index.html.erb</h1>
+
+<p>&hellip;
+&lt;%= form_tag new_product_path, method: :get do %>
+  &lt;%= select_tag :product_type_id, options_from_collection_for_select(ProductType.all, :id, :name) %>
+  &lt;%= submit_tag &ldquo;New Product&rdquo;, name: nil %>
+&lt;% end %></p>
+
+<p>&#8220;`</p>
+
+<h3>tips: OpenStruct.new(@product.properties)</h3>
+
+<p><em>Without OpenStruct.new object, we can&rsquo;t edit and update hash properties data of the record.</em></p>
+
+<h4>done.</h4>
+]]></content>
+  </entry>
+  
+</feed>

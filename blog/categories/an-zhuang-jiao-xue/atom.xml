@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 安裝教學 | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/an-zhuang-jiao-xue/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-10T23:05:24+08:00</updated>
+  <updated>2015-02-02T18:22:16+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -31,6 +31,18 @@ from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
 </ol>
 
 
+<h4>about bundle errors (can not fetch gems from rubygems default source): how do we solve it?</h4>
+
+<ul>
+<li>Open and edit Gemfile after rails new app</li>
+<li>Change the => source &lsquo;<a href="https://rubygems.org">https://rubygems.org</a>&rsquo; to => source &lsquo;<a href="http://rubygems.org">http://rubygems.org</a>&rsquo;</li>
+<li>done.</li>
+</ul>
+
+
+<!--more-->
+
+
 <h2>Harder way.</h2>
 
 <h3>install RubyInstaller</h3>
@@ -51,9 +63,6 @@ C:\&gt; gem install rails --no-rdoc --no-ri
 </code></li>
 <li>Done!!</li>
 </ol>
-
-
-<!--more-->
 
 ]]></content>
   </entry>
@@ -97,6 +106,21 @@ $ gem install rails --no-ri --no-rdoc #安裝rails
 
 <!--more-->
 
+
+<h3>3. getting start with Git</h3>
+
+<pre><code>$ git config --global color.ui true
+$ git config --global user.name "YOUR NAME"
+$ git config --global user.email "YOUR@EMAIL.com"
+$ ssh-keygen -t rsa -C "YOUR@EMAIL.com"
+
+$ cat ~/.ssh/id_rsa.pub
+# then paste it (your pub key) to https://github.com/settings/ssh
+# more how-to info =&gt; https://help.github.com/articles/generating-ssh-keys/
+
+# check it work or not
+$ ssh -T git@github.com
+</code></pre>
 ]]></content>
   </entry>
   

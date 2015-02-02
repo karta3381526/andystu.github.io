@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Deploy | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/deploy/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-10T23:05:24+08:00</updated>
+  <updated>2015-02-02T18:22:16+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Rails App Deploy to Heroku Simple How-to]]></title>
+    <title type="html"><![CDATA[Rails App Deploy to Heroku : An Easy Way]]></title>
     <link href="http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/"/>
     <updated>2015-01-06T23:24:04+08:00</updated>
     <id>http://andystu.github.io/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to</id>
@@ -22,25 +22,60 @@
 
 <ul>
 <li>install Postgres DB via brew
-<code>bash
-$ brew doctor
-$ brew update
-$ brew install postgresql
-</code></li>
-<li>download and install heroku toolkit<br/>
-<a href="https://toolbelt.heroku.com/">https://toolbelt.heroku.com/</a></li>
-<li>initialization of heroku under your rails project
-<code>bash
-$ heroku login
-$ heroku create
-</code></li>
-<li>Open the file called Gemfile in your text editor and find the line containing:
-<code>ruby
-gem 'sqlite3'
-</code></li>
-<li>Remove that line and replace it with:</li>
-</ul>
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew doctor
+</span><span class='line'><span class="nv">$ </span>brew update
+</span><span class='line'><span class="nv">$ </span>brew install postgresql&lt;/li&gt;
+</span><span class='line'>&lt;/ul&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;if we want to run pg locally, we need to run the following instructions.&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;To have launchd start postgresql at login:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;ln -sfv /usr/local/opt/postgresql/*plist ~/Library/LaunchAgents&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Then to load and run postgresql immediately:&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+</span><span class='line'>&lt;code&gt;
+</span><span class='line'>- download and install heroku toolkit
+</span><span class='line'>https://toolbelt.heroku.com/
+</span><span class='line'>- initialization of heroku under your rails project
+</span><span class='line'>&lt;/code&gt; bash
+</span><span class='line'><span class="nv">$ </span>heroku login
+</span><span class='line'><span class="nv">$ </span>heroku create
+</span><span class='line'>&lt;code&gt;
+</span><span class='line'>- Open the file called Gemfile in your text editor and find the line containing:
+</span><span class='line'>&lt;/code&gt; ruby
+</span><span class='line'>gem <span class="p">&amp;</span>lsquo<span class="p">;</span>sqlite3<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+- Remove that line and replace it with:</p>
 
 <pre><code class="ruby">group :development, :test do
   gem 'sqlite3'

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-10T23:05:24+08:00</updated>
+  <updated>2015-02-02T18:22:16+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Use Command Line Show Git Tree]]></title>
+    <link href="http://andystu.github.io/blog/2015/01/13/how-to-use-command-line-show-git-tree/"/>
+    <updated>2015-01-13T18:11:36+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/01/13/how-to-use-command-line-show-git-tree</id>
+    <content type="html"><![CDATA[<pre><code class="bash">$ git log --pretty=oneline --graph --decorate --all
+$ git log --oneline --graph --decorate --all
+$ gitk --simplify-by-decoration --all
+$ gitk --all
+$ git show-branch --all
+$ git log --all --graph --decorate --oneline --simplify-by-decoration
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git Flow Usage]]></title>

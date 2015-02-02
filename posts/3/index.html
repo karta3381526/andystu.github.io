@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>AndyZ&#8217;s Blog</title>
+  <meta name="author" content="Yu-Chieh Chang (張又介)">
+
+  
+  <meta name="description" content="CREATE OUR NEW RAILS APPLICATION 1
+2
+3
+4
+5
+$ rails new reddit
+$ cd reddit
+$ git init
+$ git add .
+$ git commit -m "reddit init" LINK SUBMISSIONS 1
+2
+3 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andystu.github.io/posts/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="AndyZ's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-50466556-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">AndyZ&#8217;s Blog</a></h1>
+  
+    <h2>Ruby on Rails / Rubygems / FullStack / Git / Mac notes.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andystu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/22/learning-notes-for-12in12-week-1/">Learning Notes for 12in12 Week 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-22T17:17:40+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>CREATE OUR NEW RAILS APPLICATION</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails new reddit
+</span><span class='line'>$ cd reddit
+</span><span class='line'>$ git init
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m "reddit init"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>LINK SUBMISSIONS</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git checkout -b link_scaffold
+</span><span class='line'>$ rails g scaffold link title:string url:string
+</span><span class='line'>$ rake db:migrate
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m "Generate Links Scafffold"
+</span><span class='line'>$ git checkout master
+</span><span class='line'>$ git merge link_scaffold</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/22/learning-notes-for-12in12-week-1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/18/set-up-octopress-on-2nd-mac-for-the-same-blog/">Set Up Octopress on 2nd Mac for the Same Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-18T10:22:17+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:22 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在另外一台Mac上安裝octopress編輯環境, 可對應編輯同一個github的blog</h2>
+
+<ol>
+<li>copy prikey from your master mac to your 2nd mac device and put it under ~/.ssh folder</li>
+<li>clone your repository to second device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/xxx/xxx.github.io.git
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>setup your 2nd mac device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd xxx
+</span><span class='line'>$ bundle install #install required gems
+</span><span class='line'>$ ssh -T git@github.com # for testing connection to github
+</span><span class='line'>$ rake setup_github_pages # this is important for create _deploy folder in 2nd mac device
+</span><span class='line'>$ rake new_post["xxxx"] 
+</span><span class='line'>$ rake generate
+</span><span class='line'>$ rake deploy # it's done while no error message here.</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>git between two mac device</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git pull origin source  # git pull before push every time!
+</span><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam'
+</span><span class='line'>$ git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Done.</h3>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">How to Install Ruby and Rails on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-18T09:07:30+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:07 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在Windows上安裝ruby on rails開發環境</h2>
+
+<h2>Easy and the quickest way.</h2>
+
+<h3>install RailsInstaller</h3>
+
+<ol>
+<li>Download it (version 3.0.0 and above are recommend)
+from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
+<li>install it (just click next and next steps, then done.).</li>
+</ol>
+
+
+<h4>about bundle errors (can not fetch gems from rubygems default source): how do we solve it?</h4>
+
+<ul>
+<li>Open and edit Gemfile after rails new app</li>
+<li>Change the => source &lsquo;<a href="https://rubygems.org">https://rubygems.org</a>&rsquo; to => source &lsquo;<a href="http://rubygems.org">http://rubygems.org</a>&rsquo;</li>
+<li>done.</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/18/how-to-install-ruby-and-rails-on-windows/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">How to Install Ruby and Rails on Mac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-16T17:41:41+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:41 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在Mac上安裝ruby on rails開發環境</h2>
+
+<h3>1. install rvm</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#comment
+</span><span class='line'>$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
+</span><span class='line'>#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
+</span><span class='line'>  
+</span><span class='line'>#modify .zshrc .bash_profile and relaunch terminal
+</span><span class='line'>$ echo progress-bar &gt;&gt; ~/.curlrc  
+</span><span class='line'>$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
+</span><span class='line'>$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
+</span><span class='line'>  
+</span><span class='line'>#test rvm ready or not  
+</span><span class='line'>$ type rvm | head -n 1  
+</span><span class='line'>$ rvm list known  
+</span><span class='line'>$ rvm install x.x  
+</span><span class='line'>$ rvm use 2.1 (rvm use 2.1 --default)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. install bundler and rails</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem update --system #更新gem library
+</span><span class='line'>$ gem install bundler #安裝bundler
+</span><span class='line'>$ gem install rails --no-ri --no-rdoc #安裝rails</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Done!!</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/16/how-to-install-octopress-on-github/">How to Install Octopress on Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-16T00:17:53+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>在Github上使用octopress建構blog</h2>
+
+<h3>1. on mac</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/.ssh
+</span><span class='line'>$ ssh-keygen -t rsa -C "xxx@xxx.xxx.xx"
+</span><span class='line'>$ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to clipboard</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. on Github</h3>
+
+<p>github 申請帳號 (e.g. xxxx)<br/>
+github 建立 xxxx.github.io 的repository<br/>
+github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/16/how-to-install-octopress-on-github/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/20/rails-scaffold-create-erb-rather-thean-haml-after-bundling-rails-haml-gem/">Rails Scaffold Create .erb Rather Thean .haml After Bundling Rails-haml Gem</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/19/how-to-upgrade-your-rails-app/">How to Upgrade Your Rails App?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Generate Html Table From Array or Hash</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/andystu">@andystu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'andystu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Yu-Chieh Chang (張又介) -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'andystu';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

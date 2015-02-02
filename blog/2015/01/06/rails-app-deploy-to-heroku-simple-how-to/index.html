@@ -5,17 +5,24 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Rails App Deploy to Heroku Simple How-to - AndyZ&#8217;s Blog</title>
+  <title>Rails App Deploy to Heroku : An Easy Way - AndyZ&#8217;s Blog</title>
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
   <meta name="description" content="Preparing step install Postgres DB via brew 1
 2
 3
+4
+5
+6
+7
+8
+9
+10
+11
 $ brew doctor
 $ brew update
-$ brew install postgresql download and install heroku toolkit
-https:// &hellip;">
+$ brew install postgresql # if we want to run pg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,7 +93,7 @@ https:// &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Rails App Deploy to Heroku Simple How-to</h1>
+      <h1 class="entry-title">Rails App Deploy to Heroku : An Easy Way</h1>
     
     
       <p class="meta">
@@ -112,9 +119,25 @@ https:// &hellip;">
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew doctor
 </span><span class='line'><span class="nv">$ </span>brew update
 </span><span class='line'><span class="nv">$ </span>brew install postgresql
+</span><span class='line'>
+</span><span class='line'><span class="c"># if we want to run pg locally, we need to run the following instructions.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># To have launchd start postgresql at login:</span>
+</span><span class='line'>ln -sfv /usr/local/opt/postgresql/*plist ~/Library/LaunchAgents
+</span><span class='line'>
+</span><span class='line'><span class="c"># Then to load and run postgresql immediately:</span>
+</span><span class='line'>launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -269,23 +292,23 @@ https:// &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/">Change Default Web Server and Timezone for Heroku</a>
+        <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/08/rails-tips-user-authentication-using-devise/">Rails Tips: User Authentication Using Devise</a>
+        <a href="/blog/2015/01/20/rails-scaffold-create-erb-rather-thean-haml-after-bundling-rails-haml-gem/">Rails Scaffold Create .erb Rather Thean .haml After Bundling Rails-haml Gem</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/06/rails-app-deploy-to-heroku-simple-how-to/">Rails App Deploy to Heroku Simple How-to</a>
+        <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/">Rails Tips: Rails G Scaffold for Reference Field</a>
+        <a href="/blog/2015/01/19/how-to-upgrade-your-rails-app/">How to Upgrade Your Rails App?</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/03/rubygems-why-simple-form/">RubyGems: Why Simple_form?</a>
+        <a href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Generate Html Table From Array or Hash</a>
       </li>
     
   </ul>

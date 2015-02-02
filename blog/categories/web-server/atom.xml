@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Server | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/web-server/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-01-10T23:05:24+08:00</updated>
+  <updated>2015-02-02T18:22:16+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -45,6 +45,10 @@ $ heroku config:add TZ=Asia/Taipei
 </code></p>
 
 <h4>done.</h4></li>
+<li><p>for reset pg DB
+<code>
+$ heroku pg:reset DATABASE_URL --confirm heroku_app_name
+</code></p></li>
 </ul>
 
 ]]></content>
