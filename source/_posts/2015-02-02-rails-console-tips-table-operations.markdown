@@ -11,6 +11,7 @@ categories: [rails console, rails tips, ActiveRecord]
 ``` ruby
 > ActiveRecord::Base.connection.tables
 ```
+
 ### list a table structure (but it is a protected method)
 ``` ruby
 # this dose not work. 
@@ -19,4 +20,9 @@ categories: [rails console, rails tips, ActiveRecord]
 # we should utilize send method to call protected method
 > @c = ActiveRecord::Base.connection
 > @c.send(:table_structure, "xxxs") # xxxs is your model name
+```
+
+### show table schema
+``` ruby
+> ActiveRecord::Base.connection.columns :table_name
 ```
