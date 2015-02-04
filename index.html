@@ -9,13 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="In rails console, you can list tables 1
-&gt; ActiveRecord::Base.connection.tables list a table structure (but it is a protected method) 1
-2
-3
-4
-5
-6 &hellip;">
+  <meta name="description" content="useful online tools for generating bootstrap theme http://pikock.github.io/bootstrap-magic/ http://www.lavishbootstrap.com/ http://paintstrap.com/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +83,93 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-04T10:48:54+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:48 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>useful online tools for generating bootstrap theme</li>
+</ul>
+
+
+<p><a href="http://pikock.github.io/bootstrap-magic/">http://pikock.github.io/bootstrap-magic/</a></p>
+
+<p><a href="http://www.lavishbootstrap.com/">http://www.lavishbootstrap.com/</a></p>
+
+<p><a href="http://paintstrap.com/">http://paintstrap.com/</a></p>
+
+<p><a href="http://paintstrap.com/gallery/">http://paintstrap.com/gallery/</a></p>
+
+<p><a href="http://bootswatchr.com/">http://bootswatchr.com/</a></p>
+
+<p><a href="http://stylebootstrap.info/">http://stylebootstrap.info/</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-02T22:50:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:50 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>Rails image disappears with error: Failed to load resource:</li>
+<li>net::ERR_CONTENT_LENGTH_MISMATCH</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake tmp:clear <span class="c"># for recompile asset tmp</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a></h1>
     
     
@@ -128,6 +209,13 @@
 </span><span class='line'><span class="c1"># we should utilize send method to call protected method</span>
 </span><span class='line'><span class="o">&gt;</span> <span class="vi">@c</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span>
 </span><span class='line'><span class="o">&gt;</span> <span class="vi">@c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:table_structure</span><span class="p">,</span> <span class="s2">&quot;xxxs&quot;</span><span class="p">)</span> <span class="c1"># xxxs is your model name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>show table schema</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span> <span class="ss">:table_name</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -534,266 +622,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/">Change Default Web Server and Timezone for Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-09T12:17:25+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>add web server gem to your Gemfile</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;thin&#39;</span> <span class="c1"># web server : thin</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>bundle it for updating your Gemfile.lock</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;bundle and update Gemfile.lock&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>deploy to heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push heroku master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>time zone config for heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">TZ</span><span class="o">=</span>Asia/Taipei
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>for reset pg DB</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku pg:reset DATABASE_URL --confirm heroku_app_name
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/08/rails-tips-user-authentication-using-devise/">Rails Tips: User Authentication Using Devise</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-08T11:04:33+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:04 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>create a demo project by rails</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="kp">new</span> <span class="n">topic</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>add gem &lsquo;devise&rsquo; to Gemfile then bundle it.</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Gemfile</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">$</span> <span class="n">bundle</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>install into your project, generate user model and views</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="ss">devise</span><span class="p">:</span><span class="n">install</span>
-</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">devise</span> <span class="no">User</span>
-</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="ss">devise</span><span class="p">:</span><span class="n">views</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>configure development.rb for action mailer setting</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="ss">port</span><span class="p">:</span> <span class="mi">3000</span> <span class="p">}</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>configure application.rb for action mailer setting</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionMailer</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="ss">:address</span>        <span class="o">=&gt;</span> <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:domain</span>         <span class="o">=&gt;</span> <span class="s1">&#39;mail.google.com&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:port</span>           <span class="o">=&gt;</span> <span class="mi">587</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:user_name</span>      <span class="o">=&gt;</span> <span class="s2">&quot;your_gmail_account@gmail.com&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_USERNAME&#39;],</span>
-</span><span class='line'>        <span class="ss">:password</span>       <span class="o">=&gt;</span> <span class="s2">&quot;weakpass&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_PASSWORD&#39;],</span>
-</span><span class='line'>        <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:enable_starttls_auto</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>generate a scaffold for the topic resource and add registrations controller for overriding devise&rsquo;s one</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">topic</span> <span class="n">title</span>
-</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">controller</span> <span class="n">registrations</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># in registrations_controller.rb</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">RegistrationsController</span> <span class="o">&lt;</span> <span class="no">Devise</span><span class="o">::</span><span class="no">RegistrationsController</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sign_up_params</span>
-</span><span class='line'>    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">account_update_params</span>
-</span><span class='line'>    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">,</span> <span class="ss">:current_password</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># modify route.rb</span>
-</span><span class='line'><span class="n">devise_for</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">controllers</span><span class="p">:</span> <span class="p">{</span> <span class="ss">registrations</span><span class="p">:</span> <span class="s2">&quot;registrations&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="n">root</span> <span class="s1">&#39;topics#index&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># add the following &quot;before_action&quot; to topics_conftroller.rb for forcing users logging in</span>
-</span><span class='line'><span class="n">before_action</span> <span class="ss">:authenticate_user!</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>done and enjoy it.</h5>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -813,6 +641,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
       </li>
     
@@ -822,14 +658,6 @@
     
       <li class="post">
         <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/19/how-to-upgrade-your-rails-app/">How to Upgrade Your Rails App?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Generate Html Table From Array or Hash</a>
       </li>
     
   </ul>

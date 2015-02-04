@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails Tips | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails-tips/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-02T18:22:16+08:00</updated>
+  <updated>2015-02-04T11:48:37+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -33,6 +33,11 @@
 # we should utilize send method to call protected method
 &gt; @c = ActiveRecord::Base.connection
 &gt; @c.send(:table_structure, "xxxs") # xxxs is your model name
+</code></pre>
+
+<h3>show table schema</h3>
+
+<pre><code class="ruby">&gt; ActiveRecord::Base.connection.columns :table_name
 </code></pre>
 ]]></content>
   </entry>

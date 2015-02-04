@@ -9,20 +9,12 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="Preparing step install Postgres DB via brew 1
+  <meta name="description" content="add web server gem to your Gemfile 1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-$ brew doctor
-$ brew update
-$ brew install postgresql # if we want to run pg &hellip;">
+group :production do gem &#39;pg&#39; gem &#39;rails_12factor&#39; gem &#39;thin&#39; # web server : &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +82,266 @@ $ brew install postgresql # if we want to run pg &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/">Change Default Web Server and Timezone for Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-09T12:17:25+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>add web server gem to your Gemfile</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;thin&#39;</span> <span class="c1"># web server : thin</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>bundle it for updating your Gemfile.lock</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;bundle and update Gemfile.lock&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>deploy to heroku</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push heroku master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>done.</h4>
+
+<ul>
+<li>time zone config for heroku</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">TZ</span><span class="o">=</span>Asia/Taipei
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>done.</h4>
+
+<ul>
+<li>for reset pg DB</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku pg:reset DATABASE_URL --confirm heroku_app_name
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/08/rails-tips-user-authentication-using-devise/">Rails Tips: User Authentication Using Devise</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-08T11:04:33+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:04 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>create a demo project by rails</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="kp">new</span> <span class="n">topic</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>add gem &lsquo;devise&rsquo; to Gemfile then bundle it.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">$</span> <span class="n">bundle</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>install into your project, generate user model and views</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="ss">devise</span><span class="p">:</span><span class="n">install</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">devise</span> <span class="no">User</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="ss">devise</span><span class="p">:</span><span class="n">views</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>configure development.rb for action mailer setting</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="ss">port</span><span class="p">:</span> <span class="mi">3000</span> <span class="p">}</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>configure application.rb for action mailer setting</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionMailer</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="ss">:address</span>        <span class="o">=&gt;</span> <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="ss">:domain</span>         <span class="o">=&gt;</span> <span class="s1">&#39;mail.google.com&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="ss">:port</span>           <span class="o">=&gt;</span> <span class="mi">587</span><span class="p">,</span>
+</span><span class='line'>        <span class="ss">:user_name</span>      <span class="o">=&gt;</span> <span class="s2">&quot;your_gmail_account@gmail.com&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_USERNAME&#39;],</span>
+</span><span class='line'>        <span class="ss">:password</span>       <span class="o">=&gt;</span> <span class="s2">&quot;weakpass&quot;</span><span class="p">,</span> <span class="c1">#ENV[&#39;GMAIL_PASSWORD&#39;],</span>
+</span><span class='line'>        <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="ss">:enable_starttls_auto</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>generate a scaffold for the topic resource and add registrations controller for overriding devise&rsquo;s one</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">topic</span> <span class="n">title</span>
+</span><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">controller</span> <span class="n">registrations</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in registrations_controller.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">RegistrationsController</span> <span class="o">&lt;</span> <span class="no">Devise</span><span class="o">::</span><span class="no">RegistrationsController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sign_up_params</span>
+</span><span class='line'>    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">account_update_params</span>
+</span><span class='line'>    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">,</span> <span class="ss">:current_password</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># modify route.rb</span>
+</span><span class='line'><span class="n">devise_for</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">controllers</span><span class="p">:</span> <span class="p">{</span> <span class="ss">registrations</span><span class="p">:</span> <span class="s2">&quot;registrations&quot;</span> <span class="p">}</span>
+</span><span class='line'><span class="n">root</span> <span class="s1">&#39;topics#index&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># add the following &quot;before_action&quot; to topics_conftroller.rb for forcing users logging in</span>
+</span><span class='line'><span class="n">before_action</span> <span class="ss">:authenticate_user!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>done and enjoy it.</h5>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -703,241 +955,6 @@ Rails 3 &ndash;> </em>_filter</p></li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/24/git-flow-usage/">Git Flow Usage</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-24T23:34:12+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:34 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>git-flow usage notes</h3>
-
-<ul>
-<li>install git-flow on Mac</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow <span class="c"># Done</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>usage how-to (for feature)</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow init <span class="c"># under project folder, git-flow would ask few questions, using the default value is recommended. </span>
-</span><span class='line'><span class="nv">$ </span>git flow feature start MY_FEATURE <span class="c"># XXX is branch name</span>
-</span><span class='line'><span class="c"># add some files or do something ...</span>
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commmit -am <span class="s1">&#39;do something ...&#39;</span>
-</span><span class='line'><span class="nv">$ </span>git flow feature publish MY_FEATURE <span class="c"># push to remote repo</span>
-</span><span class='line'><span class="nv">$ </span>git flow feature finish MY_FEATURE
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>usage how-to 2 (for release)</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span>
-</span><span class='line'><span class="c"># e.g. git flow release start Version_1.0</span>
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;do something ...&#39;</span>
-</span><span class='line'><span class="nv">$ </span>git flow release finish RELEASE
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>[recommand reference]</h4>
-
-<p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a> <br/>
-<a href="http://fireqqtw.logdown.com/posts/206951-git-flow-notes">http://fireqqtw.logdown.com/posts/206951-git-flow-notes</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/23/git-usage-notes/">Git Usage Notes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-23T16:11:10+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:11 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Install git via homebrew</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git <span class="c"># If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better.)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Git work processes</h2>
-
-<ul>
-<li>sign up a github account</li>
-<li>create a repos (repository) with a &ldquo;name&rdquo;</li>
-<li>then git it</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># rails project</span>
-</span><span class='line'><span class="nv">$ </span>rails new app
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>app
-</span><span class='line'><span class="nv">$ </span>git init
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -m <span class="s1">&#39;first commit&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git checkout -b branch_name
-</span><span class='line'><span class="nv">$ </span>git branch <span class="c"># list branches in the project</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># do some changes under this branch ...  </span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;some thing in this brach&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># more about `git commit` </span>
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;xxxx&#39;</span> <span class="c"># == git add . + git commit -m &#39;xxxx&#39;</span>
-</span><span class='line'><span class="nv">$ </span>git commit --amend <span class="c"># reword commit message</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># go back to master and merge it</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git checkout master
-</span><span class='line'><span class="nv">$ </span>git merge branch_name
-</span><span class='line'>
-</span><span class='line'><span class="c"># push to github </span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git remote add origin repos_git_ssh_url
-</span><span class='line'><span class="nv">$ </span>git push --all <span class="c"># both master and branches</span>
-</span><span class='line'><span class="nv">$ </span>git push origin master <span class="c"># you also can push master to remote only</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># reset or revert to HEAD version (HEAD refers to latest commit stage)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git reset HEAD --hard <span class="c"># --hard is dangerous (delete unstaged files)</span>
-</span><span class='line'><span class="nv">$ </span>git reset HEAD --soft <span class="c"># --soft will go back and keep files staged </span>
-</span><span class='line'><span class="nv">$ </span>git reset HEAD <span class="c"># will go back without tracking unstaged files</span>
-</span><span class='line'><span class="nv">$ </span>git revert HEAD <span class="c"># make HEAD stage as new stage</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># reset one file</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git checkout -- &lt;file&gt;
-</span><span class='line'>
-</span><span class='line'><span class="c"># conflick of rebase (merge is the same)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>git rebase master <span class="c"># under second branch</span>
-</span><span class='line'><span class="c"># conflick ...</span>
-</span><span class='line'><span class="c"># modify conflick &lt;file&gt;</span>
-</span><span class='line'><span class="c"># then </span>
-</span><span class='line'><span class="nv">$ </span>git add &lt;file&gt;
-</span><span class='line'><span class="nv">$ </span>git rebase --continue
-</span><span class='line'><span class="c"># done.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>great reference</h3>
-
-<p><a href="http://blog.yorkxin.org/posts/2011/07/29/git-rebase">http://blog.yorkxin.org/posts/2011/07/29/git-rebase</a> <br/>
-<a href="http://blog.gogojimmy.net/2012/02/29/git-scenario/">http://blog.gogojimmy.net/2012/02/29/git-scenario/</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -959,6 +976,14 @@ Rails 3 &ndash;> </em>_filter</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
       </li>
     
@@ -968,14 +993,6 @@ Rails 3 &ndash;> </em>_filter</p></li>
     
       <li class="post">
         <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/19/how-to-upgrade-your-rails-app/">How to Upgrade Your Rails App?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Generate Html Table From Array or Hash</a>
       </li>
     
   </ul>
