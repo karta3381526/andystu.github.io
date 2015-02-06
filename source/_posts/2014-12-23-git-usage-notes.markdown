@@ -64,6 +64,14 @@ $ git rebase master # under second branch
 $ git add <file>
 $ git rebase --continue
 # done.
+
+# To remove untracked files / directories do:
+
+$ git clean -fdx
+# -f - force
+# -d - directories too
+# -x - remove ignored files too ( don't use this if you don't want to remove ignored files)
+
 ```
 
 ### great reference
