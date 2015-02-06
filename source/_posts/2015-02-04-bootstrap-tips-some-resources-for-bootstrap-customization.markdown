@@ -29,9 +29,13 @@ http://www.pingendo.com/
 
 http://www.layoutit.com/
 
-- extensible tools
+- useful plug-ins
 
 http://vitalets.github.io/x-editable/
+
+https://github.com/rorlab/bootstrap-tagsinput-rails
+
+http://timschlechter.github.io/bootstrap-tagsinput/examples/
 
 - important reference
 
