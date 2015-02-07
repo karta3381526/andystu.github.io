@@ -9,15 +9,11 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="git-flow usage notes install git-flow on Mac 1
-$ brew install git-flow # Done usage how-to (for feature) 1
+  <meta name="description" content="To preserve the params of url I did this: app/views/index.html.erb1
 2
 3
 4
-5
-6
-7
-$ git flow init # under &hellip;">
+... &lt;%= link_to &#39;Foot type&#39;, url_for(params.merge(foot_type_id &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +81,382 @@ $ git flow init # under &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge/">Rails Tips: Link_to Helper for params.merge</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-02T16:52:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:52 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3></h3>
+
+<ul>
+<li>To preserve the params of url I did this:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>app/views/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;Foot type&#39;</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="ss">foot_type_id</span><span class="p">:</span> <span class="n">value</span><span class="p">))</span> <span class="o">%&gt;</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>app/controllers/recipes_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="no">Recipe</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_type_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_preference_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">cuisine_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>alternative solutions</h3>
+
+<p><a href="http://filterrific.clearcove.ca">http://filterrific.clearcove.ca</a> <br/>
+<a href="http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails">http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails</a> <br/>
+<a href="https://github.com/plataformatec/has_scope">https://github.com/plataformatec/has_scope</a></p>
+
+<h4>[reference]</h4>
+
+<p><a href="http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  ">http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  </a>
+<a href="http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails">http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails</a> <br/>
+<a href="http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/">http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/</a> <br/>
+<a href="http://guides.rubyonrails.org/active_record_querying.html#scopes">http://guides.rubyonrails.org/active_record_querying.html#scopes</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/02/gems-brakeman-and-rails-best-practices/">RubyGems: Brakeman and Rails_best_practices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-02T10:04:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:04 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
+
+<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
+
+<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
+
+<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
+
+<h3>installation (add those gems to your Gemfile)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;brakeman&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;rails_best_practices&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># require: false =&gt; means that we don&#39;t want to run that gem when start rails server</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>usage (recommand using those tools before each commit)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">brakeman</span>
+</span><span class='line'><span class="c1"># report screenshot</span>
+</span><span class='line'><span class="o">+</span><span class="no">SUMMARY</span><span class="o">+</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">+-------------------+-------+</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Scanned</span><span class="o">/</span><span class="no">Reported</span>  <span class="o">|</span> <span class="no">Total</span> <span class="o">|</span>
+</span><span class='line'><span class="o">+-------------------+-------+</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Controllers</span>       <span class="o">|</span> <span class="mi">2</span>     <span class="o">|</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Models</span>            <span class="o">|</span> <span class="mi">5</span>     <span class="o">|</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Templates</span>         <span class="o">|</span> <span class="mi">6</span>     <span class="o">|</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Errors</span>            <span class="o">|</span> <span class="mi">0</span>     <span class="o">|</span>
+</span><span class='line'><span class="o">|</span> <span class="no">Security</span> <span class="no">Warnings</span> <span class="o">|</span> <span class="mi">0</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'><span class="o">+-------------------+-------+</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">$</span> <span class="n">rails_best_practices</span>
+</span><span class='line'><span class="c1"># report screenshot</span>
+</span><span class='line'><span class="no">Source</span> <span class="ss">Codes</span><span class="p">:</span> <span class="o">|======================================================================================================================================|</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">food_type_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">food_preference_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">cuisine_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">24</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">25</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">26</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">helpers</span><span class="o">/</span><span class="n">recipes_helper</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">empty</span> <span class="n">helpers</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">8</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#food_type_of)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">9</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#food_preference_of)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">10</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#cuisine_of)</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">2</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">4</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">7</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
+</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">8</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">trailing</span> <span class="n">whitespace</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>[reference]</h4>
+
+<p><a href="http://brakemanscanner.org">http://brakemanscanner.org</a> <br/>
+<a href="http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project">http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project</a>  <br/>
+<a href="https://github.com/railsbp/rails_best_practices">https://github.com/railsbp/rails_best_practices</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/01/list-models-tables-in-rails-console-how-to/">Rails Tips: List Models (Tables) (How-to)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-01T10:26:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
+</span><span class='line'> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table_name</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">table_name</span>
+</span><span class='line'>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">to_s</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">limit</span><span class="o">.</span><span class="n">to_s</span><span class="p">}</span>
+</span><span class='line'> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span><span class="o">.</span><span class="n">column_names</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># or</span>
+</span><span class='line'> <span class="no">Model</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span> <span class="c1"># list all models retuen as an array</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span> <span class="c1"># list model(table) detail</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/31/link-to-usage-tips/">Some Link_to Usage Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-31T16:57:16+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:57 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>some tips for link_to helper</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#in view/xxxx.html.erb</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;LINK_NAME&quot;, xxx_path %&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;LINK_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;LINK_URL&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;ID_NAME&quot;</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s2">&quot;CLASS_NAME&quot;</span> <span class="o">%&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># use it like a block</span>
+</span><span class='line'><span class="c1"># 1</span>
+</span><span class='line'><span class="n">link_to</span> <span class="s2">&quot;LINK_URL&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 2</span>
+</span><span class='line'><span class="n">link_to</span> <span class="n">xxx_path</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/26/before-action-vs-before-filter/">Before_action v.s. Before_filter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-26T00:11:03+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:11 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
+
+<ol>
+<li><p>An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
+<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
+These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
+<li><p>Rails 4 &ndash;> <em>_action<br/>
+Rails 3 &ndash;> </em>_filter</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -257,6 +629,13 @@ $ git flow init # under &hellip;">
 <span class='line-number'>48</span>
 <span class='line-number'>49</span>
 <span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># rails project</span>
 </span><span class='line'><span class="nv">$ </span>rails new app
 </span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>app
@@ -307,6 +686,13 @@ $ git flow init # under &hellip;">
 </span><span class='line'><span class="nv">$ </span>git add &lt;file&gt;
 </span><span class='line'><span class="nv">$ </span>git rebase --continue
 </span><span class='line'><span class="c"># done.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># To remove untracked files / directories do:</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>git clean -fdx
+</span><span class='line'><span class="c"># -f - force</span>
+</span><span class='line'><span class="c"># -d - directories too</span>
+</span><span class='line'><span class="c"># -x - remove ignored files too ( don&#39;t use this if you don&#39;t want to remove ignored files)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -517,138 +903,9 @@ from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">How to Install Ruby and Rails on Mac</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-16T17:41:41+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:41 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>在Mac上安裝ruby on rails開發環境</h2>
-
-<h3>1. install rvm</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#comment
-</span><span class='line'>$ \curl -sSL https://get.rvm.io | bash -s stable --ruby  
-</span><span class='line'>#(if error message shown -&gt; rvm reinstall 2.1.3 --disable-binary)  
-</span><span class='line'>  
-</span><span class='line'>#modify .zshrc .bash_profile and relaunch terminal
-</span><span class='line'>$ echo progress-bar &gt;&gt; ~/.curlrc  
-</span><span class='line'>$ echo "source $HOME/.rvm/scripts/rvm" &gt;&gt; ~/.bash_profile  
-</span><span class='line'>$ echo "gem: --no-document" &gt;&gt; ~/.gemrc  
-</span><span class='line'>  
-</span><span class='line'>#test rvm ready or not  
-</span><span class='line'>$ type rvm | head -n 1  
-</span><span class='line'>$ rvm list known  
-</span><span class='line'>$ rvm install x.x  
-</span><span class='line'>$ rvm use 2.1 (rvm use 2.1 --default)</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. install bundler and rails</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem update --system #更新gem library
-</span><span class='line'>$ gem install bundler #安裝bundler
-</span><span class='line'>$ gem install rails --no-ri --no-rdoc #安裝rails</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Done!!</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/16/how-to-install-ruby-and-rails-on-mac/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/16/how-to-install-octopress-on-github/">How to Install Octopress on Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-16T00:17:53+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>在Github上使用octopress建構blog</h2>
-
-<h3>1. on mac</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/.ssh
-</span><span class='line'>$ ssh-keygen -t rsa -C "xxx@xxx.xxx.xx"
-</span><span class='line'>$ pbcopy &lt; ~/.ssh/id_rsa.pub #copy pubkey to clipboard</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. on Github</h3>
-
-<p>github 申請帳號 (e.g. xxxx)<br/>
-github 建立 xxxx.github.io 的repository<br/>
-github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh key</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/16/how-to-install-octopress-on-github/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/4">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -667,23 +924,23 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a>
+        <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a>
+        <a href="/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/">How to Use All View and Helper Methods in Rails Console</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
+        <a href="/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/">How to Get a List of a Class or Instance Methods by Keyword</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/20/rails-scaffold-create-erb-rather-thean-haml-after-bundling-rails-haml-gem/">Rails Scaffold Create .erb Rather Thean .haml After Bundling Rails-haml Gem</a>
+        <a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
+        <a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a>
       </li>
     
   </ul>

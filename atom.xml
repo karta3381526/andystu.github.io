@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-04T11:48:37+08:00</updated>
+  <updated>2015-02-07T23:26:05+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,258 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/"/>
+    <updated>2015-02-07T21:07:46+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems</id>
+    <content type="html"><![CDATA[<h3>If we want add more info with ID in URL for specific instance of model, the easy way is to override the to_param method.</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Model</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_params</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">parameterize</span> <span class="c1">#</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>However, we still need the ID at the start of our parameterized URL value for Rails ActiveRecord to find the correct model instance. If we don’t want IDs to be presented in URLs at all, the friendly_id gem is a great choice for this.</p></li>
+<li><p>How to install and use <a href="https://github.com/norman/friendly_id">friendly_id</a> in your rails project.</p></li>
+<li>Here we also install <a href="https://github.com/norman/babosa">babosa</a> for multiple languages.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># add this to your Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;friendly_id&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;babosa&#39;</span> <span class="c1"># this is for locale sensitive transliteration, with support for many languages.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># in rails project</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>rails generate friendly_id
+</span><span class='line'><span class="nv">$ </span>rails generate migration add_slug_to_models slug:string
+</span><span class='line'><span class="nv">$ </span>rake db:migrate
+</span><span class='line'>
+</span><span class='line'><span class="c">#in rails console</span>
+</span><span class='line'>
+</span><span class='line'>If all have been already <span class="k">done</span>, we should run rails console and save all our model records again.
+</span><span class='line'>&gt; Model.find_each<span class="o">(</span><span class="p">&amp;</span>:save<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<h3>modify our rails model</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># edit app/models/model.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Model</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">FriendlyId</span>
+</span><span class='line'>  <span class="n">friendly_id</span> <span class="ss">:column_name</span><span class="p">,</span> <span class="ss">use</span><span class="p">:</span> <span class="ss">:slugged</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># :history =&gt; won&#39;t change friendly id after updating :column_name</span>
+</span><span class='line'>  <span class="c1"># :finder =&gt; no need to add .friendly method with Model anymore (gem&#39;s version should be above v5.0)</span>
+</span><span class='line'>  <span class="c1"># use: [:slugged, :history, :finder]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># for genereate friendly_id</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">should_generate_new_friendly_id?</span>
+</span><span class='line'>    <span class="n">new_record?</span> <span class="o">||</span> <span class="n">slug</span><span class="o">.</span><span class="n">blank?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># for locale sensitive transliteration with friendly_id</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">normalize_friendly_id</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">to_slug</span><span class="o">.</span><span class="n">normalize</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>reference
+<a href="http://rubysnippets.com/2013/02/04/rails-seo-pretty-urls-in-rails/">http://rubysnippets.com/2013/02/04/rails-seo-pretty-urls-in-rails/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Use All View and Helper Methods in Rails Console]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/"/>
+    <updated>2015-02-07T00:56:39+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console</id>
+    <content type="html"><![CDATA[<h3>run and preview a view helper</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">YourController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">my_helper</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="no">ApplicationController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">content_tag</span><span class="p">(</span><span class="ss">:div</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>create params in rails console</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># ActionController::Parameters.new</span>
+</span><span class='line'><span class="n">params</span> <span class="o">=</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Parameters</span><span class="o">.</span><span class="n">new</span><span class="p">({</span>
+</span><span class='line'>  <span class="ss">person</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Francesco&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">age</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">role</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>reference
+<a href="http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html">http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Get a List of a Class or Instance Methods by Keyword]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/"/>
+    <updated>2015-02-06T23:29:43+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword</id>
+    <content type="html"><![CDATA[<h4>a very useful tip to find methods in ruby/rails console</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Class.methods.grep(/keyword/) </span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># e.g. </span>
+</span><span class='line'><span class="n">irb</span><span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/to/</span><span class="p">)</span> <span class="c1">#  =&gt; [:to_s, :to_f, :to_default_s, :to_json, :upto, :downto, :to_i, :to_int, :numerator, :denominator, :to_r, :to_bn, :to_d, :singleton_method_added, :to_c, :to_formatted_s, :to_param, :to_query, :psych_to_yaml, :to_yaml, :to_yaml_properties, :singleton_class, :singleton_methods, :respond_to?, :singleton_method, :define_singleton_method, :to_enum]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Class.instance_methods.grep(/method/) #  =&gt; [:instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Class.methods.grep(/new/) # =&gt; [&quot;new&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/"/>
+    <updated>2015-02-06T14:17:39+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested</id>
+    <content type="html"><![CDATA[<h4>How to fix Octopress &ldquo;build warning Layout nil requested&rdquo;</h4>
+
+<p><code>
+After changing some themes of octopress then rake generate might produce some errors like this:
+Build Warning: Layout 'nil' requested in .....atom.xml does not exist.
+</code></p>
+
+<h4>Fix by replacing:</h4>
+
+<p><code>layout: nil</code>
+with:
+<code>layout: null</code>
+in files:
+<code>
+source/atom.xml
+source/robots.txt
+source/_includes/custom/category_feed.xml
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ujs / Sjr Usage Hint]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/05/ujs-slash-sjr-usage-hint/"/>
+    <updated>2015-02-05T10:52:25+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/05/ujs-slash-sjr-usage-hint</id>
+    <content type="html"><![CDATA[<h3>ujs / sjr usage hint for rails link_to method and form!</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A. Enable feature of ajax for Link
+</span><span class='line'>  1. link_to 要加 remote: true, path 要是 .js 的 format
+</span><span class='line'>  2. 要確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>B. Enable feature of ajax for Form
+</span><span class='line'>  1. form_for(@record, format: :js, remote: true)
+</span><span class='line'>  2. 確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>對應的 js.erb 必須處接下來的事情 e.g. 刪除資料、redirects、update forms ... etc</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bootstrap Tips: Some Resources for Bootstrap Customization]]></title>
@@ -53,11 +305,15 @@
 <p><a href="http://www.layoutit.com/">http://www.layoutit.com/</a></p>
 
 <ul>
-<li>extensible tools</li>
+<li>useful plug-ins</li>
 </ul>
 
 
 <p><a href="http://vitalets.github.io/x-editable/">http://vitalets.github.io/x-editable/</a></p>
+
+<p><a href="https://github.com/rorlab/bootstrap-tagsinput-rails">https://github.com/rorlab/bootstrap-tagsinput-rails</a></p>
+
+<p><a href="http://timschlechter.github.io/bootstrap-tagsinput/examples/">http://timschlechter.github.io/bootstrap-tagsinput/examples/</a></p>
 
 <ul>
 <li>important reference</li>
@@ -1172,282 +1428,6 @@ Product_types belong to product and product has many product types.</p>
 <h4>[reference]</h4>
 
 <p><a href="https://github.com/plataformatec/simple_form">https://github.com/plataformatec/simple_form</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: Link_to Helper for params.merge]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge/"/>
-    <updated>2015-01-02T16:52:02+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/02/rails-tips-link-to-helper-for-params-dot-merge</id>
-    <content type="html"><![CDATA[<h3></h3>
-
-<ul>
-<li>To preserve the params of url I did this:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span>app/views/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;Foot type&#39;</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="ss">foot_type_id</span><span class="p">:</span> <span class="n">value</span><span class="p">))</span> <span class="o">%&gt;</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>app/controllers/recipes_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="no">Recipe</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_type_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_type_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">food_preference_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:food_preference_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@recipes</span> <span class="o">=</span> <span class="vi">@recipes</span><span class="o">.</span><span class="n">cuisine_of</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:cuisine_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>alternative solutions</h3>
-
-<p><a href="http://filterrific.clearcove.ca">http://filterrific.clearcove.ca</a> <br/>
-<a href="http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails">http://www.lauradhamilton.com/how-to-filter-by-multiple-options-filterrific-rails</a> <br/>
-<a href="https://github.com/plataformatec/has_scope">https://github.com/plataformatec/has_scope</a></p>
-
-<h4>[reference]</h4>
-
-<p><a href="http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  ">http://apidock.com/rails/v3.2.13/ActionView/Helpers/UrlHelper/url_for  </a>
-<a href="http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails">http://stackoverflow.com/questions/6625293/how-to-add-parameters-to-current-url-in-rails</a> <br/>
-<a href="http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/">http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/</a> <br/>
-<a href="http://guides.rubyonrails.org/active_record_querying.html#scopes">http://guides.rubyonrails.org/active_record_querying.html#scopes</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RubyGems: Brakeman and Rails_best_practices]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices/"/>
-    <updated>2015-01-02T10:04:02+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/02/gems-brakeman-and-rails-best-practices</id>
-    <content type="html"><![CDATA[<h3>brakeman : Ruby on Rails 專案安全性檢測工具</h3>
-
-<p><code>Brakeman is an open source vulnerability scanner specifically designed for Ruby on Rails applications. It statically analyzes Rails application code to find security issues at any stage of development.</code></p>
-
-<h3>rails_best_practices : Ruby on Rails 專案程式碼品質評測工具</h3>
-
-<p><code>rails_best_practices is a code metric tool to check the quality of rails codes.</code></p>
-
-<h3>installation (add those gems to your Gemfile)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;brakeman&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;rails_best_practices&quot;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># require: false =&gt; means that we don&#39;t want to run that gem when start rails server</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>usage (recommand using those tools before each commit)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">brakeman</span>
-</span><span class='line'><span class="c1"># report screenshot</span>
-</span><span class='line'><span class="o">+</span><span class="no">SUMMARY</span><span class="o">+</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">+-------------------+-------+</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Scanned</span><span class="o">/</span><span class="no">Reported</span>  <span class="o">|</span> <span class="no">Total</span> <span class="o">|</span>
-</span><span class='line'><span class="o">+-------------------+-------+</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Controllers</span>       <span class="o">|</span> <span class="mi">2</span>     <span class="o">|</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Models</span>            <span class="o">|</span> <span class="mi">5</span>     <span class="o">|</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Templates</span>         <span class="o">|</span> <span class="mi">6</span>     <span class="o">|</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Errors</span>            <span class="o">|</span> <span class="mi">0</span>     <span class="o">|</span>
-</span><span class='line'><span class="o">|</span> <span class="no">Security</span> <span class="no">Warnings</span> <span class="o">|</span> <span class="mi">0</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span>
-</span><span class='line'><span class="o">+-------------------+-------+</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">$</span> <span class="n">rails_best_practices</span>
-</span><span class='line'><span class="c1"># report screenshot</span>
-</span><span class='line'><span class="no">Source</span> <span class="ss">Codes</span><span class="p">:</span> <span class="o">|======================================================================================================================================|</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">food_type_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">food_preference_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">db</span><span class="o">/</span><span class="n">schema</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">34</span> <span class="o">-</span> <span class="n">always</span> <span class="n">add</span> <span class="n">db</span> <span class="n">index</span> <span class="p">(</span><span class="n">recipes</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="n">cuisine_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">24</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">25</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">26</span> <span class="o">-</span> <span class="n">law</span> <span class="n">of</span> <span class="n">demeter</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">helpers</span><span class="o">/</span><span class="n">recipes_helper</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">empty</span> <span class="n">helpers</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">8</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#food_type_of)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">9</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#food_preference_of)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">10</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">unused</span> <span class="nb">methods</span> <span class="p">(</span><span class="no">Recipe</span><span class="c1">#cuisine_of)</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">2</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">4</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="n">recipes</span><span class="o">/</span><span class="n">_form</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span><span class="p">:</span><span class="mi">7</span> <span class="o">-</span> <span class="n">replace</span> <span class="n">instance</span> <span class="n">variable</span> <span class="n">with</span> <span class="n">local</span> <span class="n">variable</span>
-</span><span class='line'><span class="n">rails_app</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">recipe</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">8</span> <span class="o">-</span> <span class="n">remove</span> <span class="n">trailing</span> <span class="n">whitespace</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>[reference]</h4>
-
-<p><a href="http://brakemanscanner.org">http://brakemanscanner.org</a> <br/>
-<a href="http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project">http://rails101s.logdown.com/posts/247140-20-1-0-create-a-rails-project</a>  <br/>
-<a href="https://github.com/railsbp/rails_best_practices">https://github.com/railsbp/rails_best_practices</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: List Models (Tables) (How-to)]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to/"/>
-    <updated>2015-01-01T10:26:13+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/01/list-models-tables-in-rails-console-how-to</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
-</span><span class='line'> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table_name</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">table_name</span>
-</span><span class='line'>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">to_s</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">limit</span><span class="o">.</span><span class="n">to_s</span><span class="p">}</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># or</span>
-</span><span class='line'> <span class="no">Model</span><span class="o">.</span><span class="n">column_names</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># or</span>
-</span><span class='line'> <span class="no">Model</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span> <span class="c1"># list all models retuen as an array</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span> <span class="c1"># list model(table) detail</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Link_to Usage Tips]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/31/link-to-usage-tips/"/>
-    <updated>2014-12-31T16:57:16+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/31/link-to-usage-tips</id>
-    <content type="html"><![CDATA[<h3>some tips for link_to helper</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#in view/xxxx.html.erb</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;LINK_NAME&quot;, xxx_path %&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;LINK_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;LINK_URL&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="s2">&quot;ID_NAME&quot;</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s2">&quot;CLASS_NAME&quot;</span> <span class="o">%&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># use it like a block</span>
-</span><span class='line'><span class="c1"># 1</span>
-</span><span class='line'><span class="n">link_to</span> <span class="s2">&quot;LINK_URL&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># 2</span>
-</span><span class='line'><span class="n">link_to</span> <span class="n">xxx_path</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">image_tag</span> <span class="s2">&quot;IMAGE_FILE&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Before_action v.s. Before_filter]]></title>
-    <link href="http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter/"/>
-    <updated>2014-12-26T00:11:03+08:00</updated>
-    <id>http://andystu.github.io/blog/2014/12/26/before-action-vs-before-filter</id>
-    <content type="html"><![CDATA[<p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
-
-<ol>
-<li><p>An action is a method of a controller to which you can route to.<br/>
-For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
-<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
-These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
-<li><p>Rails 4 &ndash;> <em>_action<br/>
-Rails 3 &ndash;> </em>_filter</p></li>
-</ol>
-
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-04T11:48:37+08:00</updated>
+  <updated>2015-02-07T23:26:05+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -149,6 +149,16 @@ $ git revert HEAD # make HEAD stage as new stage</p>
 $ git rebase &ndash;continue</p>
 
 <h1>done.</h1>
+
+<h1>To remove untracked files / directories do:</h1>
+
+<p>$ git clean -fdx</p>
+
+<h1>-f - force</h1>
+
+<h1>-d - directories too</h1>
+
+<h1>-x - remove ignored files too ( don&rsquo;t use this if you don&rsquo;t want to remove ignored files)</h1>
 
 <p>&#8220;`</p>
 

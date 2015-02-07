@@ -9,7 +9,14 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="useful online tools for generating bootstrap theme http://pikock.github.io/bootstrap-magic/ http://www.lavishbootstrap.com/ http://paintstrap.com/ &hellip;">
+  <meta name="description" content="If we want add more info with ID in URL for specific instance of model, the easy way is to override the to_param method. 1
+2
+3
+4
+5
+6
+7
+class Model & &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +84,310 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-07T21:07:46+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:07 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>If we want add more info with ID in URL for specific instance of model, the easy way is to override the to_param method.</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Model</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_params</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">parameterize</span> <span class="c1">#</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>However, we still need the ID at the start of our parameterized URL value for Rails ActiveRecord to find the correct model instance. If we don’t want IDs to be presented in URLs at all, the friendly_id gem is a great choice for this.</p></li>
+<li><p>How to install and use <a href="https://github.com/norman/friendly_id">friendly_id</a> in your rails project.</p></li>
+<li>Here we also install <a href="https://github.com/norman/babosa">babosa</a> for multiple languages.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># add this to your Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;friendly_id&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;babosa&#39;</span> <span class="c1"># this is for locale sensitive transliteration, with support for many languages.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># in rails project</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>rails generate friendly_id
+</span><span class='line'><span class="nv">$ </span>rails generate migration add_slug_to_models slug:string
+</span><span class='line'><span class="nv">$ </span>rake db:migrate
+</span><span class='line'>
+</span><span class='line'><span class="c">#in rails console</span>
+</span><span class='line'>
+</span><span class='line'>If all have been already <span class="k">done</span>, we should run rails console and save all our model records again.
+</span><span class='line'>&gt; Model.find_each<span class="o">(</span><span class="p">&amp;</span>:save<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/">How to Use All View and Helper Methods in Rails Console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-07T00:56:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:56 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>run and preview a view helper</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">YourController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">my_helper</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="no">ApplicationController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">content_tag</span><span class="p">(</span><span class="ss">:div</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>create params in rails console</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># ActionController::Parameters.new</span>
+</span><span class='line'><span class="n">params</span> <span class="o">=</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Parameters</span><span class="o">.</span><span class="n">new</span><span class="p">({</span>
+</span><span class='line'>  <span class="ss">person</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Francesco&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">age</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">role</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>reference
+<a href="http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html">http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/">How to Get a List of a Class or Instance Methods by Keyword</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-06T23:29:43+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:29 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>a very useful tip to find methods in ruby/rails console</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Class.methods.grep(/keyword/) </span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># e.g. </span>
+</span><span class='line'><span class="n">irb</span><span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/to/</span><span class="p">)</span> <span class="c1">#  =&gt; [:to_s, :to_f, :to_default_s, :to_json, :upto, :downto, :to_i, :to_int, :numerator, :denominator, :to_r, :to_bn, :to_d, :singleton_method_added, :to_c, :to_formatted_s, :to_param, :to_query, :psych_to_yaml, :to_yaml, :to_yaml_properties, :singleton_class, :singleton_methods, :respond_to?, :singleton_method, :define_singleton_method, :to_enum]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Class.instance_methods.grep(/method/) #  =&gt; [:instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Class.methods.grep(/new/) # =&gt; [&quot;new&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-06T14:17:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>How to fix Octopress &ldquo;build warning Layout nil requested&rdquo;</h4>
+
+<p><code>
+After changing some themes of octopress then rake generate might produce some errors like this:
+Build Warning: Layout 'nil' requested in .....atom.xml does not exist.
+</code></p>
+
+<h4>Fix by replacing:</h4>
+
+<p><code>layout: nil</code>
+with:
+<code>layout: null</code>
+in files:
+<code>
+source/atom.xml
+source/robots.txt
+source/_includes/custom/category_feed.xml
+</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-05T10:52:25+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:52 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>ujs / sjr usage hint for rails link_to method and form!</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A. Enable feature of ajax for Link
+</span><span class='line'>  1. link_to 要加 remote: true, path 要是 .js 的 format
+</span><span class='line'>  2. 要確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>B. Enable feature of ajax for Form
+</span><span class='line'>  1. form_for(@record, format: :js, remote: true)
+</span><span class='line'>  2. 確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>對應的 js.erb 必須處接下來的事情 e.g. 刪除資料、redirects、update forms ... etc</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -348,280 +659,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/19/how-to-upgrade-your-rails-app/">How to Upgrade Your Rails App?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-19T10:50:23+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:50 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>updating the Rails version in the Gemfile and run this rake task.</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># Gemfile
-</span><span class='line'># Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-</span><span class='line'>gem 'rails', '4.x.x' # &lt;- updating the version of rails info
-</span><span class='line'>
-</span><span class='line'>$ rake rails:update</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<p><a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html">http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Generate Html Table From Array or Hash</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-14T16:24:34+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:24 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>install gem builder</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install builder</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Use Builder for generate HTML table</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Use the XMLBuilder for this:</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;builder&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="p">{</span><span class="s2">&quot;col1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;col1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v3&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v4&quot;</span><span class="p">}</span><span class="o">]</span>
-</span><span class='line'><span class="n">xm</span> <span class="o">=</span> <span class="no">Builder</span><span class="o">::</span><span class="no">XmlMarkup</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:indent</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'><span class="n">xm</span><span class="o">.</span><span class="n">table</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">xm</span><span class="o">.</span><span class="n">tr</span> <span class="p">{</span> <span class="n">data</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">th</span><span class="p">(</span><span class="n">key</span><span class="p">)}}</span>
-</span><span class='line'>  <span class="n">data</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">tr</span> <span class="p">{</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">value</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">td</span><span class="p">(</span><span class="n">value</span><span class="p">)}}}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">xm</span><span class="si">}</span><span class="s2">&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/01/14/generate-html-table-from-array-or-hash/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/14/rails-object-to-hash/">Rails Object to Hash</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-14T12:26:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:26 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
-</span><span class='line'><span class="c1"># irb</span>
-</span><span class='line'><span class="c1"># Model object -&gt; hash</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span><span class="o">.</span><span class="n">attributes</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># OpenStruct object -&gt; hash</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span><span class="s2">&quot;this is title&quot;</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span><span class="o">.</span><span class="n">to_h</span>
-</span><span class='line'><span class="c1"># equals to -&gt; ActionController::Parameters.new(@p.to_h)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/13/how-to-use-command-line-show-git-tree/">How to Use Command Line Show Git Tree</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-13T18:11:36+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:11 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git log --pretty<span class="o">=</span>oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>git log --oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>gitk --simplify-by-decoration --all
-</span><span class='line'><span class="nv">$ </span>gitk --all
-</span><span class='line'><span class="nv">$ </span>git show-branch --all
-</span><span class='line'><span class="nv">$ </span>git log --all --graph --decorate --oneline --simplify-by-decoration
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/13/my-dynamic-form-implementing-note/">Dynamic Form Implementing Note</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-13T14:40:41+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:40 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g scaffold product name price:decimal
-</span><span class='line'>$ rails g scaffold product_type name
-</span><span class='line'>$ rails g scaffold product_field name field_type required:boolean product_type:belongs_to
-</span><span class='line'>$ rails g migration add_type_to_product product_type:belongs_to properties:text
-</span><span class='line'>$ rake db:migrate</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/routes.rb</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:product_types</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;products#index&#39;</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/01/13/my-dynamic-form-implementing-note/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -641,23 +678,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a>
+        <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a>
+        <a href="/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/">How to Use All View and Helper Methods in Rails Console</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a>
+        <a href="/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/">How to Get a List of a Class or Instance Methods by Keyword</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/20/rails-scaffold-create-erb-rather-thean-haml-after-bundling-rails-haml-gem/">Rails Scaffold Create .erb Rather Thean .haml After Bundling Rails-haml Gem</a>
+        <a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a>
+        <a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a>
       </li>
     
   </ul>
