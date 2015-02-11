@@ -9,13 +9,15 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="updating the Rails version in the Gemfile and run this rake task. 1
+  <meta name="description" content="To make jquery event work, the easiest way is to use jquery.turbolinks.
+To install it, just add this to your Gemfile: 1
 2
 3
 4
 5
-# Gemfile
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails &hellip;">
+6
+7
+gem 'jquery- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +85,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/">How to Make Jquery Event Work in Rails App?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-19T11:08:28+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:08 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><p>To make jquery event work, the easiest way is to use jquery.turbolinks.</p></li>
+<li><p>To install it, just add this to your Gemfile:</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'jquery-turbolinks'
+</span><span class='line'>
+</span><span class='line'># and add this to your assets/javascripts/application.js file.
+</span><span class='line'>
+</span><span class='line'>//= require jquery.turbolinks
+</span><span class='line'>
+</span><span class='line'># and it should be worked good.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>done.</h4>
+
+<p><a href="http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application">http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -813,47 +868,6 @@ Product_types belong to product and product has many product types.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/03/rubygems-why-simple-form/">RubyGems: Why Simple_form?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-03T00:45:32+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:45 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>why use simple_form</h3>
-
-<ol>
-<li>Required fields are marked with an * prepended to their labels.</li>
-<li>Simple Form also lets you overwrite the default input type it creates:</li>
-<li>You can overwrite the default label by passing it to the input method. You can also add a hint or even a placeholder. For boolean inputs, you can add an inline label as well.</li>
-<li>It is also possible to pass any html attribute straight to the input, by using the :input_html option.</li>
-</ol>
-
-
-<h4>[reference]</h4>
-
-<p><a href="https://github.com/plataformatec/simple_form">https://github.com/plataformatec/simple_form</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -875,6 +889,10 @@ Product_types belong to product and product has many product types.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/11/how-to-fix-simple-search-of-octopress/">How to Fix Simple Search of Octopress</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
@@ -888,10 +906,6 @@ Product_types belong to product and product has many product types.</p>
     
       <li class="post">
         <a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a>
       </li>
     
   </ul>

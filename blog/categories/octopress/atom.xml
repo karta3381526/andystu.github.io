@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-02-11T14:38:56+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Fix Simple Search of Octopress]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/11/how-to-fix-simple-search-of-octopress/"/>
+    <updated>2015-02-11T14:37:17+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/11/how-to-fix-simple-search-of-octopress</id>
+    <content type="html"><![CDATA[<h3>find navigation.html in /source/_includes and replace original code with new code</h3>
+
+<p>&#8220;` html
+&hellip;
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search"></p>
+
+<!-- original code  -->
+
+
+<!--     <input type="hidden" name="q" value="site:andystu.github.io" /> &#8211;>
+
+
+<!-- //original code  -->
+
+
+
+
+<!-- new code -->
+
+
+<pre><code>&lt;input type="hidden" name="sitesearch" value="andystu.github.io" /&gt;
+</code></pre>
+
+<!-- //new code -->
+
+
+<pre><code>&lt;input class="search" type="text" name="q" results="0" placeholder="Search"/&gt;
+</code></pre>
+
+<p>  </fieldset>
+</form>
+&hellip;
+&#8220;`</p>
+
+<p>done.</p>
+
+<p>reference
+<a href="http://kaspars.net/blog/wordpress/how-to-add-google-site-search">http://kaspars.net/blog/wordpress/how-to-add-google-site-search</a></p>
+]]></content>
+  </entry>
+  
+</feed>
