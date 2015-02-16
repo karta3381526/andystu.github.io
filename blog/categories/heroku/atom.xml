@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Heroku | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/heroku/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-11T14:38:56+08:00</updated>
+  <updated>2015-02-16T10:26:36+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install and Deploy Redmine 2.6.x on Heroku]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/"/>
+    <updated>2015-02-16T09:40:12+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku</id>
+    <content type="html"><![CDATA[<pre><code>$ git clone https://github.com/redmine/redmine.git -b 2.6-stable
+$ cd redmine
+</code></pre>
+
+<h1>remove those files from .gitignore</h1>
+
+<pre><code>Gemfile.lock
+Gemfile.local
+public/plugin_assets 
+config/initializers/session_store.rb 
+config/initializers/secret_token.rb 
+config/configuration.yml 
+config/email.yml
+</code></pre>
+
+<h1>remove those block from Gemfile</h1>
+
+<pre><code>platforms :mri, :mingw do
+  # Optional gem for exporting the gantt to a PNG file, not supported with jruby
+  group :rmagick do
+    # RMagick 2 supports ruby 1.9
+    # RMagick 1 would be fine for ruby 1.8 but Bundler does not support
+    # different requirements for the same gem on different platforms
+    gem "rmagick", (RUBY_VERSION &lt; "1.9" ? "2.13.3" : "&gt;= 2.0.0")
+  end
+
+  # Optional Markdown support, not for JRuby
+  group :markdown do
+    # TODO: upgrade to redcarpet 3.x when ruby1.8 support is dropped
+    gem "redcarpet", "~&gt; 2.3.0"
+  end
+end
+
+platforms :jruby do
+  # jruby-openssl is bundled with JRuby 1.7.0
+  gem "jruby-openssl" if Object.const_defined?(:JRUBY_VERSION) &amp;&amp; JRUBY_VERSION &lt; '1.7.0'
+  gem "activerecord-jdbc-adapter", "~&gt; 1.3.2"
+end
+
+# and
+database_file = File.join(File.dirname(__FILE__), "config/database.yml") if File.exist?(database_file)
+  database_config = YAML::load(ERB.new(IO.read(database_file)).result)
+    ...
+    else
+  warn("No adapter found in config/database.yml, please configure it first") end
+    else
+warn("Please configure your config/database.yml first") end
+</code></pre>
+
+<h1>replace above block with this</h1>
+
+<pre><code>group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'thin' # change this if you want to use other rack web server
+end
+</code></pre>
+
+<h1>bundle it without production</h1>
+
+<pre><code>$ bundle install --without production test
+</code></pre>
+
+<h1>generate secret token for redmine</h1>
+
+<pre><code>$ rake generate_secret_token
+</code></pre>
+
+<h1>create heroku app</h1>
+
+<pre><code>$ heroku create APP_NAME
+</code></pre>
+
+<h1>To avoid aborting when deploying to heroku, we have to do the following two steps: In config/environment.rb we have to remove (or comment) line 10, where it says</h1>
+
+<pre><code>exit 1
+# remove it or comment it
+# exit 1
+</code></pre>
+
+<h1>add this under config/application.rb</h1>
+
+<pre><code>...
+module RedmineApp
+  classApplication&lt;Rails::Application
+    config.assets.initialize_on_precompile = false # add this line
+...
+</code></pre>
+
+<pre><code>$ git add -A
+$ git commit -m "preparing for heroku" 
+$ git push heroku 2.6-stable:master
+</code></pre>
+
+<pre><code>$ heroku run rake db:migrate
+$ heroku run rake redmine:load_default_data
+$ heroku open
+
+# Logging into the application
+# Use default administrator account to log in:
+#
+# login: admin
+# password: admin
+# 
+</code></pre>
+
+<h1>done and lets go to play redmine on heroku</h1>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Change Default Web Server and Timezone for Heroku]]></title>

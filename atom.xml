@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-11T14:38:56+08:00</updated>
+  <updated>2015-02-16T10:26:36+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,202 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install and Deploy Redmine 2.6.x on Heroku]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/"/>
+    <updated>2015-02-16T09:40:12+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/redmine/redmine.git -b 2.6-stable
+</span><span class='line'>$ cd redmine</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>remove those files from .gitignore</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Gemfile.lock
+</span><span class='line'>Gemfile.local
+</span><span class='line'>public/plugin_assets 
+</span><span class='line'>config/initializers/session_store.rb 
+</span><span class='line'>config/initializers/secret_token.rb 
+</span><span class='line'>config/configuration.yml 
+</span><span class='line'>config/email.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>remove those block from Gemfile</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platforms :mri, :mingw do
+</span><span class='line'>  # Optional gem for exporting the gantt to a PNG file, not supported with jruby
+</span><span class='line'>  group :rmagick do
+</span><span class='line'>    # RMagick 2 supports ruby 1.9
+</span><span class='line'>    # RMagick 1 would be fine for ruby 1.8 but Bundler does not support
+</span><span class='line'>    # different requirements for the same gem on different platforms
+</span><span class='line'>    gem "rmagick", (RUBY_VERSION &lt; "1.9" ? "2.13.3" : "&gt;= 2.0.0")
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  # Optional Markdown support, not for JRuby
+</span><span class='line'>  group :markdown do
+</span><span class='line'>    # TODO: upgrade to redcarpet 3.x when ruby1.8 support is dropped
+</span><span class='line'>    gem "redcarpet", "~&gt; 2.3.0"
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>platforms :jruby do
+</span><span class='line'>  # jruby-openssl is bundled with JRuby 1.7.0
+</span><span class='line'>  gem "jruby-openssl" if Object.const_defined?(:JRUBY_VERSION) && JRUBY_VERSION &lt; '1.7.0'
+</span><span class='line'>  gem "activerecord-jdbc-adapter", "~&gt; 1.3.2"
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># and
+</span><span class='line'>database_file = File.join(File.dirname(__FILE__), "config/database.yml") if File.exist?(database_file)
+</span><span class='line'>  database_config = YAML::load(ERB.new(IO.read(database_file)).result)
+</span><span class='line'>    ...
+</span><span class='line'>    else
+</span><span class='line'>  warn("No adapter found in config/database.yml, please configure it first") end
+</span><span class='line'>    else
+</span><span class='line'>warn("Please configure your config/database.yml first") end
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>replace above block with this</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development, :test do
+</span><span class='line'>  gem 'sqlite3'
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>group :production do
+</span><span class='line'>  gem 'pg'
+</span><span class='line'>  gem 'rails_12factor'
+</span><span class='line'>  gem 'thin' # change this if you want to use other rack web server
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>bundle it without production</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install --without production test</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>generate secret token for redmine</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate_secret_token</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>create heroku app</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku create APP_NAME</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>To avoid aborting when deploying to heroku, we have to do the following two steps: In config/environment.rb we have to remove (or comment) line 10, where it says</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>exit 1
+</span><span class='line'># remove it or comment it
+</span><span class='line'># exit 1</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>add this under config/application.rb</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>...
+</span><span class='line'>module RedmineApp
+</span><span class='line'>  classApplication&lt;Rails::Application
+</span><span class='line'>    config.assets.initialize_on_precompile = false # add this line
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add -A
+</span><span class='line'>$ git commit -m "preparing for heroku" 
+</span><span class='line'>$ git push heroku 2.6-stable:master</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku run rake db:migrate
+</span><span class='line'>$ heroku run rake redmine:load_default_data
+</span><span class='line'>$ heroku open
+</span><span class='line'>
+</span><span class='line'># Logging into the application
+</span><span class='line'># Use default administrator account to log in:
+</span><span class='line'>#
+</span><span class='line'># login: admin
+</span><span class='line'># password: admin
+</span><span class='line'># </span></code></pre></td></tr></table></div></figure>
+
+
+<h1>done and lets go to play redmine on heroku</h1>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Fix Simple Search of Octopress]]></title>
@@ -1418,40 +1614,6 @@ source/_includes/custom/category_feed.xml
 </span><span class='line'><span class="nv">$ </span>heroku run rake db:migrate
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Tips: Rails G Scaffold for Reference Field]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field/"/>
-    <updated>2015-01-03T11:02:27+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/03/rails-tips-rails-g-scaffold-for-reference-field</id>
-    <content type="html"><![CDATA[<p>Rails scaffold generators are very smart! you can use belongs_to to quickly add relations.
-In the following example, I have 2 models products and product_types;
-Product_types belong to product and product has many product types.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g scaffold product name:string
-</span><span class='line'><span class="nv">$ </span>rails g scaffold product_type name:string product:belongs_to
-</span><span class='line'>
-</span><span class='line'><span class="c"># You can also use :references</span>
-</span><span class='line'><span class="nv">$ </span>rails g scaffold product_type name:string product:references
-</span><span class='line'>
-</span><span class='line'><span class="c"># For more manually work, you can do it like this</span>
-</span><span class='line'><span class="nv">$ </span>rails g scaffold product_type name:string product_id:integer
-</span><span class='line'><span class="c"># then add &quot;belongs_to&quot; in your ProductType model</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will generate the necessary columns, indexes and associations in your models.</p>
 ]]></content>
   </entry>
   
