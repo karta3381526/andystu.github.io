@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Redmine | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/redmine/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-16T10:29:53+08:00</updated>
+  <updated>2015-02-16T11:32:10+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -183,6 +183,8 @@ $ heroku open
 # login: admin
 # password: admin
 # 
+# if you want to reset db, run the following command
+# heroku pg:reset DB_NAME
 </code></pre>
 
 <ul>

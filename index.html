@@ -308,6 +308,8 @@ Gemfile.lock &hellip;">
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku run rake db:migrate
 </span><span class='line'>$ heroku run rake redmine:load_default_data
 </span><span class='line'>$ heroku open
@@ -317,7 +319,9 @@ Gemfile.lock &hellip;">
 </span><span class='line'>#
 </span><span class='line'># login: admin
 </span><span class='line'># password: admin
-</span><span class='line'># </span></code></pre></td></tr></table></div></figure>
+</span><span class='line'># 
+</span><span class='line'># if you want to reset db, run the following command
+</span><span class='line'># heroku pg:reset DB_NAME</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
