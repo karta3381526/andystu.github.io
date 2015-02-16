@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-16T10:26:36+08:00</updated>
+  <updated>2015-02-16T10:29:53+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -24,7 +24,10 @@
 </span><span class='line'>$ cd redmine</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>remove those files from .gitignore</h1>
+<ul>
+<li>remove those files from .gitignore</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -42,7 +45,10 @@
 </span><span class='line'>config/email.yml</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>remove those block from Gemfile</h1>
+<ul>
+<li>remove those block from Gemfile</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -107,7 +113,10 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>replace above block with this</h1>
+<ul>
+<li>replace above block with this</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -129,25 +138,37 @@
 </span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>bundle it without production</h1>
+<ul>
+<li>bundle it without production</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install --without production test</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>generate secret token for redmine</h1>
+<ul>
+<li>generate secret token for redmine</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate_secret_token</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>create heroku app</h1>
+<ul>
+<li>create heroku app</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku create APP_NAME</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>To avoid aborting when deploying to heroku, we have to do the following two steps: In config/environment.rb we have to remove (or comment) line 10, where it says</h1>
+<ul>
+<li>To avoid aborting when deploying to heroku, we have to do the following two steps: In config/environment.rb we have to remove (or comment) line 10, where it says</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -157,7 +178,10 @@
 </span><span class='line'># exit 1</span></code></pre></td></tr></table></div></figure>
 
 
-<h1>add this under config/application.rb</h1>
+<ul>
+<li>add this under config/application.rb</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -205,7 +229,10 @@
 </span><span class='line'># </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>done and lets go to play redmine on heroku</h1>
+<ul>
+<li>done.</li>
+</ul>
+
 ]]></content>
   </entry>
   
