@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Command Line | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/command-line/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-02-17T15:47:49+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku Command Line Tips]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/17/heroku-command-line-tips/"/>
+    <updated>2015-02-17T15:44:05+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/17/heroku-command-line-tips</id>
+    <content type="html"><![CDATA[<pre><code>$ heroku apps:rename NEW_APP_NAME # for rename app
+$ heroku create NEW_APP_NAME # for create new name
+$ heroku pg:reset DB_NAME # for reset DB
+$ git remote add heroku git@heroku.com:project.git
+$ heroku git:remote -a APP_NAME
+$ heroku keys:add
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

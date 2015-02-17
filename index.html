@@ -11,15 +11,13 @@
   
   <meta name="description" content="1
 2
-$ git clone https://github.com/redmine/redmine.git -b 2.6-stable
-$ cd redmine remove those files from .gitignore 1
-2
 3
 4
 5
 6
-7
-Gemfile.lock &hellip;">
+$ heroku apps:rename NEW_APP_NAME # for rename app
+$ heroku create NEW_APP_NAME # for create new name
+$ heroku pg:reset DB_NAME # for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +85,90 @@ Gemfile.lock &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-17T15:44:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:44 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku apps:rename NEW_APP_NAME # for rename app
+</span><span class='line'>$ heroku create NEW_APP_NAME # for create new name
+</span><span class='line'>$ heroku pg:reset DB_NAME # for reset DB
+</span><span class='line'>$ git remote add heroku git@heroku.com:project.git
+</span><span class='line'>$ heroku git:remote -a APP_NAME
+</span><span class='line'>$ heroku keys:add</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/17/rails-tip-how-to-update-attributes-without-save/">Rails Tip: How to Update Attributes Without Save</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-17T15:31:32+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:31 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><p>generally, when we use update_attributes, it will save automatically. however, what if we just want to new an record and update some attributes of it. what can we do?</p></li>
+<li><p>We can use <em>assign_attributes</em> method.</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>user = User.new
+</span><span class='line'>user.assign_attributes({ :name =&gt; 'Andy'})
+</span><span class='line'>user.name        # =&gt; "Andy"
+</span><span class='line'>user.new_record? # =&gt; true</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -753,104 +835,6 @@ source/_includes/custom/category_feed.xml
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/02/rails-project-rake-tips/">Rails Project Rake Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-02T22:50:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:50 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>Rails image disappears with error: Failed to load resource:</li>
-<li>net::ERR_CONTENT_LENGTH_MISMATCH</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake tmp:clear <span class="c"># for recompile asset tmp</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/02/rails-console-tips-table-operations/">Rails Console Tips: Table Operations</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-02T18:04:19+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>6:04 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>In rails console, you can</h2>
-
-<h3>list tables</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>list a table structure (but it is a protected method)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># this dose not work. </span>
-</span><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">table_structure</span><span class="p">(</span><span class="s2">&quot;projects&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># we should utilize send method to call protected method</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@c</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:table_structure</span><span class="p">,</span> <span class="s2">&quot;xxxs&quot;</span><span class="p">)</span> <span class="c1"># xxxs is your model name</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>show table schema</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">columns</span> <span class="ss">:table_name</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -870,6 +854,14 @@ source/_includes/custom/category_feed.xml
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/17/rails-tip-how-to-update-attributes-without-save/">Rails Tip: How to Update Attributes Without Save</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
       </li>
     
@@ -879,14 +871,6 @@ source/_includes/custom/category_feed.xml
     
       <li class="post">
         <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/">How to Use All View and Helper Methods in Rails Console</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/">How to Get a List of a Class or Instance Methods by Keyword</a>
       </li>
     
   </ul>
