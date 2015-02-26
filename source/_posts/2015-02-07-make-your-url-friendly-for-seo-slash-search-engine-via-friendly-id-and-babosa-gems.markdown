@@ -15,6 +15,7 @@ class Model < ActiveRecord::Base
 
 end
 ```
+<!-- more -->
 - However, we still need the ID at the start of our parameterized URL value for Rails ActiveRecord to find the correct model instance. If we don’t want IDs to be presented in URLs at all, the friendly_id gem is a great choice for this.
 
 - How to install and use [friendly_id](https://github.com/norman/friendly_id) in your rails project. 

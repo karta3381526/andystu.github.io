@@ -20,6 +20,7 @@ config/initializers/secret_token.rb
 config/configuration.yml 
 config/email.yml
 ```
+<!-- more -->
 - remove those block from Gemfile
 ```
 platforms :mri, :mingw do
