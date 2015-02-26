@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-17T15:47:49+08:00</updated>
+  <updated>2015-02-26T15:36:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,148 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install and Use Ckeditor and Paperclip in Rails App]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/"/>
+    <updated>2015-02-26T14:59:33+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app</id>
+    <content type="html"><![CDATA[<ul>
+<li>In <a href="https://github.com/thoughtbot/paperclip">paperclip</a> requirement, Paperclip must have access to ImageMagick that must be installed. For Mac OS X, we could run this command with Homebrew.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install imagemagick</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>add this to your rails app Gemfile.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'paperclip'
+</span><span class='line'>gem 'ckeditor'</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then bundle it.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>next, we should generate model for <a href="https://github.com/galetahub/ckeditor">paperclip</a> to store uplaoded files</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails generate ckeditor:install --orm=active_record --backend=paperclip</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<ul>
+<li>Don&rsquo;t forget to rake db:migrate</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake db:migrate</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Now, we need to mount it by editing your config/routes.rb</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#...</span>
+</span><span class='line'><span class="n">mount</span> <span class="no">Ckeditor</span><span class="o">::</span><span class="no">Engine</span> <span class="o">=&gt;</span> <span class="s2">&quot;/ckeditor&quot;</span>
+</span><span class='line'><span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add this in your app/assets/javascripts/application.js and make ckeditor working.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">//</span><span class="o">=</span> <span class="nb">require</span> <span class="n">ckeditor</span><span class="o">/</span><span class="n">init</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>In your form view, change f.text_area to f.cktext_area</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= form_for @post do |f| -%&gt;</span>
+</span><span class='line'><span class="sx">#  ...</span>
+</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">cktext_area</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s2">&quot;form-control&quot;</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">#  ...</span>
+</span><span class='line'><span class="sx">&lt;% end -%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Error Message on Brew Install: Error: SHA1 Mismatch]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/"/>
+    <updated>2015-02-19T00:46:10+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch</id>
+    <content type="html"><![CDATA[<ul>
+<li>Sometimes we might get error message when we use brew install xxxxx_package.</li>
+<li>What can we do to solve this?</li>
+<li><p>We could just remove the package which we already download.</p></li>
+<li><p>e.g.</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>...
+</span><span class='line'>Error: SHA1 mismatch
+</span><span class='line'>...
+</span><span class='line'>$ rm /Library/Caches/Homebrew/libpng-1.6.16.tar.xz
+</span><span class='line'># and install it again
+</span><span class='line'>$ brew install libpng
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Heroku Command Line Tips]]></title>
@@ -87,6 +229,9 @@
 </span><span class='line'>config/initializers/secret_token.rb 
 </span><span class='line'>config/configuration.yml 
 </span><span class='line'>config/email.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <ul>
@@ -351,6 +496,9 @@
 </span><span class='line'>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <ul>
@@ -999,429 +1147,6 @@ source/_includes/custom/category_feed.xml
 </span><span class='line'><span class="nv">$ </span>git show-branch --all
 </span><span class='line'><span class="nv">$ </span>git log --all --graph --decorate --oneline --simplify-by-decoration
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dynamic Form Implementing Note]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/13/my-dynamic-form-implementing-note/"/>
-    <updated>2015-01-13T14:40:41+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/13/my-dynamic-form-implementing-note</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g scaffold product name price:decimal
-</span><span class='line'>$ rails g scaffold product_type name
-</span><span class='line'>$ rails g scaffold product_field name field_type required:boolean product_type:belongs_to
-</span><span class='line'>$ rails g migration add_type_to_product product_type:belongs_to properties:text
-</span><span class='line'>$ rake db:migrate</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/routes.rb</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:product_types</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;products#index&#39;</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<!--more-->
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="err">#</span> <span class="nx">assets</span><span class="o">/</span><span class="nx">javascripts</span><span class="o">/</span><span class="nx">product_types</span><span class="p">.</span><span class="nx">js</span><span class="p">.</span><span class="nx">coffee</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;form .remove_fields&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s1">&#39;input[type=hidden]&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;fieldset&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
-</span><span class='line'>  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;form .add_fields&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class='line'>  <span class="nx">time</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
-</span><span class='line'>  <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">before</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;fields&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regexp</span><span class="p">,</span> <span class="nx">time</span><span class="p">))</span>
-</span><span class='line'>  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># models/product.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Product</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:product_type</span>
-</span><span class='line'>  <span class="n">serialize</span> <span class="ss">:properties</span><span class="p">,</span> <span class="no">Hash</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_properties</span>
-</span><span class='line'>    <span class="n">product_type</span><span class="o">.</span><span class="n">product_fields</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">field</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">required?</span> <span class="o">&amp;&amp;</span> <span class="n">properties</span><span class="o">[</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="o">].</span><span class="n">blank?</span>
-</span><span class='line'>        <span class="n">errors</span><span class="o">.</span><span class="n">add</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;must not be blank&quot;</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># models/product_type.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">ProductType</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:fields</span><span class="p">,</span> <span class="ss">class_name</span><span class="p">:</span> <span class="s1">&#39;ProductField&#39;</span>
-</span><span class='line'>  <span class="n">accepts_nested_attributes_for</span> <span class="ss">:fields</span><span class="p">,</span> <span class="ss">allow_destroy</span><span class="p">:</span> <span class="kp">true</span>
-</span><span class='line'><span class="c1">#  has_many :product_fields</span>
-</span><span class='line'><span class="c1">#  accepts_nested_attributes_for :product_fields, allow_destroy: true</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># models/product_field.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">ProductField</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:product_type</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># product_types_controller.rb </span>
-</span><span class='line'><span class="c1"># product_types_params should be modified for its nested attributes</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">product_type_params</span>
-</span><span class='line'>  <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:product_type</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">fields_attributes</span><span class="p">:</span> <span class="o">[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:field_type</span><span class="p">,</span> <span class="ss">:required</span><span class="p">,</span> <span class="ss">:product_type_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># products_controller.rb </span>
-</span><span class='line'><span class="c1"># product_params need to be modified for its column properties</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">product_params</span>
-</span><span class='line'>  <span class="c1"># all_properties = params.require(:product).fetch(:properties)</span>
-</span><span class='line'>  <span class="c1"># params.require(:product).permit(:name, :price, :product_type_id, :properties).merge(:properties =&gt; all_properties)</span>
-</span><span class='line'>  <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:product</span><span class="p">)</span><span class="o">.</span><span class="n">permit!</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># products_controller.rb </span>
-</span><span class='line'><span class="c1"># for generating dynamic form, action new also need to pass its product_type_id to view.</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">new</span>
-</span><span class='line'>    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">product_type_id</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:product_type_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">link_to_add_fields</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">association</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">new_object</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">association</span><span class="p">)</span><span class="o">.</span><span class="n">klass</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="nb">id</span> <span class="o">=</span> <span class="n">new_object</span><span class="o">.</span><span class="n">object_id</span>
-</span><span class='line'>    <span class="n">fields</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">fields_for</span><span class="p">(</span><span class="n">association</span><span class="p">,</span> <span class="n">new_object</span><span class="p">,</span> <span class="ss">child_index</span><span class="p">:</span> <span class="nb">id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">builder</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">render</span><span class="p">(</span><span class="n">association</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">singularize</span> <span class="o">+</span> <span class="s2">&quot;_fields&quot;</span><span class="p">,</span> <span class="ss">f</span><span class="p">:</span> <span class="n">builder</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s2">&quot;add_fields&quot;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="nb">id</span><span class="p">,</span> <span class="ss">fields</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)})</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># product_types/_form.html.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= form_for(@product_type) do |f| %&gt;</span>
-</span><span class='line'><span class="sx">  ...</span>
-</span><span class='line'><span class="sx">  &lt;div class=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;br&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= f.fields_for :fields do |builder| %&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">render</span> <span class="s2">&quot;field_fields&quot;</span><span class="p">,</span> <span class="ss">f</span><span class="p">:</span> <span class="n">builder</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;% end %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to_add_fields &quot;Add Field&quot;, f, :fields %&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">  &lt;div class=</span><span class="s2">&quot;actions&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.submit %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx"># add product_types/_product_field_fields.html.erb</span>
-</span><span class='line'><span class="sx">&lt;fieldset&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">select</span> <span class="ss">:field_type</span><span class="p">,</span> <span class="sx">%w[text_field check_box shirt_sizes]</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%= f.text_field :name, placeholder: &quot;field_name&quot; %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= f.check_box :required %&gt; &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:required</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%= f.hidden_field :_destroy %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;remove&quot;, &#39;#&#39;, class: &quot;remove_fields&quot; %&gt;</span>
-</span><span class='line'><span class="sx">&lt;/fieldset&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx"># product_types/show.html.erb</span>
-</span><span class='line'><span class="sx">&lt;p id=</span><span class="s2">&quot;notice&quot;</span><span class="o">&gt;&lt;</span><span class="sx">%= notice %&gt;&lt;/p&gt;</span>
-</span><span class='line'><span class="sx">&lt;p&gt;</span>
-</span><span class='line'><span class="sx">  &lt;strong&gt;Name:&lt;/strong&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="vi">@product_type</span><span class="o">.</span><span class="n">name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">&lt;/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="ss">Fields</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/strong&gt;</span>
-</span><span class='line'><span class="sr">  &lt;%= @product_type.fields.each do |f| %&gt;</span>
-</span><span class='line'><span class="sr">  &lt;br&gt;</span>
-</span><span class='line'><span class="sr">  &lt;%= f.name %&gt;</span>
-</span><span class='line'><span class="sr">  &lt;br&gt;</span>
-</span><span class='line'><span class="sr">  &lt;%= f.field_type %&gt;</span>
-</span><span class='line'><span class="sr">  &lt;% end -%&gt;</span>
-</span><span class='line'><span class="sr">&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># products/_form.html.erb</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :price %&gt;&lt;br&gt;</span>
-</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:price</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= f.fields_for :properties, OpenStruct.new(@product.properties) do |builder| %&gt;</span>
-</span><span class='line'><span class="sx">    &lt;% @product.product_type.fields.each do |field| %&gt;</span>
-</span><span class='line'><span class="sx">      &lt;%=</span> <span class="n">render</span> <span class="s2">&quot;products/fields/</span><span class="si">#{</span><span class="n">field</span><span class="o">.</span><span class="n">field_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="ss">field</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="ss">f</span><span class="p">:</span> <span class="n">builder</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">    &lt;% end %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">  &lt;div class=&quot;actions&quot;&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.submit %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx"># products/index.html.erb</span>
-</span><span class='line'><span class="sx">...</span>
-</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">form_tag</span> <span class="n">new_product_path</span><span class="p">,</span> <span class="nb">method</span><span class="p">:</span> <span class="ss">:get</span> <span class="k">do</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%= select_tag :product_type_id, options_from_collection_for_select(ProductType.all, :id, :name) %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">&quot;New Product&quot;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="kp">nil</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>tips: OpenStruct.new(@product.properties)</h3>
-
-<p><em>Without OpenStruct.new object, we can&rsquo;t edit and update hash properties data of the record.</em></p>
-
-<h4>done.</h4>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Change Default Web Server and Timezone for Heroku]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/"/>
-    <updated>2015-01-09T12:17:25+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku</id>
-    <content type="html"><![CDATA[<ul>
-<li>add web server gem to your Gemfile</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;thin&#39;</span> <span class="c1"># web server : thin</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>bundle it for updating your Gemfile.lock</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;bundle and update Gemfile.lock&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>deploy to heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push heroku master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>time zone config for heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">TZ</span><span class="o">=</span>Asia/Taipei
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>for reset pg DB</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku pg:reset DATABASE_URL --confirm heroku_app_name
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>

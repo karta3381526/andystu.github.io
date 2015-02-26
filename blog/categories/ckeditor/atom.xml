@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ckeditor | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/ckeditor/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-02-26T15:36:24+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install and Use Ckeditor and Paperclip in Rails App]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/"/>
+    <updated>2015-02-26T14:59:33+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>In <a href="https://github.com/thoughtbot/paperclip">paperclip</a> requirement, Paperclip must have access to ImageMagick that must be installed. For Mac OS X, we could run this command with Homebrew.
+<code>
+$ brew install imagemagick
+</code></p></li>
+<li><p>add this to your rails app Gemfile.
+<code>
+gem 'paperclip'
+gem 'ckeditor'
+</code></p></li>
+<li>then bundle it.
+<code>
+$ bundle
+</code></li>
+<li>next, we should generate model for <a href="https://github.com/galetahub/ckeditor">paperclip</a> to store uplaoded files</li>
+</ul>
+
+
+<pre><code>$ rails generate ckeditor:install --orm=active_record --backend=paperclip
+</code></pre>
+
+<!-- more -->
+
+
+<ul>
+<li>Don&rsquo;t forget to rake db:migrate</li>
+</ul>
+
+
+<pre><code>$ rake db:migrate
+</code></pre>
+
+<ul>
+<li>Now, we need to mount it by editing your config/routes.rb</li>
+</ul>
+
+
+<pre><code class="ruby">#...
+mount Ckeditor::Engine =&gt; "/ckeditor"
+#...
+</code></pre>
+
+<ul>
+<li>Add this in your app/assets/javascripts/application.js and make ckeditor working.</li>
+</ul>
+
+
+<pre><code>//= require ckeditor/init
+</code></pre>
+
+<ul>
+<li>In your form view, change f.text_area to f.cktext_area</li>
+</ul>
+
+
+<pre><code class="ruby">&lt;%= form_for @post do |f| -%&gt;
+#  ...
+  &lt;%= f.cktext_area :content, :class =&gt; "form-control" %&gt;
+#  ...
+&lt;% end -%&gt;
+</code></pre>
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

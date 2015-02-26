@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Solution | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/solution/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-02-26T15:36:24+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Error Message on Brew Install: Error: SHA1 Mismatch]]></title>
+    <link href="http://andystu.github.io/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/"/>
+    <updated>2015-02-19T00:46:10+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch</id>
+    <content type="html"><![CDATA[<ul>
+<li>Sometimes we might get error message when we use brew install xxxxx_package.</li>
+<li>What can we do to solve this?</li>
+<li><p>We could just remove the package which we already download.</p></li>
+<li><p>e.g.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&hellip;
+</span><span class='line'>Error: SHA1 mismatch
+</span><span class='line'>&hellip;
+</span><span class='line'>$ rm /Library/Caches/Homebrew/libpng-1.6.16.tar.xz&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;and install it again&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;$ brew install libpng
+</span><span class='line'>&hellip;</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>done.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

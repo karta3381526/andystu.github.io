@@ -9,10 +9,18 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="
-Rails image disappears with error: Failed to load resource:
-net::ERR_CONTENT_LENGTH_MISMATCH 1
-$ rake tmp:clear # for recompile asset tmp ">
+  <meta name="description" content="ujs / sjr usage hint for rails link_to method and form! 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +88,108 @@ $ rake tmp:clear # for recompile asset tmp ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-05T10:52:25+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:52 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>ujs / sjr usage hint for rails link_to method and form!</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A. Enable feature of ajax for Link
+</span><span class='line'>  1. link_to 要加 remote: true, path 要是 .js 的 format
+</span><span class='line'>  2. 要確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>B. Enable feature of ajax for Form
+</span><span class='line'>  1. form_for(@record, format: :js, remote: true)
+</span><span class='line'>  2. 確保後端 action 支援 .js format
+</span><span class='line'>  3. 必須要有 #{action}.js.erb
+</span><span class='line'>
+</span><span class='line'>對應的 js.erb 必須處接下來的事情 e.g. 刪除資料、redirects、update forms ... etc</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-04T10:48:54+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:48 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>useful online tools for generating bootstrap theme</li>
+</ul>
+
+
+<p><a href="http://pikock.github.io/bootstrap-magic/">http://pikock.github.io/bootstrap-magic/</a></p>
+
+<p><a href="http://www.lavishbootstrap.com/">http://www.lavishbootstrap.com/</a></p>
+
+<p><a href="http://paintstrap.com/">http://paintstrap.com/</a></p>
+
+<p><a href="http://paintstrap.com/gallery/">http://paintstrap.com/gallery/</a></p>
+
+<p><a href="http://bootswatchr.com/">http://bootswatchr.com/</a></p>
+
+<p><a href="http://stylebootstrap.info/">http://stylebootstrap.info/</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -513,164 +623,6 @@ $ rake tmp:clear # for recompile asset tmp ">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/13/my-dynamic-form-implementing-note/">Dynamic Form Implementing Note</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-13T14:40:41+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:40 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g scaffold product name price:decimal
-</span><span class='line'>$ rails g scaffold product_type name
-</span><span class='line'>$ rails g scaffold product_field name field_type required:boolean product_type:belongs_to
-</span><span class='line'>$ rails g migration add_type_to_product product_type:belongs_to properties:text
-</span><span class='line'>$ rake db:migrate</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/routes.rb</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:product_types</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;products#index&#39;</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/01/13/my-dynamic-form-implementing-note/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/09/change-default-web-server-and-timezone-for-heroku/">Change Default Web Server and Timezone for Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-09T12:17:25+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>add web server gem to your Gemfile</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
-</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;thin&#39;</span> <span class="c1"># web server : thin</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>bundle it for updating your Gemfile.lock</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
-</span><span class='line'><span class="nv">$ </span>git add .
-</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;bundle and update Gemfile.lock&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>deploy to heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push heroku master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>time zone config for heroku</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">TZ</span><span class="o">=</span>Asia/Taipei
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<ul>
-<li>for reset pg DB</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku pg:reset DATABASE_URL --confirm heroku_app_name
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -692,6 +644,14 @@ $ rake tmp:clear # for recompile asset tmp ">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/">Error Message on Brew Install: Error: SHA1 Mismatch</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a>
       </li>
     
@@ -701,14 +661,6 @@ $ rake tmp:clear # for recompile asset tmp ">
     
       <li class="post">
         <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/11/how-to-fix-simple-search-of-octopress/">How to Fix Simple Search of Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
   </ul>

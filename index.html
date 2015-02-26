@@ -9,15 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-$ heroku apps:rename NEW_APP_NAME # for rename app
-$ heroku create NEW_APP_NAME # for create new name
-$ heroku pg:reset DB_NAME # for &hellip;">
+  <meta name="description" content="In paperclip requirement, Paperclip must have access to ImageMagick that must be installed. For Mac OS X, we could run this command with Homebrew. 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +77,134 @@ $ heroku pg:reset DB_NAME # for &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-26T14:59:33+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:59 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>In <a href="https://github.com/thoughtbot/paperclip">paperclip</a> requirement, Paperclip must have access to ImageMagick that must be installed. For Mac OS X, we could run this command with Homebrew.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install imagemagick</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>add this to your rails app Gemfile.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'paperclip'
+</span><span class='line'>gem 'ckeditor'</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then bundle it.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>next, we should generate model for <a href="https://github.com/galetahub/ckeditor">paperclip</a> to store uplaoded files</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails generate ckeditor:install --orm=active_record --backend=paperclip</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/">Error Message on Brew Install: Error: SHA1 Mismatch</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-19T00:46:10+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:46 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>Sometimes we might get error message when we use brew install xxxxx_package.</li>
+<li>What can we do to solve this?</li>
+<li><p>We could just remove the package which we already download.</p></li>
+<li><p>e.g.</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>...
+</span><span class='line'>Error: SHA1 mismatch
+</span><span class='line'>...
+</span><span class='line'>$ rm /Library/Caches/Homebrew/libpng-1.6.16.tar.xz
+</span><span class='line'># and install it again
+</span><span class='line'>$ brew install libpng
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -218,200 +338,12 @@ $ heroku pg:reset DB_NAME # for &hellip;">
 </span><span class='line'>config/email.yml</span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>remove those block from Gemfile</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platforms :mri, :mingw do
-</span><span class='line'>  # Optional gem for exporting the gantt to a PNG file, not supported with jruby
-</span><span class='line'>  group :rmagick do
-</span><span class='line'>    # RMagick 2 supports ruby 1.9
-</span><span class='line'>    # RMagick 1 would be fine for ruby 1.8 but Bundler does not support
-</span><span class='line'>    # different requirements for the same gem on different platforms
-</span><span class='line'>    gem "rmagick", (RUBY_VERSION &lt; "1.9" ? "2.13.3" : "&gt;= 2.0.0")
-</span><span class='line'>  end
-</span><span class='line'>
-</span><span class='line'>  # Optional Markdown support, not for JRuby
-</span><span class='line'>  group :markdown do
-</span><span class='line'>    # TODO: upgrade to redcarpet 3.x when ruby1.8 support is dropped
-</span><span class='line'>    gem "redcarpet", "~&gt; 2.3.0"
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>platforms :jruby do
-</span><span class='line'>  # jruby-openssl is bundled with JRuby 1.7.0
-</span><span class='line'>  gem "jruby-openssl" if Object.const_defined?(:JRUBY_VERSION) && JRUBY_VERSION &lt; '1.7.0'
-</span><span class='line'>  gem "activerecord-jdbc-adapter", "~&gt; 1.3.2"
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'># and
-</span><span class='line'>database_file = File.join(File.dirname(__FILE__), "config/database.yml") if File.exist?(database_file)
-</span><span class='line'>  database_config = YAML::load(ERB.new(IO.read(database_file)).result)
-</span><span class='line'>    ...
-</span><span class='line'>    else
-</span><span class='line'>  warn("No adapter found in config/database.yml, please configure it first") end
-</span><span class='line'>    else
-</span><span class='line'>warn("Please configure your config/database.yml first") end
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>replace above block with this</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :development, :test do
-</span><span class='line'>  gem 'sqlite3'
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>group :production do
-</span><span class='line'>  gem 'pg'
-</span><span class='line'>  gem 'rails_12factor'
-</span><span class='line'>  gem 'thin' # change this if you want to use other rack web server
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>bundle it without production</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install --without production test</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>generate secret token for redmine</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate_secret_token</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>create heroku app</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku create APP_NAME</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>To avoid aborting when deploying to heroku, we have to do the following two steps: In config/environment.rb we have to remove (or comment) line 10, where it says</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>exit 1
-</span><span class='line'># remove it or comment it
-</span><span class='line'># exit 1</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>add this under config/application.rb</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>...
-</span><span class='line'>module RedmineApp
-</span><span class='line'>  classApplication&lt;Rails::Application
-</span><span class='line'>    config.assets.initialize_on_precompile = false # add this line
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add -A
-</span><span class='line'>$ git commit -m "preparing for heroku" 
-</span><span class='line'>$ git push heroku 2.6-stable:master</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ heroku run rake db:migrate
-</span><span class='line'>$ heroku run rake redmine:load_default_data
-</span><span class='line'>$ heroku open
-</span><span class='line'>
-</span><span class='line'># Logging into the application
-</span><span class='line'># Use default administrator account to log in:
-</span><span class='line'>#
-</span><span class='line'># login: admin
-</span><span class='line'># password: admin
-</span><span class='line'># 
-</span><span class='line'># if you want to reset db, run the following command
-</span><span class='line'># heroku pg:reset DB_NAME</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>done.</li>
-</ul>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -519,47 +451,6 @@ $ heroku pg:reset DB_NAME # for &hellip;">
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>However, we still need the ID at the start of our parameterized URL value for Rails ActiveRecord to find the correct model instance. If we don’t want IDs to be presented in URLs at all, the friendly_id gem is a great choice for this.</p></li>
-<li><p>How to install and use <a href="https://github.com/norman/friendly_id">friendly_id</a> in your rails project.</p></li>
-<li>Here we also install <a href="https://github.com/norman/babosa">babosa</a> for multiple languages.</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># add this to your Gemfile</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;friendly_id&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;babosa&#39;</span> <span class="c1"># this is for locale sensitive transliteration, with support for many languages.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># in rails project</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>rails generate friendly_id
-</span><span class='line'><span class="nv">$ </span>rails generate migration add_slug_to_models slug:string
-</span><span class='line'><span class="nv">$ </span>rake db:migrate
-</span><span class='line'>
-</span><span class='line'><span class="c">#in rails console</span>
-</span><span class='line'>
-</span><span class='line'>If all have been already <span class="k">done</span>, we should run rails console and save all our model records again.
-</span><span class='line'>&gt; Model.find_each<span class="o">(</span><span class="p">&amp;</span>:save<span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -733,108 +624,6 @@ source/_includes/custom/category_feed.xml
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/05/ujs-slash-sjr-usage-hint/">Ujs / Sjr Usage Hint</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-05T10:52:25+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:52 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>ujs / sjr usage hint for rails link_to method and form!</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A. Enable feature of ajax for Link
-</span><span class='line'>  1. link_to 要加 remote: true, path 要是 .js 的 format
-</span><span class='line'>  2. 要確保後端 action 支援 .js format
-</span><span class='line'>  3. 必須要有 #{action}.js.erb
-</span><span class='line'>
-</span><span class='line'>B. Enable feature of ajax for Form
-</span><span class='line'>  1. form_for(@record, format: :js, remote: true)
-</span><span class='line'>  2. 確保後端 action 支援 .js format
-</span><span class='line'>  3. 必須要有 #{action}.js.erb
-</span><span class='line'>
-</span><span class='line'>對應的 js.erb 必須處接下來的事情 e.g. 刪除資料、redirects、update forms ... etc</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Bootstrap Tips: Some Resources for Bootstrap Customization</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-04T10:48:54+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:48 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>useful online tools for generating bootstrap theme</li>
-</ul>
-
-
-<p><a href="http://pikock.github.io/bootstrap-magic/">http://pikock.github.io/bootstrap-magic/</a></p>
-
-<p><a href="http://www.lavishbootstrap.com/">http://www.lavishbootstrap.com/</a></p>
-
-<p><a href="http://paintstrap.com/">http://paintstrap.com/</a></p>
-
-<p><a href="http://paintstrap.com/gallery/">http://paintstrap.com/gallery/</a></p>
-
-<p><a href="http://bootswatchr.com/">http://bootswatchr.com/</a></p>
-
-<p><a href="http://stylebootstrap.info/">http://stylebootstrap.info/</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/04/bootstrap-tips-some-resources-for-bootstrap-customization/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -854,6 +643,14 @@ source/_includes/custom/category_feed.xml
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/">Error Message on Brew Install: Error: SHA1 Mismatch</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a>
       </li>
     
@@ -863,14 +660,6 @@ source/_includes/custom/category_feed.xml
     
       <li class="post">
         <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/11/how-to-fix-simple-search-of-octopress/">How to Fix Simple Search of Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
   </ul>

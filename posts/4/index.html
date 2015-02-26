@@ -9,8 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="Install git via homebrew 1
-$ brew install git # If we want to use gitk (git GUI), this way is very convinient. (however, I think SourceTree is better &hellip;">
+  <meta name="description" content="To figureout what differece between before_action and before_filter, we should understand what difference between action and filter. An action is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +77,129 @@ $ brew install git # If we want to use gitk (git GUI), this way is very convinie
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/26/before-action-vs-before-filter/">Before_action v.s. Before_filter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-26T00:11:03+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:11 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To figureout what differece between before_action and before_filter, we should understand what difference between <strong>action</strong> and <strong>filter</strong>.</p>
+
+<ol>
+<li><p>An action is a method of a controller to which you can route to.<br/>
+For example, your user creation page might be routed to UsersController#new - new is the action in this route.</p></li>
+<li><p>Filters run in respect to controller actions - before, after or around them.<br/>
+These methods can halt the action processing by redirecting or set up common data to every action in the controller.</p></li>
+<li><p>Rails 4 &ndash;> <em>_action<br/>
+Rails 3 &ndash;> </em>_filter</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/24/git-flow-usage/">Git Flow Usage</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-24T23:34:12+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:34 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>git-flow usage notes</h3>
+
+<ul>
+<li>install git-flow on Mac</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install git-flow <span class="c"># Done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>usage how-to (for feature)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow init <span class="c"># under project folder, git-flow would ask few questions, using the default value is recommended. </span>
+</span><span class='line'><span class="nv">$ </span>git flow feature start MY_FEATURE <span class="c"># XXX is branch name</span>
+</span><span class='line'><span class="c"># add some files or do something ...</span>
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commmit -am <span class="s1">&#39;do something ...&#39;</span>
+</span><span class='line'><span class="nv">$ </span>git flow feature publish MY_FEATURE <span class="c"># push to remote repo</span>
+</span><span class='line'><span class="nv">$ </span>git flow feature finish MY_FEATURE
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>usage how-to 2 (for release)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git flow release start RELEASE <span class="o">[</span>BASE<span class="o">]</span>
+</span><span class='line'><span class="c"># e.g. git flow release start Version_1.0</span>
+</span><span class='line'><span class="nv">$ </span>git add .
+</span><span class='line'><span class="nv">$ </span>git commit -am <span class="s1">&#39;do something ...&#39;</span>
+</span><span class='line'><span class="nv">$ </span>git flow release finish RELEASE
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>[recommand reference]</h4>
+
+<p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a> <br/>
+<a href="http://fireqqtw.logdown.com/posts/206951-git-flow-notes">http://fireqqtw.logdown.com/posts/206951-git-flow-notes</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -590,6 +712,14 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/">Error Message on Brew Install: Error: SHA1 Mismatch</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a>
       </li>
     
@@ -599,14 +729,6 @@ github <a href="https://help.github.com/articles/generating-ssh-keys/">上傳ssh
     
       <li class="post">
         <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/11/how-to-fix-simple-search-of-octopress/">How to Fix Simple Search of Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a>
       </li>
     
   </ul>

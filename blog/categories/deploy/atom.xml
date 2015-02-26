@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Deploy | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/deploy/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-17T15:47:49+08:00</updated>
+  <updated>2015-02-26T15:36:24+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -33,6 +33,13 @@ config/initializers/secret_token.rb
 config/configuration.yml
 config/email.yml
 </code></li>
+</ul>
+
+
+<!-- more -->
+
+
+<ul>
 <li>remove those block from Gemfile
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
