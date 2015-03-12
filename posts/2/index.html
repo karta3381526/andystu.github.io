@@ -9,18 +9,7 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="ujs / sjr usage hint for rails link_to method and form! 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;">
+  <meta name="description" content="How to fix Octopress &ldquo;build warning Layout nil requested&rdquo; After changing some themes of octopress then rake generate might produce some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +77,52 @@ A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-06T14:17:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>How to fix Octopress &ldquo;build warning Layout nil requested&rdquo;</h4>
+
+<p><code>
+After changing some themes of octopress then rake generate might produce some errors like this:
+Build Warning: Layout 'nil' requested in .....atom.xml does not exist.
+</code></p>
+
+<h4>Fix by replacing:</h4>
+
+<p><code>layout: nil</code>
+with:
+<code>layout: null</code>
+in files:
+<code>
+source/atom.xml
+source/robots.txt
+source/_includes/custom/category_feed.xml
+</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,48 +616,6 @@ A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/13/how-to-use-command-line-show-git-tree/">How to Use Command Line Show Git Tree</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-13T18:11:36+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:11 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git log --pretty<span class="o">=</span>oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>git log --oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>gitk --simplify-by-decoration --all
-</span><span class='line'><span class="nv">$ </span>gitk --all
-</span><span class='line'><span class="nv">$ </span>git show-branch --all
-</span><span class='line'><span class="nv">$ </span>git log --all --graph --decorate --oneline --simplify-by-decoration
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -644,6 +637,10 @@ A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/">How to Generate Email View and Send It Out Within Rails Application</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
       </li>
     
@@ -657,10 +654,6 @@ A. Enable feature of ajax for Link 1. link_to 要加 remote: true, path &hellip;
     
       <li class="post">
         <a href="/blog/2015/02/17/rails-tip-how-to-update-attributes-without-save/">Rails Tip: How to Update Attributes Without Save</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
       </li>
     
   </ul>

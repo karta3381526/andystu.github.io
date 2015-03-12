@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-26T15:36:24+08:00</updated>
+  <updated>2015-03-12T15:54:20+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Generate Email View and Send It Out Within Rails Application]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/"/>
+    <updated>2015-03-12T15:27:14+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>before we sending an email within your app, we need generate email view initially.
+<code>bash
+$ rails g mailer NewsMailer # NewsMailer is the name of mailer class
+</code></p></li>
+<li><p>we would get generated files under app folder
+<code>
+create  app/mailers/news_mailer.rb
+create  app/mailers/application_mailer.rb
+invoke  erb
+create    app/views/news_mailer
+create    app/views/layouts/mailer.text.erb
+create    app/views/layouts/mailer.html.erb
+</code></p></li>
+<li><p>then we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">NewsMailer</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ApplicationMailer</span>
+</span><span class='line'><span class="n">default</span> <span class="ss">from</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#110;&amp;#x65;&amp;#x77;&amp;#115;&amp;#64;&amp;#x64;&amp;#101;&amp;#x6d;&amp;#x6f;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;&quot;</span><span class="o">&gt;&amp;</span><span class="c1">#110;&amp;#101;&amp;#119;&amp;#115;&amp;#x40;&amp;#x64;&amp;#101;&amp;#109;&amp;#x6f;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&lt;/a&gt;&amp;rsquo;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">news_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">news</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+</span><span class='line'>  <span class="vi">@news</span> <span class="o">=</span> <span class="n">news</span>
+</span><span class='line'>  <span class="n">mail</span><span class="p">(</span><span class="ss">to</span><span class="p">:</span> <span class="vi">@user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="ss">subject</span><span class="p">:</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p></li>
+</ul>
+
+
+<pre><code class="ruby">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content='text/html; charset=UTF-8' http-equiv='Content-Type' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;hi, &lt;%= @user.name %&gt;&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;h2&gt;&lt;%= @news.title %&gt;&lt;/h2&gt;
+    &lt;p&gt;
+    &lt;%= @news.content.html_safe %&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<ul>
+<li>create send_news action in your controller.</li>
+</ul>
+
+
+<pre><code class="ruby">#...
+def send_news
+  @users = User.all
+  @news = News.find(1)
+  NewsMailer.news_email(@users,@news).deliver
+end
+#...
+</code></pre>
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Tip: How to Update Attributes Without Save]]></title>

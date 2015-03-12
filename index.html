@@ -9,7 +9,8 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="In paperclip requirement, Paperclip must have access to ImageMagick that must be installed. For Mac OS X, we could run this command with Homebrew. 1 &hellip;">
+  <meta name="description" content="before we sending an email within your app, we need generate email view initially. 1
+$ rails g mailer NewsMailer # NewsMailer is the name of mailer &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,149 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/">How to Generate Email View and Send It Out Within Rails Application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-12T15:27:14+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:27 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>before we sending an email within your app, we need generate email view initially.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g mailer NewsMailer <span class="c"># NewsMailer is the name of mailer class</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>we would get generated files under app folder</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  create  app/mailers/news_mailer.rb
+</span><span class='line'>  create  app/mailers/application_mailer.rb
+</span><span class='line'>  invoke  erb
+</span><span class='line'>  create    app/views/news_mailer
+</span><span class='line'>  create    app/views/layouts/mailer.text.erb
+</span><span class='line'>  create    app/views/layouts/mailer.html.erb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">NewsMailer</span> <span class="o">&lt;</span> <span class="no">ApplicationMailer</span>
+</span><span class='line'>  <span class="n">default</span> <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;news@demo.com&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">news_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">news</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+</span><span class='line'>    <span class="vi">@news</span> <span class="o">=</span> <span class="n">news</span>
+</span><span class='line'>    <span class="n">mail</span><span class="p">(</span><span class="ss">to</span><span class="p">:</span> <span class="vi">@user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="ss">subject</span><span class="p">:</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s1">&#39;text/html; charset=UTF-8&#39;</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s1">&#39;Content-Type&#39;</span> <span class="sr">/&gt;</span>
+</span><span class='line'><span class="sr">  &lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">hi</span><span class="p">,</span> <span class="o">&lt;</span><span class="sx">%= @user.name %&gt;&lt;/h1&gt;</span>
+</span><span class='line'><span class="sx">    &lt;hr&gt;</span>
+</span><span class='line'><span class="sx">    &lt;h2&gt;&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">html_safe</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">    &lt;/p&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/body&gt;</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>create send_news action in your controller.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#...</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">send_news</span>
+</span><span class='line'>  <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>  <span class="vi">@news</span> <span class="o">=</span> <span class="no">News</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="no">NewsMailer</span><span class="o">.</span><span class="n">news_email</span><span class="p">(</span><span class="vi">@users</span><span class="p">,</span><span class="vi">@news</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -578,52 +722,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/06/how-to-fix-octopress-build-warning-layout-nil-requested/">How to Fix Octopress Build Warning Layout Nil Requested After Installing Some Themes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-06T14:17:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>How to fix Octopress &ldquo;build warning Layout nil requested&rdquo;</h4>
-
-<p><code>
-After changing some themes of octopress then rake generate might produce some errors like this:
-Build Warning: Layout 'nil' requested in .....atom.xml does not exist.
-</code></p>
-
-<h4>Fix by replacing:</h4>
-
-<p><code>layout: nil</code>
-with:
-<code>layout: null</code>
-in files:
-<code>
-source/atom.xml
-source/robots.txt
-source/_includes/custom/category_feed.xml
-</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -643,6 +741,10 @@ source/_includes/custom/category_feed.xml
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/">How to Generate Email View and Send It Out Within Rails Application</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
       </li>
     
@@ -656,10 +758,6 @@ source/_includes/custom/category_feed.xml
     
       <li class="post">
         <a href="/blog/2015/02/17/rails-tip-how-to-update-attributes-without-save/">Rails Tip: How to Update Attributes Without Save</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/16/how-to-install-and-deploy-redmine-on-heroku/">How to Install and Deploy Redmine 2.6.x on Heroku</a>
       </li>
     
   </ul>

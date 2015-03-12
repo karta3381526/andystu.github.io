@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-02-26T15:36:24+08:00</updated>
+  <updated>2015-03-12T15:54:20+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Generate Email View and Send It Out Within Rails Application]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/"/>
+    <updated>2015-03-12T15:27:14+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application</id>
+    <content type="html"><![CDATA[<ul>
+<li>before we sending an email within your app, we need generate email view initially.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g mailer NewsMailer <span class="c"># NewsMailer is the name of mailer class</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>we would get generated files under app folder</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  create  app/mailers/news_mailer.rb
+</span><span class='line'>  create  app/mailers/application_mailer.rb
+</span><span class='line'>  invoke  erb
+</span><span class='line'>  create    app/views/news_mailer
+</span><span class='line'>  create    app/views/layouts/mailer.text.erb
+</span><span class='line'>  create    app/views/layouts/mailer.html.erb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">NewsMailer</span> <span class="o">&lt;</span> <span class="no">ApplicationMailer</span>
+</span><span class='line'>  <span class="n">default</span> <span class="ss">from</span><span class="p">:</span> <span class="s1">&#39;news@demo.com&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">news_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">news</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+</span><span class='line'>    <span class="vi">@news</span> <span class="o">=</span> <span class="n">news</span>
+</span><span class='line'>    <span class="n">mail</span><span class="p">(</span><span class="ss">to</span><span class="p">:</span> <span class="vi">@user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="ss">subject</span><span class="p">:</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s1">&#39;text/html; charset=UTF-8&#39;</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s1">&#39;Content-Type&#39;</span> <span class="sr">/&gt;</span>
+</span><span class='line'><span class="sr">  &lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">hi</span><span class="p">,</span> <span class="o">&lt;</span><span class="sx">%= @user.name %&gt;&lt;/h1&gt;</span>
+</span><span class='line'><span class="sx">    &lt;hr&gt;</span>
+</span><span class='line'><span class="sx">    &lt;h2&gt;&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">html_safe</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">    &lt;/p&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/body&gt;</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>create send_news action in your controller.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#...</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">send_news</span>
+</span><span class='line'>  <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>  <span class="vi">@news</span> <span class="o">=</span> <span class="no">News</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="no">NewsMailer</span><span class="o">.</span><span class="n">news_email</span><span class="p">(</span><span class="vi">@users</span><span class="p">,</span><span class="vi">@news</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Install and Use Ckeditor and Paperclip in Rails App]]></title>
@@ -1124,28 +1247,6 @@ source/_includes/custom/category_feed.xml
 </span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span><span class="s2">&quot;this is title&quot;</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span><span class="o">.</span><span class="n">to_h</span>
 </span><span class='line'><span class="c1"># equals to -&gt; ActionController::Parameters.new(@p.to_h)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Use Command Line Show Git Tree]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/13/how-to-use-command-line-show-git-tree/"/>
-    <updated>2015-01-13T18:11:36+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/13/how-to-use-command-line-show-git-tree</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git log --pretty<span class="o">=</span>oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>git log --oneline --graph --decorate --all
-</span><span class='line'><span class="nv">$ </span>gitk --simplify-by-decoration --all
-</span><span class='line'><span class="nv">$ </span>gitk --all
-</span><span class='line'><span class="nv">$ </span>git show-branch --all
-</span><span class='line'><span class="nv">$ </span>git log --all --graph --decorate --oneline --simplify-by-decoration
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
