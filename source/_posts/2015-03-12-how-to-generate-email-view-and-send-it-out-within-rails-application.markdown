@@ -32,7 +32,7 @@ class NewsMailer < ApplicationMailer
   end
 end
 ```
-
+<!-- more -->
 ``` ruby
 <!DOCTYPE html>
 <html>
@@ -61,6 +61,17 @@ def send_news
 end
 #...
 ```
-
+- finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file.
+``` ruby
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'demo.com',
+  user_name:            '<username>',
+  password:             '<password>',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+```
 
 - done.
