@@ -153,6 +153,7 @@ $ rails g mailer NewsMailer # NewsMailer is the name of mailer &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -205,6 +206,32 @@ $ rails g mailer NewsMailer # NewsMailer is the name of mailer &hellip;">
 </span><span class='line'>  <span class="no">NewsMailer</span><span class="o">.</span><span class="n">news_email</span><span class="p">(</span><span class="vi">@users</span><span class="p">,</span><span class="vi">@news</span><span class="p">)</span><span class="o">.</span><span class="n">deliver</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">address</span><span class="p">:</span>              <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">port</span><span class="p">:</span>                 <span class="mi">587</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">domain</span><span class="p">:</span>               <span class="s1">&#39;demo.com&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">user_name</span><span class="p">:</span>            <span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">password</span><span class="p">:</span>             <span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">authentication</span><span class="p">:</span>       <span class="s1">&#39;plain&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">enable_starttls_auto</span><span class="p">:</span> <span class="kp">true</span>  <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
