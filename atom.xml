@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-03-12T16:02:16+08:00</updated>
+  <updated>2015-03-12T19:15:34+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -19,7 +19,7 @@
     <updated>2015-03-12T15:27:14+08:00</updated>
     <id>http://andystu.github.io/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application</id>
     <content type="html"><![CDATA[<ul>
-<li>before we sending an email within your app, we need generate email view initially.</li>
+<li>If we want to send email within rails app, we could use generator for creating mailer class and view.</li>
 </ul>
 
 
@@ -29,7 +29,7 @@
 
 
 <ul>
-<li>we would get generated files under app folder</li>
+<li>After that, we could get generated files under app folder.</li>
 </ul>
 
 
@@ -49,7 +49,7 @@
 
 
 <ul>
-<li>then we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)</li>
+<li>Next, we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)</li>
 </ul>
 
 
@@ -131,7 +131,7 @@
 
 
 <ul>
-<li>finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file.</li>
+<li>Finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file. (here we use gmail)</li>
 </ul>
 
 
