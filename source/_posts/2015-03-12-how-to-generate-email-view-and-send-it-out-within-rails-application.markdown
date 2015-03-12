@@ -5,12 +5,12 @@ date: 2015-03-12 15:27:14 +0800
 comments: true
 categories: [rails, actionmailer, view]
 ---
-- before we sending an email within your app, we need generate email view initially.
+- If we want to send email within rails app, we could use generator for creating mailer class and view.
 ``` bash
 $ rails g mailer NewsMailer # NewsMailer is the name of mailer class
 ```
 
-- we would get generated files under app folder 
+- After that, we could get generated files under app folder.
 ```
   create  app/mailers/news_mailer.rb
   create  app/mailers/application_mailer.rb
@@ -20,7 +20,7 @@ $ rails g mailer NewsMailer # NewsMailer is the name of mailer class
   create    app/views/layouts/mailer.html.erb
 ```
 
-- then we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)
+- Next, we need to edit mailer class (news_mailer.rb contains empty mailer so we need to edit it.)
 ``` ruby
 class NewsMailer < ApplicationMailer
   default from: 'news@demo.com'
@@ -61,7 +61,7 @@ def send_news
 end
 #...
 ```
-- finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file.
+- Finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file. (here we use gmail)
 ``` ruby
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
