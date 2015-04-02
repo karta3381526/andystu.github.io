@@ -4,7 +4,7 @@
   <title><![CDATA[Category: On | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/on/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-03-12T19:15:34+08:00</updated>
+  <updated>2015-04-02T17:17:25+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -28,6 +28,14 @@
 <li>Download it (version 3.0.0 and above are recommend)
 from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
 <li>install it (just click next and next steps, then done.).</li>
+<li>open &ldquo;Git bash&rdquo; console and run the following command.
+<code>
+$ curl http://installrails.com/update_rubygems.rb | ruby
+</code></li>
+<li>in &ldquo;Git Bash&rdquo; console run
+<code>
+$ gem update --system
+</code></li>
 </ol>
 
 
@@ -36,6 +44,7 @@ from <a href="http://railsinstaller.org">http://railsinstaller.org</a></li>
 <ul>
 <li>Open and edit Gemfile after rails new app</li>
 <li>Change the => source &lsquo;<a href="https://rubygems.org">https://rubygems.org</a>&rsquo; to => source &lsquo;<a href="http://rubygems.org">http://rubygems.org</a>&rsquo;</li>
+<li>Add gem &lsquo;coffee-script-source&rsquo;, &lsquo;1.8.0&rsquo; in Gemfile and run <code>bundle update</code> # original 1.9.1 wouldn&rsquo;t work on windows platform.</li>
 <li>done.</li>
 </ul>
 

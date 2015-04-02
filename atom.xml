@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-03-12T19:15:34+08:00</updated>
+  <updated>2015-04-02T17:17:25+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
@@ -12,6 +12,439 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Install Ionic and Its Dependencies]]></title>
+    <link href="http://andystu.github.io/blog/2015/04/01/how-to-install-ionic-and-its-dependencies/"/>
+    <updated>2015-04-01T12:06:57+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/04/01/how-to-install-ionic-and-its-dependencies</id>
+    <content type="html"><![CDATA[<ul>
+<li>install node js by Homebrew</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew doctor
+</span><span class='line'>$ brew update
+</span><span class='line'>$ brew install node
+</span><span class='line'>$ brew install ant</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>install cordova and ionic by npm</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ npm install -g cordova ionic
+</span><span class='line'>$ npm install -g ios-sim</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>install XCode and Android</li>
+<li><p>for android sdk we need to go to <a href="http://developer.android.com/sdk/index.html">SDK Website</a> and download standalone sdk tools only <a href="http://developer.android.com/sdk/index.html#Other">file</a></p></li>
+<li><p>next, unpack it and run for install required resources</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android sdk</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, create a android virtual device by avd tool</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android avd</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Genymotion is recommanded as android emulator (faster than avd) and do not forget to install virtualbox before installing Genymotion.</p></li>
+<li><p>you might also want to change avd location</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ln -s path/to/my/avd ~/.android/avd</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then, let&rsquo;s get start with ionic by sample app</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ionic start todo blank
+</span><span class='line'>$ ionic platform add ios
+</span><span class='line'>$ ionic platform add android
+</span><span class='line'>$ ionic build ios
+</span><span class='line'>$ ionic build android
+</span><span class='line'>$ ionic emulate ios
+</span><span class='line'>$ ionic emulate android # for avd
+</span><span class='line'>$ ionic run android # for Genymotion</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install Lavish on Ubuntu 14.04]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04/"/>
+    <updated>2015-03-20T09:21:56+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Lavish is a Bootstrap theme generator. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.</p></li>
+<li><p>Recently, I want to install on my ubuntu server for using it locally and conviniently.</p></li>
+<li><p>the following steps are my install howto:</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/mquan/lavish.git
+</span><span class='line'>$ cd lavish/
+</span><span class='line'>$ rvm install 1.9.3
+</span><span class='line'>$ rvm use 1.9.3
+</span><span class='line'>$ bundle install --without production
+</span><span class='line'>
+</span><span class='line'>$ sudo apt-get install libmagickwand-dev # for solving rmagick install problem
+</span><span class='line'>
+</span><span class='line'>$ sudo add-apt-repository ppa:chris-lea/node.js # optional
+</span><span class='line'>$ sudo apt-get -y update # optional
+</span><span class='line'>
+</span><span class='line'>$ sudo apt-get -y install nodejs # for ExtJS
+</span><span class='line'>
+</span><span class='line'>$ rails s # open http://localhost:3000/ and enjoy it.</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Ssh in Ubuntu]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/17/enable-ssh-in-ubuntu/"/>
+    <updated>2015-03-17T00:50:27+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/17/enable-ssh-in-ubuntu</id>
+    <content type="html"><![CDATA[<ul>
+<li>for ubuntu 14.04, we need to install OpenSSH Server</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install openssh-server</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>next, we might want to configure your ssh service</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># edit sshd config file
+</span><span class='line'>$ sudo nano /etc/ssh/sshd_config</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, restart it.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo /etc/init.d/ssh restart</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deploy Ruby on Rails App on Ubuntu 14.04 by Mina]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/16/deploy-ruby-on-rails-app-on-ubuntu-14-dot-04-by-mina/"/>
+    <updated>2015-03-16T22:44:48+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/16/deploy-ruby-on-rails-app-on-ubuntu-14-dot-04-by-mina</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Mina is fast and easy deploy tool for ruby on rails app (especially faster than capistrano). This note shows how to deploy ruby on rails app by mina.</p></li>
+<li><p>Start up an ubuntu server (here we use Ubuntu 14.04 LTS x64 on vultr cloud server)</p></li>
+<li><p>ssh to login your server</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123 # change username and ip as yours</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<ul>
+<li>create a new user for later deployment work, better use the same name as your local development user name</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo adduser new_user
+</span><span class='line'>$ sudo adduser new_user sudo
+</span><span class='line'>$ su new_user</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>We&rsquo;re going to exploit ssh-copy-id to setup SSH connection for saving our time.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install ssh-copy-id # on Mac we use brew
+</span><span class='line'>$ ssh-copy-id new_user@123.123.123.123</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Next, we&rsquo;re going to install Ruby and its bundler.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -L https://get.rvm.io | bash -s stable
+</span><span class='line'>$ source ~/.rvm/scripts/rvm
+</span><span class='line'>$ rvm install 2.2.0
+</span><span class='line'>$ rvm use 2.2.0 --default
+</span><span class='line'>$ echo "gem: --no-ri --no-rdoc" &gt; ~/.gemrc
+</span><span class='line'>$ gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Installing nginx and passenger <a href="https://gorails.com/deploy/ubuntu/14.04">A guide to setting up a Ruby on Rails production environment</a></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Install Phusion's PGP key to verify packages
+</span><span class='line'>$ gpg --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+</span><span class='line'>$ gpg --armor --export 561F9B9CAC40B2F7 | sudo apt-key add -
+</span><span class='line'>
+</span><span class='line'># Add HTTPS support to APT
+</span><span class='line'>$ sudo apt-get install apt-transport-https
+</span><span class='line'>
+</span><span class='line'># Add the passenger repository
+</span><span class='line'>$ sudo sh -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main' &gt;&gt; /etc/apt/sources.list.d/passenger.list"
+</span><span class='line'>$ sudo chown root: /etc/apt/sources.list.d/passenger.list
+</span><span class='line'>$ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+</span><span class='line'>$ sudo apt-get update
+</span><span class='line'>
+</span><span class='line'># Install nginx and passenger
+</span><span class='line'>$ sudo apt-get install nginx-full passenger
+</span><span class='line'>
+</span><span class='line'># start service
+</span><span class='line'>$ sudo service nginx start</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>setup nginx</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo nano /etc/nginx/nginx.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>find lines below and uncomment them.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>##
+</span><span class='line'># Phusion Passenger
+</span><span class='line'>##
+</span><span class='line'># Uncomment it if you installed ruby-passenger or ruby-passenger-enterprise
+</span><span class='line'>##
+</span><span class='line'>
+</span><span class='line'>passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
+</span><span class='line'>
+</span><span class='line'>#passenger_ruby /home/new_user/.rbenv/shims/ruby; # If you use rbenv
+</span><span class='line'>passenger_ruby /home/new_user/.rvm/wrappers/ruby-2.2.0/ruby; # If use use rvm, be sure to change the version number
+</span><span class='line'># passenger_ruby /usr/bin/ruby; # If you use ruby from source</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing mysql</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing locale and set it up <a href="http://sfs.chc.edu.tw/~chi/blog/index.php?load=read&amp;id=296">ref</a></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo nano /var/lib/locales/supported.d/local # add locales you want to use
+</span><span class='line'># zh_TW.UTF-8 UTF-8
+</span><span class='line'>
+</span><span class='line'>$ sudo locale-gen
+</span><span class='line'># regenerate locales
+</span><span class='line'>
+</span><span class='line'>$ sudo nano /etc/default/locale
+</span><span class='line'># set all as your preferal locale</span></code></pre></td></tr></table></div></figure>
+
+
+<p>-installing nodejs for coffee script engine</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install nodejs</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing git for pull remote git repo</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing nginx</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install nginx</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing imagemagick for paperclip resize image</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ apt-get install imagemagick</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing unicorn</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install unicorn</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>installing <a href="http://nadarei.co/mina/setting_up_a_project.html">mina</a></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># go to rails app which your want to deploy and inialize your deploy config file
+</span><span class='line'>
+</span><span class='line'>$ mina init # this command will created config/deploy.rb. after this you might want to customize your [deploy.rb file.](https://gist.github.com/jbonney/6257372)
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># login and setup your server and create folders for later deployment
+</span><span class='line'>
+</span><span class='line'>$ ssh username@123.123.123.123
+</span><span class='line'>$ sudo mkdir -p "/var/www/demo.com" && sudo chown -R new_user "/var/www/demo.com"
+</span><span class='line'>
+</span><span class='line'>$ mina setup # after tweak your mina deploy.rb file, run this.
+</span><span class='line'>
+</span><span class='line'>$ mina deploy # if mina setup is allpass, run this.</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Generate Email View and Send It Out Within Rails Application]]></title>
@@ -901,8 +1334,21 @@ source/_includes/custom/category_feed.xml
 
 <p><a href="http://stylebootstrap.info/">http://stylebootstrap.info/</a></p>
 
+<p><a href="http://bootsnipp.com/">http://bootsnipp.com/</a></p>
+
 <!--more-->
 
+
+<ul>
+<li>fake images</li>
+</ul>
+
+
+<p><a href="http://lorempixel.com">http://lorempixel.com</a></p>
+
+<p><a href="http://placekitten.com">http://placekitten.com</a></p>
+
+<p><a href="http://placehold.it">http://placehold.it</a></p>
 
 <ul>
 <li>desktop tools</li>
@@ -1094,186 +1540,6 @@ source/_includes/custom/category_feed.xml
 </span><span class='line'>  <span class="c1"># Raises error for missing translations</span>
 </span><span class='line'>  <span class="c1"># config.action_view.raise_on_missing_translations = true</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Make Jquery Event Work in Rails App?]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app/"/>
-    <updated>2015-01-19T11:08:28+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/19/how-to-make-jquery-event-work-in-rails-app</id>
-    <content type="html"><![CDATA[<ul>
-<li><p>To make jquery event work, the easiest way is to use jquery.turbolinks.</p></li>
-<li><p>To install it, just add this to your Gemfile:</p></li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'jquery-turbolinks'
-</span><span class='line'>
-</span><span class='line'># and add this to your assets/javascripts/application.js file.
-</span><span class='line'>
-</span><span class='line'>//= require jquery.turbolinks
-</span><span class='line'>
-</span><span class='line'># and it should be worked good.</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<p><a href="http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application">http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Upgrade Your Rails App?]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/19/how-to-upgrade-your-rails-app/"/>
-    <updated>2015-01-19T10:50:23+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/19/how-to-upgrade-your-rails-app</id>
-    <content type="html"><![CDATA[<ul>
-<li>updating the Rails version in the Gemfile and run this rake task.</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># Gemfile
-</span><span class='line'># Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-</span><span class='line'>gem 'rails', '4.x.x' # &lt;- updating the version of rails info
-</span><span class='line'>
-</span><span class='line'>$ rake rails:update</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<p><a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html">http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Generate Html Table From Array or Hash]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/14/generate-html-table-from-array-or-hash/"/>
-    <updated>2015-01-14T16:24:34+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/14/generate-html-table-from-array-or-hash</id>
-    <content type="html"><![CDATA[<ul>
-<li>install gem builder</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install builder</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Use Builder for generate HTML table</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Use the XMLBuilder for this:</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;builder&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="p">{</span><span class="s2">&quot;col1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;col1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v3&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;v4&quot;</span><span class="p">}</span><span class="o">]</span>
-</span><span class='line'><span class="n">xm</span> <span class="o">=</span> <span class="no">Builder</span><span class="o">::</span><span class="no">XmlMarkup</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:indent</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'><span class="n">xm</span><span class="o">.</span><span class="n">table</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">xm</span><span class="o">.</span><span class="n">tr</span> <span class="p">{</span> <span class="n">data</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">keys</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">th</span><span class="p">(</span><span class="n">key</span><span class="p">)}}</span>
-</span><span class='line'>  <span class="n">data</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">tr</span> <span class="p">{</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">value</span><span class="o">|</span> <span class="n">xm</span><span class="o">.</span><span class="n">td</span><span class="p">(</span><span class="n">value</span><span class="p">)}}}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">xm</span><span class="si">}</span><span class="s2">&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<!--more-->
-
-
-<ul>
-<li>Output</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;table&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;th&gt;</span>col1<span class="nt">&lt;/th&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;th&gt;</span>col2<span class="nt">&lt;/th&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;td&gt;</span>v1<span class="nt">&lt;/td&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;td&gt;</span>v2<span class="nt">&lt;/td&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;tr&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;td&gt;</span>v3<span class="nt">&lt;/td&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;td&gt;</span>v4<span class="nt">&lt;/td&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/tr&gt;</span>
-</span><span class='line'><span class="nt">&lt;/table&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>done.</h4>
-
-<p><a href="http://stackoverflow.com/questions/2634024/generate-an-html-table-from-an-array-of-hashes-in-ruby">http://stackoverflow.com/questions/2634024/generate-an-html-table-from-an-array-of-hashes-in-ruby</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Object to Hash]]></title>
-    <link href="http://andystu.github.io/blog/2015/01/14/rails-object-to-hash/"/>
-    <updated>2015-01-14T12:26:38+08:00</updated>
-    <id>http://andystu.github.io/blog/2015/01/14/rails-object-to-hash</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span>
-</span><span class='line'><span class="c1"># irb</span>
-</span><span class='line'><span class="c1"># Model object -&gt; hash</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span><span class="o">.</span><span class="n">attributes</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># OpenStruct object -&gt; hash</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span><span class="s2">&quot;this is title&quot;</span><span class="p">,</span> <span class="ss">description</span><span class="p">:</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="vi">@post</span><span class="o">.</span><span class="n">to_h</span>
-</span><span class='line'><span class="c1"># equals to -&gt; ActionController::Parameters.new(@p.to_h)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

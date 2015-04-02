@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ssh | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/ssh/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-04-02T17:17:25+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[Yu-Chieh Chang (張又介)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Ssh in Ubuntu]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/17/enable-ssh-in-ubuntu/"/>
+    <updated>2015-03-17T00:50:27+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/17/enable-ssh-in-ubuntu</id>
+    <content type="html"><![CDATA[<ul>
+<li>for ubuntu 14.04, we need to install OpenSSH Server</li>
+</ul>
+
+
+<pre><code>$ sudo apt-get install openssh-server
+</code></pre>
+
+<ul>
+<li>next, we might want to configure your ssh service</li>
+</ul>
+
+
+<pre><code># edit sshd config file
+$ sudo nano /etc/ssh/sshd_config
+</code></pre>
+
+<ul>
+<li><p>finally, restart it.
+<code>
+$ sudo /etc/init.d/ssh restart
+</code></p></li>
+<li><p>done.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

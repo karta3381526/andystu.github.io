@@ -9,8 +9,16 @@
   <meta name="author" content="Yu-Chieh Chang (張又介)">
 
   
-  <meta name="description" content="If we want to send email within rails app, we could use generator for creating mailer class and view. 1
-$ rails g mailer NewsMailer # NewsMailer is &hellip;">
+  <meta name="description" content="install node js by Homebrew 1
+2
+3
+4
+$ brew doctor
+$ brew update
+$ brew install node
+$ brew install ant install cordova and ionic by npm 1
+2
+$ npm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +86,285 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/04/01/how-to-install-ionic-and-its-dependencies/">How to Install Ionic and Its Dependencies</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-01T12:06:57+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>12:06 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>install node js by Homebrew</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew doctor
+</span><span class='line'>$ brew update
+</span><span class='line'>$ brew install node
+</span><span class='line'>$ brew install ant</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>install cordova and ionic by npm</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ npm install -g cordova ionic
+</span><span class='line'>$ npm install -g ios-sim</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>install XCode and Android</li>
+<li><p>for android sdk we need to go to <a href="http://developer.android.com/sdk/index.html">SDK Website</a> and download standalone sdk tools only <a href="http://developer.android.com/sdk/index.html#Other">file</a></p></li>
+<li><p>next, unpack it and run for install required resources</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android sdk</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, create a android virtual device by avd tool</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android avd</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Genymotion is recommanded as android emulator (faster than avd) and do not forget to install virtualbox before installing Genymotion.</p></li>
+<li><p>you might also want to change avd location</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ln -s path/to/my/avd ~/.android/avd</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>then, let&rsquo;s get start with ionic by sample app</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ionic start todo blank
+</span><span class='line'>$ ionic platform add ios
+</span><span class='line'>$ ionic platform add android
+</span><span class='line'>$ ionic build ios
+</span><span class='line'>$ ionic build android
+</span><span class='line'>$ ionic emulate ios
+</span><span class='line'>$ ionic emulate android # for avd
+</span><span class='line'>$ ionic run android # for Genymotion</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04/">Install Lavish on Ubuntu 14.04</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-20T09:21:56+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:21 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><p>Lavish is a Bootstrap theme generator. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.</p></li>
+<li><p>Recently, I want to install on my ubuntu server for using it locally and conviniently.</p></li>
+<li><p>the following steps are my install howto:</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://github.com/mquan/lavish.git
+</span><span class='line'>$ cd lavish/
+</span><span class='line'>$ rvm install 1.9.3
+</span><span class='line'>$ rvm use 1.9.3
+</span><span class='line'>$ bundle install --without production
+</span><span class='line'>
+</span><span class='line'>$ sudo apt-get install libmagickwand-dev # for solving rmagick install problem
+</span><span class='line'>
+</span><span class='line'>$ sudo add-apt-repository ppa:chris-lea/node.js # optional
+</span><span class='line'>$ sudo apt-get -y update # optional
+</span><span class='line'>
+</span><span class='line'>$ sudo apt-get -y install nodejs # for ExtJS
+</span><span class='line'>
+</span><span class='line'>$ rails s # open http://localhost:3000/ and enjoy it.</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/17/enable-ssh-in-ubuntu/">Enable Ssh in Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-17T00:50:27+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:50 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>for ubuntu 14.04, we need to install OpenSSH Server</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install openssh-server</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>next, we might want to configure your ssh service</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># edit sshd config file
+</span><span class='line'>$ sudo nano /etc/ssh/sshd_config</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>finally, restart it.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo /etc/init.d/ssh restart</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>done.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/16/deploy-ruby-on-rails-app-on-ubuntu-14-dot-04-by-mina/">Deploy Ruby on Rails App on Ubuntu 14.04 by Mina</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-16T22:44:48+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:44 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><p>Mina is fast and easy deploy tool for ruby on rails app (especially faster than capistrano). This note shows how to deploy ruby on rails app by mina.</p></li>
+<li><p>Start up an ubuntu server (here we use Ubuntu 14.04 LTS x64 on vultr cloud server)</p></li>
+<li><p>ssh to login your server</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123 # change username and ip as yours</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/03/16/deploy-ruby-on-rails-app-on-ubuntu-14-dot-04-by-mina/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -438,235 +725,6 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/11/how-to-fix-simple-search-of-octopress/">How to Fix Simple Search of Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-11T14:37:17+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:37 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>find navigation.html in /source/_includes and replace original code with new code</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>...
-</span><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;https://www.google.com/search&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;fieldset</span> <span class="na">role=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- original code  --&gt;</span>
-</span><span class='line'><span class="c">&lt;!--     &lt;input type=&quot;hidden&quot; name=&quot;q&quot; value=&quot;site:andystu.github.io&quot; /&gt; --&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- //original code  --&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">&lt;!-- new code --&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;sitesearch&quot;</span> <span class="na">value=</span><span class="s">&quot;andystu.github.io&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- //new code --&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="na">results=</span><span class="s">&quot;0&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/fieldset&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>done.</p>
-
-<p>reference
-<a href="http://kaspars.net/blog/wordpress/how-to-add-google-site-search">http://kaspars.net/blog/wordpress/how-to-add-google-site-search</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Make Your Url Friendly for SEO/search Engine via Friendly Id and Babosa Gems</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-07T21:07:46+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:07 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>If we want add more info with ID in URL for specific instance of model, the easy way is to override the to_param method.</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Model</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">to_params</span>
-</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">parameterize</span> <span class="c1">#</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/07/make-your-url-friendly-for-seo-slash-search-engine-via-friendly-id-and-babosa-gems/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/07/how-to-use-all-view-and-helper-methods-in-rails-console/">How to Use All View and Helper Methods in Rails Console</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-07T00:56:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:56 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>run and preview a view helper</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">YourController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">my_helper</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&gt;</span> <span class="no">ApplicationController</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">content_tag</span><span class="p">(</span><span class="ss">:div</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>create params in rails console</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># ActionController::Parameters.new</span>
-</span><span class='line'><span class="n">params</span> <span class="o">=</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Parameters</span><span class="o">.</span><span class="n">new</span><span class="p">({</span>
-</span><span class='line'>  <span class="ss">person</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Francesco&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="ss">age</span><span class="p">:</span>  <span class="mi">22</span><span class="p">,</span>
-</span><span class='line'>    <span class="ss">role</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>reference
-<a href="http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html">http://edgeapi.rubyonrails.org/classes/ActionController/Parameters.html</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/06/how-to-get-a-list-of-a-class-or-instance-methods-by-keyword/">How to Get a List of a Class or Instance Methods by Keyword</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-06T23:29:43+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:29 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>a very useful tip to find methods in ruby/rails console</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Class.methods.grep(/keyword/) </span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># e.g. </span>
-</span><span class='line'><span class="n">irb</span><span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/to/</span><span class="p">)</span> <span class="c1">#  =&gt; [:to_s, :to_f, :to_default_s, :to_json, :upto, :downto, :to_i, :to_int, :numerator, :denominator, :to_r, :to_bn, :to_d, :singleton_method_added, :to_c, :to_formatted_s, :to_param, :to_query, :psych_to_yaml, :to_yaml, :to_yaml_properties, :singleton_class, :singleton_methods, :respond_to?, :singleton_method, :define_singleton_method, :to_enum]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Class.instance_methods.grep(/method/) #  =&gt; [:instance_methods, :public_instance_methods, :protected_instance_methods, :private_instance_methods, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Class.methods.grep(/new/) # =&gt; [&quot;new&quot;]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -686,23 +744,23 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/04/01/how-to-install-ionic-and-its-dependencies/">How to Install Ionic and Its Dependencies</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04/">Install Lavish on Ubuntu 14.04</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/17/enable-ssh-in-ubuntu/">Enable Ssh in Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/16/deploy-ruby-on-rails-app-on-ubuntu-14-dot-04-by-mina/">Deploy Ruby on Rails App on Ubuntu 14.04 by Mina</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/12/how-to-generate-email-view-and-send-it-out-within-rails-application/">How to Generate Email View and Send It Out Within Rails Application</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/26/how-to-install-and-use-ckeditor-and-paperclip-in-rails-app/">How to Install and Use Ckeditor and Paperclip in Rails App</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/19/error-message-on-brew-install-error-sha1-mismatch/">Error Message on Brew Install: Error: SHA1 Mismatch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/17/heroku-command-line-tips/">Heroku Command Line Tips</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/17/rails-tip-how-to-update-attributes-without-save/">Rails Tip: How to Update Attributes Without Save</a>
       </li>
     
   </ul>
