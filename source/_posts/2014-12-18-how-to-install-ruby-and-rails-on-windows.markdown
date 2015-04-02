@@ -12,10 +12,19 @@ categories: Ruby on Rails 安裝教學
 1. Download it (version 3.0.0 and above are recommend)
 from [http://railsinstaller.org](http://railsinstaller.org)
 2. install it (just click next and next steps, then done.).
+3. open "Git bash" console and run the following command.
+```
+$ curl http://installrails.com/update_rubygems.rb | ruby
+```
+4. in "Git Bash" console run 
+```
+$ gem update --system
+```
 
 #### about bundle errors (can not fetch gems from rubygems default source): how do we solve it?
 - Open and edit Gemfile after rails new app
 - Change the => source 'https://rubygems.org' to => source 'http://rubygems.org'
+- Add gem 'coffee-script-source', '1.8.0' in Gemfile and run `bundle update` # original 1.9.1 wouldn't work on windows platform.
 - done.
 
 <!--more-->

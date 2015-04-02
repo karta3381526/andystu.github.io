@@ -19,7 +19,17 @@ http://bootswatchr.com/
 
 http://stylebootstrap.info/
 
+http://bootsnipp.com/
+
 <!--more-->
+- fake images
+
+http://lorempixel.com
+
+http://placekitten.com
+
+http://placehold.it
+
 
 - desktop tools
 
