@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <title>How to Generate Email View and Send It Out Within Rails Application - AndyZ&#8217;s Blog</title>
-  <meta name="author" content="Yu-Chieh Chang (張又介)">
+  <meta name="author" content="AndyZ (Yu-Chieh Chang)">
 
   
   <meta name="description" content="If we want to send email within rails app, we could use generator for creating mailer class and view. 1
@@ -156,6 +156,11 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
 <!-- more -->
 
 
+<ul>
+<li>create the view news_email.html.erb</li>
+</ul>
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -170,20 +175,20 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s1">&#39;text/html; charset=UTF-8&#39;</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s1">&#39;Content-Type&#39;</span> <span class="sr">/&gt;</span>
-</span><span class='line'><span class="sr">  &lt;/</span><span class="n">head</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">hi</span><span class="p">,</span> <span class="o">&lt;</span><span class="sx">%= @user.name %&gt;&lt;/h1&gt;</span>
-</span><span class='line'><span class="sx">    &lt;hr&gt;</span>
-</span><span class='line'><span class="sx">    &lt;h2&gt;&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;&lt;/h2&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;%=</span> <span class="vi">@news</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">html_safe</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">    &lt;/p&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/body&gt;</span>
-</span><span class='line'><span class="sr">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">content=</span><span class="s">&#39;text/html; charset=UTF-8&#39;</span> <span class="na">http-equiv=</span><span class="s">&#39;Content-Type&#39;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>hi, <span class="err">&lt;</span>%= @user.name %&gt;<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;hr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h2&gt;</span><span class="err">&lt;</span>%= @news.title %&gt;<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= @news.content.html_safe %&gt;
+</span><span class='line'>    <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -210,7 +215,7 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
 
 
 <ul>
-<li>Finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file. (here we use gmail)</li>
+<li>Finally, do not forget to add config info to your config/enviroments/$RAILS_ENV.rb file. (here we use gmail)</li>
 </ul>
 
 
@@ -247,7 +252,7 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Yu-Chieh Chang (張又介)</span></span>
+<span class="byline author vcard">Posted by <span class="fn">AndyZ (Yu-Chieh Chang)</span></span>
 
       
 
@@ -371,7 +376,7 @@ $ rails g mailer NewsMailer # NewsMailer is &hellip;">
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Yu-Chieh Chang (張又介) -
+  Copyright &copy; 2015 - AndyZ (Yu-Chieh Chang) -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <title>AndyZ&#8217;s Blog</title>
-  <meta name="author" content="Yu-Chieh Chang (張又介)">
+  <meta name="author" content="AndyZ (Yu-Chieh Chang)">
 
   
   <meta name="description" content="install node js by Homebrew 1
@@ -134,60 +134,12 @@ $ npm &hellip;">
 </span><span class='line'>$ npm install -g ios-sim</span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>install XCode and Android</li>
-<li><p>for android sdk we need to go to <a href="http://developer.android.com/sdk/index.html">SDK Website</a> and download standalone sdk tools only <a href="http://developer.android.com/sdk/index.html#Other">file</a></p></li>
-<li><p>next, unpack it and run for install required resources</p></li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android sdk</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>finally, create a android virtual device by avd tool</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ android-sdk-macosx/tools/android avd</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>Genymotion is recommanded as android emulator (faster than avd) and do not forget to install virtualbox before installing Genymotion.</p></li>
-<li><p>you might also want to change avd location</p></li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ln -s path/to/my/avd ~/.android/avd</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>then, let&rsquo;s get start with ionic by sample app</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ionic start todo blank
-</span><span class='line'>$ ionic platform add ios
-</span><span class='line'>$ ionic platform add android
-</span><span class='line'>$ ionic build ios
-</span><span class='line'>$ ionic build android
-</span><span class='line'>$ ionic emulate ios
-</span><span class='line'>$ ionic emulate android # for avd
-</span><span class='line'>$ ionic run android # for Genymotion</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/04/01/how-to-install-ionic-and-its-dependencies/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -215,7 +167,7 @@ $ npm &hellip;">
 
 
   <div class="entry-content"><ul>
-<li><p>Lavish is a Bootstrap theme generator. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.</p></li>
+<li><p>Lavish is a Bootstrap theme generator by Quan. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.</p></li>
 <li><p>Recently, I want to install on my ubuntu server for using it locally and conviniently.</p></li>
 <li><p>the following steps are my install howto:</p></li>
 </ul>
@@ -352,7 +304,9 @@ $ npm &hellip;">
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123 # change username and ip as yours</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123</span></code></pre></td></tr></table></div></figure>
+
+
 
 
 </div>
@@ -805,7 +759,7 @@ $ npm &hellip;">
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Yu-Chieh Chang (張又介) -
+  Copyright &copy; 2015 - AndyZ (Yu-Chieh Chang) -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

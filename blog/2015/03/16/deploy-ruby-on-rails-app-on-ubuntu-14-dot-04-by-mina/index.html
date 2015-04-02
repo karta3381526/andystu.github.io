@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <title>Deploy Ruby on Rails App on Ubuntu 14.04 by Mina - AndyZ&#8217;s Blog</title>
-  <meta name="author" content="Yu-Chieh Chang (張又介)">
+  <meta name="author" content="AndyZ (Yu-Chieh Chang)">
 
   
   <meta name="description" content="Mina is fast and easy deploy tool for ruby on rails app (especially faster than capistrano). This note shows how to deploy ruby on rails app by mina &hellip;">
@@ -104,7 +104,9 @@
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123 # change username and ip as yours</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh username@123.123.123.123</span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <!-- more -->
@@ -184,7 +186,7 @@
 </span><span class='line'>$ sudo apt-get install apt-transport-https
 </span><span class='line'>
 </span><span class='line'># Add the passenger repository
-</span><span class='line'>$ sudo sh -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main' &gt;&gt; /etc/apt/sources.list.d/passenger.list"
+</span><span class='line'>$ sudo sh -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main' >> /etc/apt/sources.list.d/passenger.list"
 </span><span class='line'>$ sudo chown root: /etc/apt/sources.list.d/passenger.list
 </span><span class='line'>$ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 </span><span class='line'>$ sudo apt-get update
@@ -353,7 +355,7 @@
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Yu-Chieh Chang (張又介)</span></span>
+<span class="byline author vcard">Posted by <span class="fn">AndyZ (Yu-Chieh Chang)</span></span>
 
       
 
@@ -362,6 +364,12 @@
 
 <time class='entry-date' datetime='2015-03-16T22:44:48+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:44 pm</span></time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/deploy/'>deploy</a>, <a class='category' href='/blog/categories/mina/'>mina</a>, <a class='category' href='/blog/categories/nginx/'>nginx</a>, <a class='category' href='/blog/categories/passenger/'>passenger</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
 
 
     </p>
@@ -471,7 +479,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Yu-Chieh Chang (張又介) -
+  Copyright &copy; 2015 - AndyZ (Yu-Chieh Chang) -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

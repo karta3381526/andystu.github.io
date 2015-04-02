@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Lavish | AndyZ's Blog]]></title>
+  <link href="http://andystu.github.io/blog/categories/lavish/atom.xml" rel="self"/>
+  <link href="http://andystu.github.io/"/>
+  <updated>2015-04-02T20:58:30+08:00</updated>
+  <id>http://andystu.github.io/</id>
+  <author>
+    <name><![CDATA[AndyZ (Yu-Chieh Chang)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install Lavish on Ubuntu 14.04]]></title>
+    <link href="http://andystu.github.io/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04/"/>
+    <updated>2015-03-20T09:21:56+08:00</updated>
+    <id>http://andystu.github.io/blog/2015/03/20/install-lavish-on-ubuntu-14-dot-04</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Lavish is a Bootstrap theme generator by Quan. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.</p></li>
+<li><p>Recently, I want to install on my ubuntu server for using it locally and conviniently.</p></li>
+<li><p>the following steps are my install howto:</p></li>
+</ul>
+
+
+<pre><code>$ git clone https://github.com/mquan/lavish.git
+$ cd lavish/
+$ rvm install 1.9.3
+$ rvm use 1.9.3
+$ bundle install --without production
+
+$ sudo apt-get install libmagickwand-dev # for solving rmagick install problem
+
+$ sudo add-apt-repository ppa:chris-lea/node.js # optional
+$ sudo apt-get -y update # optional
+
+$ sudo apt-get -y install nodejs # for ExtJS
+
+$ rails s # open http://localhost:3000/ and enjoy it.
+</code></pre>
+
+<ul>
+<li>done.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
