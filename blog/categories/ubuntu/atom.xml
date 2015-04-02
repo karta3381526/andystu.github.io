@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-04-02T20:58:30+08:00</updated>
+  <updated>2015-04-02T21:01:45+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[AndyZ (Yu-Chieh Chang)]]></name>
@@ -291,8 +291,11 @@ $ apt-get install imagemagick
 <code>
 $ gem install unicorn
 </code></p></li>
-<li><p>installing <a href="http://nadarei.co/mina/setting_up_a_project.html">mina</a>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li><p>installing <a href="http://nadarei.co/mina/setting_up_a_project.html">mina</a></p></li>
+</ul>
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -306,24 +309,21 @@ $ gem install unicorn
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;h1>go to rails app which your want to deploy and inialize your deploy config file&lt;/h1>&lt;/li>
-</span><span class='line'>&lt;/ul>
+</span><span class='line'>&lt;h1>go to rails app which your want to deploy and inialize your deploy config file&lt;/h1>
 </span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;p>$ mina init # this command will created config/deploy.rb. after this you might want to customize your &lt;a href="https://gist.github.com/jbonney/6257372">deploy.rb file.&lt;/a>&lt;/p>
+</span><span class='line'>&lt;p>$ mina init&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;h1>login and setup your server and create folders for later deployment&lt;/h1>
 </span><span class='line'>
-</span><span class='line'>&lt;p>$ ssh &lt;a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#117;&#115;&#x65;&#114;&#110;&#97;&#109;&#101;&#64;&#x31;&#x32;&#51;&#x2e;&#x31;&#x32;&#x33;&#x2e;&#x31;&#50;&#x33;&#46;&#x31;&#50;&#51;">&#x75;&#115;&#x65;&#x72;&#110;&#97;&#109;&#101;&#64;&#x31;&#50;&#51;&#46;&#49;&#50;&#51;&#46;&#x31;&#50;&#x33;&#46;&#x31;&#50;&#51;&lt;/a>
+</span><span class='line'>&lt;p>$ ssh &lt;a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#117;&#115;&#101;&#114;&#110;&#x61;&#x6d;&#x65;&#64;&#x31;&#x32;&#x33;&#46;&#49;&#x32;&#x33;&#46;&#x31;&#50;&#51;&#x2e;&#49;&#x32;&#51;">&#117;&#115;&#101;&#x72;&#x6e;&#x61;&#x6d;&#101;&#x40;&#x31;&#50;&#51;&#46;&#x31;&#x32;&#x33;&#46;&#49;&#50;&#x33;&#46;&#x31;&#50;&#51;&lt;/a>
 </span><span class='line'>$ sudo mkdir -p &ldquo;/var/www/demo.com&rdquo; &amp;&amp; sudo chown -R new_user &ldquo;/var/www/demo.com&rdquo;&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;p>$ mina setup # after tweak your mina deploy.rb file, run this.&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>$ mina deploy # if mina setup is allpass, run this.</span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'>&lt;p>$ mina deploy # if mina setup is allpass, run this.</span></code></pre></td></tr></table></div></figure>
+- <code>mina init</code> will created config/deploy.rb. after this you might want to customize your <a href="https://gist.github.com/jbonney/6257372">deploy.rb file.</a></p>
 
 <ul>
 <li>done.</li>

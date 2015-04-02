@@ -4,7 +4,7 @@
   <title><![CDATA[AndyZ's Blog]]></title>
   <link href="http://andystu.github.io/atom.xml" rel="self"/>
   <link href="http://andystu.github.io/"/>
-  <updated>2015-04-02T20:58:30+08:00</updated>
+  <updated>2015-04-02T21:01:45+08:00</updated>
   <id>http://andystu.github.io/</id>
   <author>
     <name><![CDATA[AndyZ (Yu-Chieh Chang)]]></name>
@@ -428,11 +428,9 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-<span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'># go to rails app which your want to deploy and inialize your deploy config file
 </span><span class='line'>
-</span><span class='line'>$ mina init # this command will created config/deploy.rb. after this you might want to customize your [deploy.rb file.](https://gist.github.com/jbonney/6257372)
-</span><span class='line'>
+</span><span class='line'>$ mina init
 </span><span class='line'>
 </span><span class='line'># login and setup your server and create folders for later deployment
 </span><span class='line'>
@@ -445,7 +443,8 @@
 
 
 <ul>
-<li>done.</li>
+<li><p><code>mina init</code> will created config/deploy.rb. after this you might want to customize your <a href="https://gist.github.com/jbonney/6257372">deploy.rb file.</a></p></li>
+<li><p>done.</p></li>
 </ul>
 
 ]]></content>
