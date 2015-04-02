@@ -17,7 +17,7 @@ $ brew install ant
 $ npm install -g cordova ionic
 $ npm install -g ios-sim
 ```
-
+<!-- more -->
 - install XCode and Android
 - for android sdk we need to go to [SDK Website](http://developer.android.com/sdk/index.html) and download standalone sdk tools only [file](http://developer.android.com/sdk/index.html#Other)
 

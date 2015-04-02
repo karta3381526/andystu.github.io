@@ -3,9 +3,9 @@ layout: post
 title: "install Lavish on Ubuntu 14.04"
 date: 2015-03-20 09:21:56 +0800
 comments: true
-categories: 
+categories: [lavish, bootstrap, ubuntu]
 ---
-- Lavish is a Bootstrap theme generator. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.
+- Lavish is a Bootstrap theme generator by Quan. It can generate both CSS and LESS code from an image you provide. Then, you can customize it.
 
 - Recently, I want to install on my ubuntu server for using it locally and conviniently.
 

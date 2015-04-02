@@ -3,7 +3,7 @@ layout: post
 title: "deploy ruby on rails app on ubuntu 14.04 by mina"
 date: 2015-03-16 22:44:48 +0800
 comments: true
-categories: 
+categories: [rails, deploy, ubuntu, passenger, nginx, mina]
 ---
 - Mina is fast and easy deploy tool for ruby on rails app (especially faster than capistrano). This note shows how to deploy ruby on rails app by mina.
 
@@ -11,9 +11,11 @@ categories:
 
 - ssh to login your server
 ```
-$ ssh username@123.123.123.123 # change username and ip as yours
+$ ssh username@123.123.123.123
 ```
+
 <!-- more -->
+
 - create a new user for later deployment work, better use the same name as your local development user name
 ```
 $ sudo adduser new_user
@@ -39,7 +41,8 @@ $ gem install bundler
 ```
 
 - Installing nginx and passenger [A guide to setting up a Ruby on Rails production environment](https://gorails.com/deploy/ubuntu/14.04)
-```
+
+{% codeblock %}
 # Install Phusion's PGP key to verify packages
 $ gpg --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 $ gpg --armor --export 561F9B9CAC40B2F7 | sudo apt-key add -
@@ -58,7 +61,13 @@ $ sudo apt-get install nginx-full passenger
 
 # start service
 $ sudo service nginx start
-```
+{% endcodeblock %}
+
+
+
+
+
+
 
 - setup nginx
 ```
@@ -66,7 +75,7 @@ $ sudo nano /etc/nginx/nginx.conf
 ```
 
 - find lines below and uncomment them.
-```
+{% codeblock %}
 ##
 # Phusion Passenger
 ##
@@ -78,7 +87,7 @@ passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 #passenger_ruby /home/new_user/.rbenv/shims/ruby; # If you use rbenv
 passenger_ruby /home/new_user/.rvm/wrappers/ruby-2.2.0/ruby; # If use use rvm, be sure to change the version number
 # passenger_ruby /usr/bin/ruby; # If you use ruby from source
-```
+{% endcodeblock %}
 
 - installing mysql
 ```
@@ -86,7 +95,7 @@ $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 ```
 
 - installing locale and set it up [ref](http://sfs.chc.edu.tw/~chi/blog/index.php?load=read&id=296)
-```
+{% codeblock %}
 $ sudo nano /var/lib/locales/supported.d/local # add locales you want to use
 # zh_TW.UTF-8 UTF-8
 
@@ -95,7 +104,7 @@ $ sudo locale-gen
 
 $ sudo nano /etc/default/locale
 # set all as your preferal locale
-```
+{% endcodeblock %}
 
 -installing nodejs for coffee script engine
 ```
@@ -123,11 +132,11 @@ $ gem install unicorn
 ```
 
 - installing [mina](http://nadarei.co/mina/setting_up_a_project.html)
-```
+
+{% codeblock %}
 # go to rails app which your want to deploy and inialize your deploy config file
 
-$ mina init # this command will created config/deploy.rb. after this you might want to customize your [deploy.rb file.](https://gist.github.com/jbonney/6257372)
-
+$ mina init
 
 # login and setup your server and create folders for later deployment
 
@@ -137,7 +146,7 @@ $ sudo mkdir -p "/var/www/demo.com" && sudo chown -R new_user "/var/www/demo.com
 $ mina setup # after tweak your mina deploy.rb file, run this.
 
 $ mina deploy # if mina setup is allpass, run this.
-```
-
+{% endcodeblock %}
+- `mina init` will created config/deploy.rb. after this you might want to customize your [deploy.rb file.](https://gist.github.com/jbonney/6257372)
 
 - done.

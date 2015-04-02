@@ -33,7 +33,10 @@ class NewsMailer < ApplicationMailer
 end
 ```
 <!-- more -->
-``` ruby
+
+- create the view news_email.html.erb
+
+``` html
 <!DOCTYPE html>
 <html>
   <head>
@@ -61,7 +64,7 @@ def send_news
 end
 #...
 ```
-- Finally, do not forget to add config info to your config/enviroments/$REAIL_ENV.rv file. (here we use gmail)
+- Finally, do not forget to add config info to your config/enviroments/$RAILS_ENV.rb file. (here we use gmail)
 ``` ruby
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
