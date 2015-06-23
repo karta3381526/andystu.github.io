@@ -19,7 +19,13 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 
 網頁設計語法
 * 標題
+  <head>
+  <title>____</title>
 * 副標及內文
+  <body>
+  <h1>____</h1>
+  <p>____</p>
+  </body>
 * 按鈕
 * 欄
   間格
@@ -35,8 +41,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
   其他
 * 符號
 * 頁腳
-*
-* 
+
 
 
 
