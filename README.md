@@ -1,4 +1,4 @@
-* Github andystu  Fork 複製一分到自己的儲存簿
+* Github andystu           Fork 複製一分到自己的儲存簿
 
 * 將bootstrap_practice-master資料夾拉到sublime text3
 
