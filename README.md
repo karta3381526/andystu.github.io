@@ -20,14 +20,14 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 
 
 網頁設計語法
-* 標題
-<head>
-<title>_________<title>
-</head>
+* 標題      
+  <head>
+  <title>_________<title>
+  </head>
 
 *副標及內文
-<body>
-<h1>_______</h1>
-<p>________</p>
-</body>
+ <body>
+ <h1>_______</h1>
+  <p>________</p>
+  </body>
 
