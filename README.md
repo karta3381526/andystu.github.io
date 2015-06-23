@@ -15,4 +15,19 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 
 * 設計自己的網頁
 
-* 開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)
+* 開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)就可以見證奇蹟囉!!
+
+
+
+網頁設計語法
+* 標題
+<head>
+<title>_________<title>
+</head>
+
+*副標及內文
+<body>
+<h1>_______</h1>
+<p>________</p>
+</body>
+
