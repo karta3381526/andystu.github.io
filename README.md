@@ -30,9 +30,12 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
  <h1>_______</h1>
   <p>________</p>
   </body>
+
 * 按鈕button type='button'>打上你想要的字</button>
+
 * 欄<div class=’col-md-□’>
   間格:加上< div class=’col-md-□’ col-md-offset-□'>
+
 * 版面大小變換
  手機Extra Small col-xs-□
  平板Small     col-sm-□
