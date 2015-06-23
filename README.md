@@ -5,9 +5,11 @@
 
 複製以下文字
 
-回到sublime: 按下ctrl+	    貼上複製的文字
+回到sublime: 按下ctrl+貼上複製的文字
 安裝套件
+
 Ctrl+shift+P
+
 &amp;
 
 5.開啟 index.html網頁(在網頁設定中選擇更多工具→編碼→自動偵測)
