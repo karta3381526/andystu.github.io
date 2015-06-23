@@ -1,4 +1,4 @@
-* Github andystu           Fork 複製一分到自己的儲存簿
+* Github andystu Fork 複製一分到自己的儲存簿
 
 * 將bootstrap_practice-master資料夾拉到sublime text3
 
@@ -9,5 +9,3 @@
 安裝套件 Ctrl+shift+p
 
 *開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)
-&bull;
-&9635;
