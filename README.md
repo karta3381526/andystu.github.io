@@ -18,27 +18,19 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 * 開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)就可以見證奇蹟囉!!
 
 網頁設計語法
-* 標題
-<head>
-<title>____</title>
-* 副標及內文
-<body>
-<h1>____</h1>
-<p>____</p>
-</body>
-* 按鈕
-* 欄
-  間格
-* 版面大小變換
-* 隱藏
-* 顯示
-* 字體大小
-* 字型
-* 行距
-* 顏色
-* 背景顏色
-* 置中
-  其他
+* 按鈕<button type='button'>打上你想要的字</button>
+* 欄<div class=’col-md-□’>
+  間格:加上< div class=’col-md-□’ col-md-offset-□'>
+* 版面大小變換col-xs/sm/md/lg-□ Offset Class以此類推…
+* 隱藏:hidden-xs/md/sm/lg
+* 顯示:visible-xs/md/sm/lg
+* 字體大小 font-size: □px;
+* 字型 font-family:□
+* 行距line-height:□
+* 顏色color:□
+* 背景顏色background-color:□
+* 置中:text-center
+  其他text-justify  text-right  text-center  text-nowrap  text-left
 * 符號
 * 頁腳
 
