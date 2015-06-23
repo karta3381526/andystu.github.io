@@ -1,4 +1,4 @@
-&bull;Github andystu  Fork 複製一分到自己的儲存簿
+&#9001;Github andystu  Fork 複製一分到自己的儲存簿
 &bull;下載bootstrap_practice 解壓縮
 &bull;將bootstrap_practice-master資料夾拉到sublime text3
 &bull;搜尋sublime text3 package control  進入Installation - Package Control
