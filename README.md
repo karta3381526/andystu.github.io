@@ -38,7 +38,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
  平板Small     col-sm-□
  筆電Medium  col-md-□
  螢幕Large     col-lg-□
- Offset Class以此類推…
+ Offset Class以此類推
 
 
 
