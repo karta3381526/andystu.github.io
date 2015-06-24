@@ -20,15 +20,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 <LI>開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)就可以見證奇蹟囉!!
 
 <LI>網頁設計語法
-<OL><LI>標題
-         <head>
-         <title>_________<title>
-         </head>
-<LI>副標及內文
-    <body>
-    <h1>_______</h1>
-    <p>________</p>
-    </body>
+<OL>
 
 <LI>按鈕<button type='button'>打上你想要的字</button>
 <LI>欄<div class=’col-md-□’>
