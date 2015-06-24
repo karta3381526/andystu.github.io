@@ -32,7 +32,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 <LI>顏色color:□
 <LI>背景顏色background-color:□
 <LI>置中:text-center
-<LI>符號bootstrap→Componets.<i class='glyphicon____________'></i>
+<LI>符號bootstrap→Componets.<i class='glyphicon____'></i>
 <LI>頁腳...a href='index.html'>□□□□□</a/li... 在ul後加上class='list-unstyled' 可去除點點
 <LI>文字外掛:ctrl+shift→l→color
 </OL>
