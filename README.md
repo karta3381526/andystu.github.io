@@ -21,8 +21,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 
 <LI>開啟 index.html網頁(在網頁設定中選擇更多工具&rarr;編碼&rarr;自動偵測)就可以見證奇蹟囉!!
 
-<OL>
-網頁設計語法
+<OL>網頁設計語法
 <LI>按鈕<button type='button'>打上你想要的字</button>
 <LI>欄<div class=’col-md-□’>
     間格:加上< div class=’col-md-□’ col-md-offset-□'>
@@ -38,6 +37,7 @@ import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7
 <LI>符號bootstrap→Componets.<i class='glyphicon____________'></i>
 <LI>頁腳...a href='index.html'>□□□□□</a/li... 在ul後加上class='list-unstyled' 可去除點點
 <LI>文字外掛:ctrl+shift→l→color
+</OL>
 
 
 
